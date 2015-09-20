@@ -9,10 +9,3 @@ da Janice Lamas.
 
 Fonte : MIDAS - Mammographic Image Database for Automated Analysis. Disponível em http://www.intechopen.com/books/mammography-recent-advances/midas-mammographic-image-database-for-automated-analysis. 
 Acessado no dia 20/09/2015
-
-Os alunos da Universidade de Brasília participantes desse projeto são 
-Bruno José Bergamaschi Kumer Reis____________________14/0017666
-Fábio Trevizolo de Souza_____________________________14/0019774
-Gustavo henrique Fernandes Carvalho__________________14/0021671
-Victor Araújo  Vieira________________________________14/0032801
-
