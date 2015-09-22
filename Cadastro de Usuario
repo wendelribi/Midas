@@ -35,13 +35,6 @@ public class Usuario extends JFrame {
 		email.setToolTipText("Insira aqui seu email");
 		add(email);
 		
-		senha = new JPasswordField("Hidden Text",10);
-		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de segurança
-		add(senha);
-		
-		enviar = new JButton("Enviar");
-		add(enviar);
-		
 		sexo_masc = new JRadioButton("Masculino",false); // cria botoes para ambos os sexos
 		sexo_fem = new JRadioButton("Feminino",false); // devemos adicionar mais sexos?
 		add(sexo_masc);
@@ -51,6 +44,12 @@ public class Usuario extends JFrame {
 		radioGroup.add(sexo_masc); // o outro estara desclicado
 		radioGroup.add(sexo_fem);
 		
+		senha = new JPasswordField("Hidden Text",10);
+		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de segurança
+		add(senha);
+		
+		enviar = new JButton("Enviar");
+		add(enviar);
 
 		ButtonHandler handler = new ButtonHandler(); // cria o manipulador de eventos
 		
