@@ -1,0 +1,57 @@
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.*;
+
+// Codigo Feito por Álvaro Vieira 14/0079661 //
+// O codigo está bem seco, mas já podemos iniciar o modelo de como o usuario irá se cadastrar para o MIDAS //
+
+public class Usuario extends JFrame {
+
+
+	private JTextField nome; 
+	private JTextField sobrenome;
+	private JTextField email;
+	private JPasswordField senha;
+	private JButton enviar;
+	
+	public Usuario(){
+
+		super("Cadastro de Usuario"); // utiliza construtor da super classe JFrame
+		setLayout(new FlowLayout()); // Configura o layout do frame (ainda não descobri como melhorar) 
+
+		nome = new JTextField("Primeiro Nome");
+		nome.setToolTipText("Insira aqui seu primeiro nome"); // Dicas que aparecem ao passar o mouse pelo campo
+		add(nome);
+		
+		sobrenome = new JTextField("Ultimo Nome");
+		sobrenome.setToolTipText("Insira aqui seu ultimo nome");
+		add(sobrenome);
+		
+		email = new JTextField("Email");
+		email.setToolTipText("Insira aqui seu email");
+		add(email);
+		
+		senha = new JPasswordField("Hidden Text");
+		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de segurança
+		add(senha);
+		
+		enviar = new JButton("Enviar");
+		add(enviar);
+		
+		ButtonHandler handler = new ButtonHandler(); // cria o manipulador de eventos
+		
+		enviar.addActionListener(handler); // cria uma escuta para o botao enviar
+	}
+	
+	public class ButtonHandler implements ActionListener{ // classe interna que indica a ação de manipulação
+		
+		public void actionPerformed(ActionEvent event){
+		
+			if(event.getSource() == enviar){
+				JOptionPane.showMessageDialog(null, "Cadastro Enviado com sucesso!");
+			}
+		}
+		
+	}
+}
