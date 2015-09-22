@@ -49,7 +49,7 @@ public class Usuario extends JFrame {
 		public void actionPerformed(ActionEvent event){
 		
 			if(event.getSource() == enviar){
-				JOptionPane.showMessageDialog(null, "Cadastro Enviado com sucesso!");
+				JOptionPane.showMessageDialog(null, "Cadastro Enviado com sucesso", "Confirmação de Cadastro", JOptionPane.OK_OPTION);
 			}
 		}
 		
