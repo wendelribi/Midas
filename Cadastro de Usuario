@@ -13,7 +13,10 @@ public class Usuario extends JFrame {
 	private JTextField sobrenome;
 	private JTextField email;
 	private JPasswordField senha;
-	private JButton enviar;
+	private JButton enviar;	
+	private JRadioButton sexo_masc;
+	private JRadioButton sexo_fem;
+	private ButtonGroup radioGroup;
 	
 	public Usuario(){
 
@@ -39,6 +42,16 @@ public class Usuario extends JFrame {
 		enviar = new JButton("Enviar");
 		add(enviar);
 		
+		sexo_masc = new JRadioButton("Masculino",false); // cria botoes para ambos os sexos
+		sexo_fem = new JRadioButton("Feminino",false); // devemos adicionar mais sexos?
+		add(sexo_masc);
+		add(sexo_fem);
+		
+		radioGroup = new ButtonGroup(); // cria relacionamento entre botoes, ou seja, quando um esta clicado
+		radioGroup.add(sexo_masc); // o outro estara desclicado
+		radioGroup.add(sexo_fem);
+		
+
 		ButtonHandler handler = new ButtonHandler(); // cria o manipulador de eventos
 		
 		enviar.addActionListener(handler); // cria uma escuta para o botao enviar
