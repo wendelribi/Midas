@@ -20,19 +20,19 @@ public class Usuario extends JFrame {
 		super("Cadastro de Usuario"); // utiliza construtor da super classe JFrame
 		setLayout(new FlowLayout()); // Configura o layout do frame (ainda não descobri como melhorar) 
 
-		nome = new JTextField("Primeiro Nome");
+		nome = new JTextField("Primeiro Nome",10);
 		nome.setToolTipText("Insira aqui seu primeiro nome"); // Dicas que aparecem ao passar o mouse pelo campo
 		add(nome);
 		
-		sobrenome = new JTextField("Ultimo Nome");
+		sobrenome = new JTextField("Ultimo Nome",10);
 		sobrenome.setToolTipText("Insira aqui seu ultimo nome");
 		add(sobrenome);
 		
-		email = new JTextField("Email");
+		email = new JTextField("Email",20);
 		email.setToolTipText("Insira aqui seu email");
 		add(email);
 		
-		senha = new JPasswordField("Hidden Text");
+		senha = new JPasswordField("Hidden Text",10);
 		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de segurança
 		add(senha);
 		
