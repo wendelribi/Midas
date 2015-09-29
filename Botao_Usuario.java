@@ -12,17 +12,19 @@ public class Botao_Usuario extends JFrame{
 	public Botao_Usuario(){
 		super("Selecione uma das opcoes");
 		setLayout(new FlowLayout()); //configura o layout de frame
-		
+		this.setLocation(400,300); //Posicionar o layout no lugar desejado da tela
 		
 		possui_cadastro = new JButton("Possuo cadastro");
 		add(possui_cadastro);
 		
 		nao_possui_cadastro = new JButton("Nao possuo cadastro");
 		add(nao_possui_cadastro);
-//		cria novo ButtonHandler para tratamento de evento de botao
+		
+		//	Manipulador de evento de botao
 		ButtonHandler handler = new ButtonHandler();
 		nao_possui_cadastro.addActionListener(handler);
 		possui_cadastro.addActionListener(handler);
+		
 		JOptionPane.showMessageDialog(null,"Bem-vindo ao MIDAS!");
 	}
 	
@@ -33,7 +35,10 @@ public class Botao_Usuario extends JFrame{
 			
 			if(event.getSource() == possui_cadastro ){
 				Botao_Usuario.this.dispose();				
-//				Programar essa parte para a pessoa fazer o login
+				Login_Usuario textFieldFrame = new Login_Usuario();
+				textFieldFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				textFieldFrame.setSize(350,100);
+				textFieldFrame.setVisible(true);
 			}	
 			if(event.getSource() == nao_possui_cadastro ){
 				Botao_Usuario.this.dispose();
@@ -41,7 +46,7 @@ public class Botao_Usuario extends JFrame{
 				Usuario frame = new Usuario(); // cria um frame para Usuario
 				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // fechar o programa ao fechar a janela
 				frame.setSize(300,300); // tamanho da janela
-				frame.setVisible(true); // Ã© visivel
+				frame.setVisible(true); // ÃƒÂ© visivel
 			}
 		}
 	}
