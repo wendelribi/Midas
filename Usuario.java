@@ -1,14 +1,11 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
 import java.awt.*;
 
 import javax.swing.*;
 
-// O codigo está bem seco, mas já podemos iniciar o modelo de como o usuario irá se cadastrar para o MIDAS //
+// O codigo estÃ¡ bem seco, mas jÃ¡ podemos iniciar o modelo de como o usuario irÃ¡ se cadastrar para o MIDAS //
 
 public class Usuario extends JFrame {
-
 
 	private JTextField nome; 
 	private JTextField sobrenome;
@@ -27,7 +24,8 @@ public class Usuario extends JFrame {
 	public Usuario(){
 
 		super("Cadastro de Usuario"); // utiliza construtor da super classe JFrame
-		setLayout(new FlowLayout()); // Configura o layout do frame (ainda não descobri como melhorar) 
+		setLayout(new FlowLayout()); // Configura o layout do frame (ainda nÃ£o descobri como melhorar)
+		this.setLocation(530,240); //Posicionar o layout no lugar desejado da tela
 
 		nome = new JTextField("Primeiro Nome",10);
 		nome.setToolTipText("Insira aqui seu primeiro nome"); // Dicas que aparecem ao passar o mouse pelo campo
@@ -51,29 +49,63 @@ public class Usuario extends JFrame {
 		radioGroup.add(sexo_fem);
 		
 		box_profissao = new JComboBox(profissao); // String que pertence ao box
-		box_profissao.setMaximumRowCount(5); // Numero máximo de itens
+		box_profissao.setMaximumRowCount(5); // Numero mÃ¡ximo de itens
 		add(box_profissao);
 		
 		senha = new JPasswordField("Hidden Text",10);
-		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de segurança
+		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de seguranÃ§a
 		add(senha);
 		
 		enviar = new JButton("Enviar");
 		add(enviar);
 
 		ButtonHandler handler = new ButtonHandler(); // cria o manipulador de eventos
-		
 		enviar.addActionListener(handler); // cria uma escuta para o botao enviar
+		
+//		Manipulador de evento de mouse
+		ManipuladorMouse handler_mouse = new ManipuladorMouse();
+	
+		nome.addMouseListener(handler_mouse);
+		sobrenome.addMouseListener(handler_mouse);
+		email.addMouseListener(handler_mouse);
+		senha.addMouseListener(handler_mouse);
+		
 	}
 	
-	public class ButtonHandler implements ActionListener{ // classe interna que indica a ação de manipulação
+	public class ButtonHandler implements ActionListener{ // classe interna que indica a aÃ§Ã£o de manipulaÃ§Ã£o
 		
 		public void actionPerformed(ActionEvent event){
 		
 			if(event.getSource() == enviar){
-				JOptionPane.showMessageDialog(null, "Cadastro Enviado com sucesso", "Confirmação de Cadastro", JOptionPane.OK_OPTION);
+				Usuario.this.dispose();
+				JOptionPane.showMessageDialog(null, "Cadastro Enviado com sucesso", "ConfirmaÃ§Ã£o de Cadastro", JOptionPane.OK_OPTION);
 			}
 		}
-		
 	}
+	
+//	Classe interna para tratamento de mouse
+	private class ManipuladorMouse implements MouseListener{  
+        public void mousePressed(MouseEvent event){ 
+        	
+//        	Apagar o que tem escrito nos campos   	
+            if(event.getSource() == nome)    
+            	nome.setText("");
+            else if(event.getSource() == sobrenome)
+            	sobrenome.setText(""); 
+            else if(event.getSource() == email)
+            	email.setText("");
+            else if(event.getSource() == senha)
+            	senha.setText("");
+           
+        }   
+         public void mouseEntered(MouseEvent event){
+         }
+         public void mouseExited(MouseEvent event){  
+         }  
+         public void mouseClicked(MouseEvent event){  
+         }  
+         public void mouseReleased(MouseEvent event){  
+         }  
+    }  
+	
 }
