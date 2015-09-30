@@ -27,11 +27,6 @@ public class Login_Usuario extends JFrame {
 		fazerLogin = new JButton("Fazer Login");
 		add(fazerLogin);
 		
-		// Manipulador de evento registradores
-		campoLoginHandler handler = new campoLoginHandler();
-		campoLogin.addActionListener(handler);
-		campoSenha.addActionListener(handler);
-		
 		//	Manipulador de evento de mouse
 		ManipuladorMouse handler_mouse = new ManipuladorMouse(); 
 		campoSenha.addMouseListener(handler_mouse);
@@ -42,19 +37,6 @@ public class Login_Usuario extends JFrame {
 		fazerLogin.addActionListener(handler_botao);
 		
 	}	
-	
-	// Classe interna private para tratamento de eventos
-	private class campoLoginHandler implements ActionListener{
-		public void actionPerformed(ActionEvent event){
-
-			//	Usuario pressionou Enter no JcampoLogin campoLogin		
-			if(event.getSource() == campoLogin)
-				login = String.format("%s",event.getActionCommand() );
-				
-			else if(event.getSource() == campoSenha)
-				senha = String.format("%s", event.getActionCommand());
-		}
-	}
 	
 //	Classe interna para tratamento de mouse
 	private class ManipuladorMouse implements MouseListener{  
@@ -85,6 +67,8 @@ public class Login_Usuario extends JFrame {
 			
 			if(event.getSource() == fazerLogin ){
 				Login_Usuario.this.dispose();
+				login = campoLogin.getText();
+				senha = campoSenha.getText();
 			}
 		}
 	}
