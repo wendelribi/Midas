@@ -7,17 +7,21 @@ import javax.swing.*;
 public class Botao_Usuario extends JFrame{
 	private JButton possui_cadastro; //botao que seleciona se a pessoa possui cadastro
 	private JButton nao_possui_cadastro;
-	private JTextField textField;
+	private JTextField selecione;
 	
 	public Botao_Usuario(){
-		super("Selecione uma das opcoes");
+		super("Opções de usuario");
 		setLayout(new FlowLayout()); //configura o layout de frame
 		this.setLocation(400,300); //Posicionar o layout no lugar desejado da tela
 		
-		possui_cadastro = new JButton("Possuo cadastro");
+		selecione = new JTextField("\t    Selecione uma das opções:",30);
+		add(selecione);
+		selecione.setEditable(false);
+		
+		possui_cadastro = new JButton("Já Possuo cadastro");
 		add(possui_cadastro);
 		
-		nao_possui_cadastro = new JButton("Nao possuo cadastro");
+		nao_possui_cadastro = new JButton("Requisitar cadastro");
 		add(nao_possui_cadastro);
 		
 		//	Manipulador de evento de botao
