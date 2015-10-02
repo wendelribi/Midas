@@ -12,19 +12,22 @@ public class Login_Usuario extends JFrame {
 	public Login_Usuario(){
 		
 		super("Login");
-		setLayout(new FlowLayout());
-		this.setLocation(400,300); //Posicionar o layout no lugar desejado da tela
+		this.setLayout(null);
+		this.setLocation(500,200); //Posicionar o layout no lugar desejado da tela
 		
 		//Constroi o campoLogin com 10 colunas
-		campoLogin = new JTextField("Insira aqui o seu login",13);   
+		campoLogin = new JTextField("Insira aqui o seu login",13);
+		campoLogin.setBounds(20,20,200,30);
 		add(campoLogin); //Adiciona campoLogin1 ao JFrame
 		campoLogin.setToolTipText("Insira o seu login");
 		
 		campoSenha = new JPasswordField("senha",10);
+		campoSenha.setBounds(250,20,200,30);
 		add(campoSenha);
 		campoSenha.setToolTipText("Insira a sua senha");
 		
 		fazerLogin = new JButton("Fazer Login");
+		fazerLogin.setBounds(140,80,200,30);
 		add(fazerLogin);
 		
 		//	Manipulador de evento de mouse
