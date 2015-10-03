@@ -11,16 +11,17 @@ public class Botao_Usuario extends JFrame{
 	private JOptionPane frame;
 	
 	public Botao_Usuario(){
-		super("Op��es de usuario");
+		super("Opções de usuario");
 		this.setLayout(null);
 		this.setLocation(450,200); //Posicionar o layout no lugar desejado da tela
 		
-		selecione = new JLabel("Selecione uma das op��es:");
+	
+		selecione = new JLabel("Selecione uma das opções:");
 		selecione.setBounds(170, 20, 300, 30);
 		add(selecione);
 		
 		
-		possui_cadastro = new JButton("J� Possuo cadastro");
+		possui_cadastro = new JButton("Já Possuo cadastro");
 		possui_cadastro.setBounds(40, 70, 200, 70);
 		add(possui_cadastro);
 		
@@ -49,7 +50,7 @@ public class Botao_Usuario extends JFrame{
 				Botao_Usuario.this.dispose();				
 				Login_Usuario textFieldFrame = new Login_Usuario();
 				textFieldFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				textFieldFrame.setSize(500,180);
+				textFieldFrame.setSize(500,200);
 				textFieldFrame.setVisible(true);
 			}	
 			if(event.getSource() == nao_possui_cadastro ){
@@ -57,8 +58,8 @@ public class Botao_Usuario extends JFrame{
 
 				Usuario frame = new Usuario(); // cria um frame para Usuario
 				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // fechar o programa ao fechar a janela
-				frame.setSize(300,300); // tamanho da janela
-				frame.setVisible(true); // Ã© visivel
+				frame.setSize(400,500); // tamanho da janela
+				frame.setVisible(true); // ÃƒÂ© visivel
 			}
 		}
 	}
