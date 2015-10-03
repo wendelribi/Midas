@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 
 public class Confirmacao {
-	boolean validacaoSenha, validacaoCampos, sexoValido, emailValido;
+	boolean validacaoSenha, validacaoCampos, sexoValido, emailValido, cpfValidacao;
 	String comparacao;
 	int tamanhoCpf;
 
@@ -11,16 +11,38 @@ public class Confirmacao {
 
 	public boolean confirmacaoSenha(String Senha1, String Senha2) {
 		validacaoSenha = true;
+		int i, contadorDeLetras = 0;
+
 		if (Senha1.equals(comparacao) || Senha1.equals("****")) {
-			validacaoSenha = false;
+			validacaoSenha = false;// Caso a senha esteja em branco
 			JOptionPane.showMessageDialog(null, "Erro no campo Senha", "ERRO", JOptionPane.WARNING_MESSAGE);
 		}
 		if (!(Senha1.equals(Senha2))) {
 
 			validacaoSenha = false; // Caso as senhas sejam iguais, retorna true
-			JOptionPane.showMessageDialog(null, "Erro no campo confirmação da senha", "ERRO",
+			JOptionPane.showMessageDialog(null, "Erro no campo confirmaÃ§Ã£o da senha", "ERRO",
 					JOptionPane.WARNING_MESSAGE);
 		}
+		if (Senha1.length() < 6) {
+			validacaoSenha = false; // Caso a senha seja muito curta
+			JOptionPane.showMessageDialog(null, "A senha deve conter no minimo 6 digitos, incluido caracteres", "ERRO",
+					JOptionPane.WARNING_MESSAGE);
+		} else {
+			for (i = 0; i < Senha1.length(); i++) {
+				if ((Senha1.charAt(i) >= 'A' && Senha1.charAt(i) <= 'Z')
+						|| (Senha1.charAt(i) >= 'a' && Senha1.charAt(i) <= 'z')) {
+					contadorDeLetras++;
+				}
+			}
+
+			if (Senha1.length() == contadorDeLetras) {
+				validacaoSenha = false; // Caso a senha nÃ£o possua Caracteres ou
+										// Numeros
+				JOptionPane.showMessageDialog(null, "A senha deve conter Caracteres '.,!#' ou Numeros '123' ", "ERRO",
+						JOptionPane.WARNING_MESSAGE);
+			}
+		}
+
 		return validacaoSenha;
 	}
 
@@ -34,15 +56,6 @@ public class Confirmacao {
 			validacaoCampos = false;
 			JOptionPane.showMessageDialog(null, "Erro no campo Ultimo Nome", "ERRO", JOptionPane.WARNING_MESSAGE);
 		}
-		if (email.equals(comparacao) || email.equals("Email") || !emailValido(email)) {
-			validacaoCampos = false;
-			JOptionPane.showMessageDialog(null, "Erro no campo Email", "ERRO", JOptionPane.WARNING_MESSAGE);
-		}
-		if (cpf.equals(comparacao) || cpf.equals("CPF") || ((tamanhoCpf = cpf.length()) != 11)) {
-			validacaoCampos = false;
-			JOptionPane.showMessageDialog(null, "Erro no campo CPF", "ERRO", JOptionPane.WARNING_MESSAGE);
-		}
-
 		return validacaoCampos;
 	}
 
@@ -52,30 +65,9 @@ public class Confirmacao {
 
 		if ((!masc) & (!fem)) {
 			sexoValido = false;
-			JOptionPane.showMessageDialog(null, "Erro no campo Gênero", "ERRO", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Erro no campo GÃªnero", "ERRO", JOptionPane.WARNING_MESSAGE);
 
 		}
 		return sexoValido;
 	}
-
-	public boolean emailValido(String email) {
-		boolean validacaoEmail = false;
-		int i, contA = 0, contP = 0;// Variavel que conta o numero de pontos e
-									// arrobas.
-
-		for (i = 0; i < email.length(); i++) {
-			if (email.charAt(i) == '@') {
-				contA++;
-			}
-			if (email.charAt(i) == '.') {
-				contP++;
-			}
-		}
-
-		if (contA == 1 & contP >= 1) {
-			validacaoEmail = true;
-		}
-		return validacaoEmail;
-	}
-
 }
