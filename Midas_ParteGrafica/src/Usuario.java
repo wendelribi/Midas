@@ -2,9 +2,11 @@ import java.awt.event.*;
 import java.util.Collections;
 import java.awt.*;
 import javax.swing.*;
-
-// O codigo estÃ¡ bem seco, mas jÃ¡ podemos iniciar o modelo de como o usuario irÃ¡ se cadastrar para o MIDAS //
-
+/* 
+ * Classe que mostra a janela com todos os campos para o usu�rio preencher e fazer
+ * o seu cadastro. Verifica por meio de outras classes se todos os campos est�o corretos
+ * e informa ao usuario se foi possivel ou nao fazer o cadastro.
+ */
 public class Usuario extends JFrame{
 
 	private JTextField nome, sobrenome, email, cpf;
@@ -17,7 +19,7 @@ public class Usuario extends JFrame{
 	private boolean valida = true,opcaoMasc = false,opcaoFem = false;
 	private String nomeUsuario, sobrenomeUsuario,cpfUsuario,emailUsuario,profissaoUsuario;
 	private String senhaUsuario, senhaValidacao;
-	private final String[] profissao = {"Engenheiro","Medico","Professor" };   
+	private final String[] profissao = {"Estudante","Engenheiro","Medico","Professor" };   
 	private int dataUsuario,mesUsuario,anoUsuario;
 	final int tamData= 31,tamMes=12,tamAno=115;
 	int i;
@@ -31,23 +33,22 @@ public class Usuario extends JFrame{
 										// JFrame
 		this.setLayout(null);
 		this.setLocation(530, 140); // Posicionar o layout no lugar desejado
-									// da// tela
+									// da tela
 		
-		FonteUsual = new Font("Serif",Font.PLAIN,14);
+		FonteUsual = new Font("Serif",Font.PLAIN,14); //Definir uma fonte e tamanho das letras
 		FonteItalico = new Font("Serif",Font.ITALIC,14);
 		
 		String [] data = new String[tamData];
 		String [] mes = new String[tamMes];
 		String [] ano = new String[tamAno];
 		
+//		Criando os campos data, mes e ano
 		for(i=1;i<=31;i++){
 			data[i-1] = String.format("%d",i);
 		}
-		
 		for(i=1;i<=12;i++){
 			mes[i-1] = String.format("%d", i);
 		}
-		
 		for(i=1900;i<=2014;i++){
 			ano[i-1900] = String.format("%d",i);
 		}
@@ -55,10 +56,8 @@ public class Usuario extends JFrame{
 		nome = new JTextField("Primeiro Nome", 12);
 		nome.setFont(FonteItalico);
 		nome.setToolTipText("Insira aqui seu primeiro nome"); // Dicas que aparecem quando o passar o mouse por cima
-		nome.setBounds(10,20,170,40);
+		nome.setBounds(10,20,170,40); // Definindo o tamanho do campo e o lugar que ficar� no frame
 		add(nome);
-	
-		
 
 		sobrenome = new JTextField("Ultimo Nome", 12);
 		sobrenome.setFont(FonteItalico);
@@ -66,43 +65,37 @@ public class Usuario extends JFrame{
 		sobrenome.setBounds(200,20,170,40);
 		add(sobrenome);
 		
-
 		email = new JTextField("Email", 12);
 		email.setFont(FonteItalico);
 		email.setToolTipText("Insira aqui seu email");
 		email.setBounds(10,80,170,40);
 		add(email);
-		
 
 		cpf = new JTextField("CPF", 12);
 		cpf.setFont(FonteItalico);
-		cpf.setToolTipText("Insira aqui seu CPF"); // Dicas que aparecem ao
-													// passar o mouse pelo campo
+		cpf.setToolTipText("Insira aqui seu CPF"); 
 		cpf.setBounds(200,80,170,40);
 		add(cpf);
 		
-		sexo_masc = new JRadioButton("Masculino", false); // cria botoes para
-															// ambos os sexos
-		sexo_fem = new JRadioButton("Feminino", false); // devemos adicionar
-														// mais sexos?
+		sexo_masc = new JRadioButton("Masculino", false); // cria botoes para															
+		sexo_fem = new JRadioButton("Feminino", false); // ambos os sexos
 		sexo_masc.setBounds(60,130,140,40);
 		sexo_fem.setBounds(240,130,170,40);
 		add(sexo_masc);
 		add(sexo_fem);
 
-		radioGroup = new ButtonGroup(); // cria relacionamento entre botoes, ou
-										// seja, quando um esta clicado
-		radioGroup.add(sexo_masc); // o outro estara desclicado
-		radioGroup.add(sexo_fem);
+		radioGroup = new ButtonGroup(); // cria relacionamento entre botoes, ou										
+		radioGroup.add(sexo_masc); // seja, quando um esta clicado  
+		radioGroup.add(sexo_fem); // o outro estara desclicado
 		
-		campoProfissao = new JLabel(" Profissão: ");
+		campoProfissao = new JLabel(" Profissao: ");
 		campoProfissao.setBounds(80,180,170,40);
 		add(campoProfissao);
 		
 		box_profissao = new JComboBox(profissao);
 		box_profissao.setMaximumRowCount(3);
 		box_profissao.addItemListener(new ItemListener(){
-//			Trata evento de JComboBox
+//			Trata evento de JComboBox 
 			public void itemStateChanged (ItemEvent event){
 //				determina o item selecionado
 				if(event.getStateChange() == ItemEvent.SELECTED){
@@ -121,8 +114,9 @@ public class Usuario extends JFrame{
 		
 		box_data = new JComboBox(data); 
 		box_data.setMaximumRowCount(5);
+//		Classe interna anonima
 		box_data.addItemListener(new ItemListener(){
-//			Trata evento de JComboBox
+//			Trata evento de JComboBox para caso o usuario clique em uma das datas
 			public void itemStateChanged (ItemEvent event){
 //				determina o item selecionado
 				if(event.getStateChange() == ItemEvent.SELECTED){
@@ -135,9 +129,9 @@ public class Usuario extends JFrame{
 
 		box_mes = new JComboBox(mes); 
 		box_mes.setMaximumRowCount(5);
-//		Classe interna anônima
+//		Classe interna anonima
 		box_mes.addItemListener(new ItemListener(){
-//			Trata evento de JComboBox
+//			Trata evento de JComboBox para caso o usuario clique em um dos meses
 			public void itemStateChanged (ItemEvent event){
 //				determina o item selecionado
 				if(event.getStateChange() == ItemEvent.SELECTED){
@@ -150,9 +144,9 @@ public class Usuario extends JFrame{
 
 		box_ano = new JComboBox(ano); 
 		box_ano.setMaximumRowCount(5); 
-		
+//		Classe interna anonima
 		box_ano.addItemListener(new ItemListener(){
-//			Trata evento de JComboBox
+//			Trata evento de JComboBox para caso o usuario clique em um dos anos
 			public void itemStateChanged (ItemEvent event){
 //				determina o item selecionado
 				if(event.getStateChange() == ItemEvent.SELECTED){
@@ -163,7 +157,6 @@ public class Usuario extends JFrame{
 		box_ano.setBounds(300,240,60,40);
 		add(box_ano);
 		
-
 		campoSenha = new JLabel("Senha:");
 		campoSenha.setBounds(95,297,40,40);
 		add(campoSenha);
@@ -172,7 +165,7 @@ public class Usuario extends JFrame{
 		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de segurança
 		add(senha);
 
-		campoSenha = new JLabel("Confirmação Senha:");
+		campoSenha = new JLabel("Confirmacao Senha:");
 		campoSenha.setBounds(55,350,150,40);
 		add(campoSenha);
 		confirmacaoSenha = new JPasswordField("****", 10);
@@ -184,11 +177,12 @@ public class Usuario extends JFrame{
 		enviar.setBounds(155,410,80,30);
 		add(enviar);
 
-		ButtonHandler handler = new ButtonHandler(); // cria o manipulador de
-														// eventos
-		enviar.addActionListener(handler); // cria uma escuta para o botao
-		sexo_masc.addActionListener(handler); // enviar
-		sexo_fem.addActionListener(handler);
+		// cria o manipulador de eventos de botao
+		ButtonHandler handler = new ButtonHandler();
+		// cria escutas para os botoes
+		enviar.addActionListener(handler); 
+		sexo_masc.addActionListener(handler); 
+		sexo_fem.addActionListener(handler);	
 		
 //		Manipulador de evento de teclado (TAB)
 		   nome.addKeyListener( new myKeyListener() );
@@ -206,6 +200,7 @@ public class Usuario extends JFrame{
 		// Manipulador de evento de mouse
 		ManipuladorMouse handler_mouse = new ManipuladorMouse();
 
+//		Cria escutas para evento de mouse
 		nome.addMouseListener(handler_mouse);
 		sobrenome.addMouseListener(handler_mouse);
 		email.addMouseListener(handler_mouse);
@@ -214,7 +209,8 @@ public class Usuario extends JFrame{
 		confirmacaoSenha.addMouseListener(handler_mouse);
 	}
 	
-//	Classe interna que trata evento de teclado
+//	Classe interna que trata evento de teclado para caso o usu�rio apertar a tecla
+//	TAB,v� para o pr�ximo campo, limpe ele e deixe ele com a cor cinza.
 	private class myKeyListener implements KeyListener { 
 	      public void keyPressed( KeyEvent event ) {
 	    
@@ -261,11 +257,14 @@ public class Usuario extends JFrame{
 	      public void keyReleased(KeyEvent event){}
 	}
 	
-	public class ButtonHandler implements ActionListener { // classe interna que
-															// indica a aÃ§Ã£o
-															// de manipulaÃ§Ã£o
-
+//	Classe de tratamento de botao para caso o usuario selecione um dos generos,
+//	pegar qual dos dois generos foi selecionado. E para caso o usuario aperte
+//	em enviar pegar todos os campos e verificar por meio de outras classes se 
+//	todos os campos s�o validos
+	
+	public class ButtonHandler implements ActionListener { 
 		public void actionPerformed(ActionEvent event) {
+//			O usuario selecionou Masculino ou Feminino
 			if(event.getSource() == sexo_masc || event.getSource() == sexo_fem){
 				nome.setBackground(Color.WHITE);
 				sobrenome.setBackground(Color.WHITE);
@@ -274,6 +273,8 @@ public class Usuario extends JFrame{
 				senha.setBackground(Color.WHITE);
 				confirmacaoSenha.setBackground(Color.WHITE);
 			}
+			
+//			O usuario apertou em enviar
 			if (event.getSource() == enviar) {
 				
 				nomeUsuario = nome.getText();
@@ -286,21 +287,26 @@ public class Usuario extends JFrame{
 				opcaoFem = sexo_fem.isSelected();
 				
 				valida = validaCadastro.confirmacao(senhaUsuario, senhaValidacao, nomeUsuario, sobrenomeUsuario, emailUsuario,
-						cpfUsuario,opcaoMasc,opcaoFem);
+						cpfUsuario,opcaoMasc,opcaoFem);	
 				
+//				Se a variavel booleana "valida", for true, entao o cadastro pode ser realizado
 				if (valida) {
 					Usuario.this.dispose();
 					JOptionPane.showMessageDialog(null, "Cadastro enviado com sucesso");
 
-				} else{
-					JOptionPane.showMessageDialog(null, "Não foi possível realizar o cadastro. Tente novamente", "Cadastro",
+				}
+
+//				Se a variavel booleana "valida", for false, entao o cadastro nao pode ser realizado
+				else{
+					JOptionPane.showMessageDialog(null, "Nao foi possivel realizar o cadastro. Tente novamente", "Cadastro",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}
 	}
 
-	// Classe interna para tratamento de mouse
+	//	Classe interna para tratamento de mouse, para caso o usuario clicar em um
+	//	dos campos, apagar o que tem no campo e ficar cinza no campo que ele est� digitando. 
 	private class ManipuladorMouse implements MouseListener {
 		public void mousePressed(MouseEvent event) {
 			
@@ -311,51 +317,46 @@ public class Usuario extends JFrame{
 			senha.setBackground(Color.WHITE);
 			confirmacaoSenha.setBackground(Color.WHITE);
 			
-			// Apagar o que tem escrito nos campos
+			// Apagar o que tem escrito no campo nome e deixar cinza
 			if (event.getSource() == nome){
 				nome.setText("");
 				nome.setBackground(Color.LIGHT_GRAY);
 				nome.setFont(FonteUsual);
 			}
+			// Apagar o que tem escrito no campo sobrenome e deixar cinza
 			else if (event.getSource() == sobrenome){
 				sobrenome.setText("");
 				sobrenome.setBackground(Color.LIGHT_GRAY);
 				sobrenome.setFont(FonteUsual);
 			}
-			
+			// Apagar o que tem escrito no campo email e deixar cinza
 			else if (event.getSource() == email){
 				email.setText("");
 				email.setBackground(Color.LIGHT_GRAY);
 				email.setFont(FonteUsual);
 			}
+			// Apagar o que tem escrito no campo cpf e deixar cinza
 			else if (event.getSource() == cpf){
 				cpf.setText("");
 				cpf.setBackground(Color.LIGHT_GRAY);
 				cpf.setFont(FonteUsual);
 			}
+			// Apagar o que tem escrito no campo senha e deixar cinza
 			else if (event.getSource() == senha){
 				senha.setText("");
 				senha.setBackground(Color.LIGHT_GRAY);
 				senha.setFont(FonteUsual);
 			}
+			// Apagar o que tem escrito no campo confirmacaoSenha e deixar cinza
 			else if (event.getSource() == confirmacaoSenha){
 				confirmacaoSenha.setText("");
 				confirmacaoSenha.setBackground(Color.LIGHT_GRAY);
 				confirmacaoSenha.setFont(FonteUsual);
 			}
 		}
-
-		public void mouseEntered(MouseEvent event) {
-		}
-
-		public void mouseExited(MouseEvent event) {
-			
-		}
-
-		public void mouseClicked(MouseEvent event) {
-		}
-
-		public void mouseReleased(MouseEvent event) {
-		}
+		public void mouseEntered(MouseEvent event) {}
+		public void mouseExited(MouseEvent event) {}
+		public void mouseClicked(MouseEvent event) {}
+		public void mouseReleased(MouseEvent event) {}
 	}
 }
