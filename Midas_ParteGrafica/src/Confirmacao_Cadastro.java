@@ -1,5 +1,5 @@
 /* Classe que verifica se todos os campos que o usuario digitou, na hora de fazer o
- * cadastro, estão corretos ou válidos. Essa classe é chamada pela classe Usuario. 
+ * cadastro, estão corretos ou válidos. Essa classe é chamada pela classe Classe_Usuario. 
  */
 
 public class Confirmacao_Cadastro {

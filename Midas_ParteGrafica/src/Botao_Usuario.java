@@ -70,8 +70,8 @@ public class Botao_Usuario extends JFrame{
 //				Fecha a janela com as opcoes de ja possuir ou requisitar cadastro
 				Botao_Usuario.this.dispose();
 				
-//				Cria um frame da classe Usuario, classe que mostra a janela de cadastro
-				Usuario frame = new Usuario(); 
+//				Cria um frame da classe Cadastro_Usuario, classe que mostra a janela de cadastro
+				Cadastro_Usuario frame = new Cadastro_Usuario(); 
 				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frame.setSize(400,500); 
 				frame.setVisible(true); 

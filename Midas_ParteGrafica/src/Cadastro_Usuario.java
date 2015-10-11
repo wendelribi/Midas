@@ -7,7 +7,7 @@ import javax.swing.*;
  * o seu cadastro. Verifica por meio de outras classes se todos os campos estão corretos
  * e informa ao usuario se foi possivel ou nao fazer o cadastro.
  */
-public class Usuario extends JFrame{
+public class Cadastro_Usuario extends JFrame{
 
 	private JTextField nome, sobrenome, email, cpf;
 	private JLabel campoSenha,campoNascimento,campoProfissao;
@@ -27,7 +27,7 @@ public class Usuario extends JFrame{
 
 	Confirmacao_Cadastro validaCadastro = new Confirmacao_Cadastro();
 
-	public Usuario() {
+	public Cadastro_Usuario() {
 
 		super("Cadastro de Usuario"); // utiliza construtor da super classe
 										// JFrame
@@ -291,7 +291,7 @@ public class Usuario extends JFrame{
 				
 //				Se a variavel booleana "valida", for true, entao o cadastro pode ser realizado
 				if (valida) {
-					Usuario.this.dispose();
+					Cadastro_Usuario.this.dispose();
 					JOptionPane.showMessageDialog(null, "Cadastro enviado com sucesso");
 
 				}
