@@ -1,12 +1,23 @@
 package midas.entidades;
 
+import javax.persistence.*;
+
+@Entity(name = "Usuario")
 public class Usuario {
-	private String[] cpf; 
+	@Id
+	@Column(name="CPF")
+	private String[] cpf;
+	@Column(name="primeiroNome")
 	private String[] nome;
+	@Column
 	private String[] endereco;
+	@Column
 	private String[] senha;
+	@Column
 	private String[] email; 
+	@Column
 	private char sexo;
+	@Column(name="idAcesso")
 	private int nivelDeAcesso;
 	
 	public String[] getCpf() {
