@@ -5,6 +5,9 @@ import java.util.Collections;
 
 import javax.swing.*;
 
+import Controle.Controle;
+import Controle.LoginUsuario;
+
 /*	Classe que mostra a janela para o usuario fazer o login em sua conta. E a partir
  *  do login e senha digitados pelo usuario, mostra se o usuario est� cadastrado 
  *  ou se os campos Login ou senha est�o incorretos. Essa classe � chamada pela 
@@ -17,11 +20,13 @@ public class Login_Usuario extends JFrame {
 	private JTextField Login;
 	private JPasswordField Senha;
 	private JButton fazerLogin; 
-	private String senhaUsuario, loginUsuario;
+	private Controle controle; // Referencia para enviar as informações do novo usuário ao controle
+	private LoginUsuario usuario;
 	
-	public Login_Usuario(){
+	public Login_Usuario(Controle controle){
 		
 		super("Login");
+		this.controle = controle;
 		this.setLayout(null);
 		this.setLocation(500,200); //Posicionar o layout no lugar desejado da tela
 		
@@ -65,6 +70,9 @@ public class Login_Usuario extends JFrame {
 		Senha.addKeyListener( new myKeyListener() );
 		Senha.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,Collections.EMPTY_SET);
 		   
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(500,200);
+		this.setVisible(true);
 	}	
 	
 //	Classe interna para tratamento de mouse, para caso o usuario clicar em um
@@ -118,8 +126,9 @@ public class Login_Usuario extends JFrame {
 			
 			if(event.getSource() == fazerLogin ){
 				Login_Usuario.this.dispose();
-				loginUsuario = Login.getText();
-				senhaUsuario = Senha.getText();
+				usuario.setLogin(Login.getText());
+				usuario.setSenha(Senha.getText());
+				controle.enviarLogin(usuario);
 			}
 		}
 	}

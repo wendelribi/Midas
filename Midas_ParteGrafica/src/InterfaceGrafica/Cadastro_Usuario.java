@@ -4,6 +4,10 @@ import java.awt.event.*;
 import java.util.Collections;
 import java.awt.*;
 import javax.swing.*;
+
+import Controle.Controle;
+import Controle.NovoUsuario;
+import Controle.ConfirmacaoCadastro.Confirmacao_Cadastro;
 /* 
  * Classe que mostra a janela com todos os campos para o usuário preencher e fazer
  * o seu cadastro. Verifica por meio de outras classes se todos os campos estão corretos
@@ -18,21 +22,22 @@ public class Cadastro_Usuario extends JFrame{
 	private JRadioButton sexo_masc,sexo_fem;
 	private ButtonGroup radioGroup;
 	private JComboBox box_data,box_mes,box_ano,box_profissao;
-	private boolean valida = true,opcaoMasc = false,opcaoFem = false;
-	private String nomeUsuario, sobrenomeUsuario,cpfUsuario,emailUsuario,profissaoUsuario;
-	private String senhaUsuario, senhaValidacao;
+	private boolean valida = true;
 	private final String[] profissao = {"Estudante","Engenheiro","Medico","Professor" };   
 	private int dataUsuario,mesUsuario,anoUsuario;
 	final int tamData= 31,tamMes=12,tamAno=115;
 	int i;
 	private Font FonteUsual,FonteItalico;
+	private Controle controle; // Referencia para enviar as informações do novo usuário ao controle
+	private NovoUsuario usuario; // Armazena as informações do novo usuário
 
 	Confirmacao_Cadastro validaCadastro = new Confirmacao_Cadastro();
 
-	public Cadastro_Usuario() {
+	public Cadastro_Usuario(Controle controle) {
 
 		super("Cadastro de Usuario"); // utiliza construtor da super classe
 										// JFrame
+		this.controle = controle;
 		this.setLayout(null);
 		this.setLocation(530, 140); // Posicionar o layout no lugar desejado
 									// da tela
@@ -102,7 +107,7 @@ public class Cadastro_Usuario extends JFrame{
 //				determina o item selecionado
 				if(event.getStateChange() == ItemEvent.SELECTED){
 					
-					profissaoUsuario = event.getItem().toString();
+					usuario.setProfissao(event.getItem().toString());
 				}
 			}
 		});
@@ -209,6 +214,10 @@ public class Cadastro_Usuario extends JFrame{
 		cpf.addMouseListener(handler_mouse);
 		senha.addMouseListener(handler_mouse);
 		confirmacaoSenha.addMouseListener(handler_mouse);
+		
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setSize(400,500); 
+		this.setVisible(true); 
 	}
 	
 //	Classe interna que trata evento de teclado para caso o usuário apertar a tecla
@@ -278,24 +287,27 @@ public class Cadastro_Usuario extends JFrame{
 			
 //			O usuario apertou em enviar
 			if (event.getSource() == enviar) {
+				usuario = new NovoUsuario();
+				usuario.setNome(nome.getText());
+				usuario.setSobrenome(sobrenome.getText());
+				usuario.setEmail(email.getText());
+				usuario.setCpf(cpf.getText());
+				usuario.setSenha(senha.getText());
+				usuario.setSenhaValidacao(confirmacaoSenha.getText());
+				usuario.setOpcaoFem(sexo_masc.isSelected());
+				usuario.setOpcaoMasc(sexo_fem.isSelected());
 				
-				nomeUsuario = nome.getText();
-				sobrenomeUsuario = sobrenome.getText();
-				emailUsuario = email.getText();
-				cpfUsuario = cpf.getText();
-				senhaUsuario = senha.getText();
-				senhaValidacao = confirmacaoSenha.getText();
-				opcaoMasc = sexo_masc.isSelected();
-				opcaoFem = sexo_fem.isSelected();
-				
-				valida = validaCadastro.confirmacao(senhaUsuario, senhaValidacao, nomeUsuario, sobrenomeUsuario, emailUsuario,
-						cpfUsuario,opcaoMasc,opcaoFem);	
+				valida = validaCadastro.confirmacao(usuario.getSenha(), usuario.getSenhaValidacao(), usuario.getNome(), usuario.getSobrenome(), usuario.getEmail(),
+						usuario.getCpf(), usuario.isOpcaoMasc(), usuario.isOpcaoFem());	
 				
 //				Se a variavel booleana "valida", for true, entao o cadastro pode ser realizado
 				if (valida) {
 					Cadastro_Usuario.this.dispose();
-					JOptionPane.showMessageDialog(null, "Cadastro enviado com sucesso");
-
+					// Envia a novo cadastro e notifica se foi enviado com sucesso
+					if(controle.enviarCadastro(usuario))
+						JOptionPane.showMessageDialog(null, "Cadastro enviado com sucesso");
+					else
+						JOptionPane.showMessageDialog(null, "Falha ao enviar o cadastro");
 				}
 
 //				Se a variavel booleana "valida", for false, entao o cadastro nao pode ser realizado
