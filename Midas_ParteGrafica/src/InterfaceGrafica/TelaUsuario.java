@@ -56,6 +56,7 @@ public class TelaUsuario extends JFrame{
 		
 		logOut.addActionListener(handler);
 	
+		setVisible(true);
 	}
 	
 	public class ButtonHandler implements ActionListener{ //classe interna que indica a ação de manipulação
