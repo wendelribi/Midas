@@ -21,7 +21,6 @@ public class Login_Usuario extends JFrame {
 	private JPasswordField Senha;
 	private JButton fazerLogin; 
 	private Controle controle; // Referencia para enviar as informações do novo usuário ao controle
-	private LoginUsuario usuario;
 	
 	public Login_Usuario(Controle controle){
 		
@@ -126,9 +125,10 @@ public class Login_Usuario extends JFrame {
 			
 			if(event.getSource() == fazerLogin ){
 				Login_Usuario.this.dispose();
-				usuario.setLogin(Login.getText());
-				usuario.setSenha(Senha.getText());
-				controle.enviarLogin(usuario);
+				LoginUsuario login = new LoginUsuario();
+				login.setLogin(Login.getText());
+				login.setSenha(Senha.getText());
+				controle.realizarLogin(login);
 			}
 		}
 	}

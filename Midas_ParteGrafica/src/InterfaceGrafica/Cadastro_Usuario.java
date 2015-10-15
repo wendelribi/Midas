@@ -49,6 +49,8 @@ public class Cadastro_Usuario extends JFrame{
 		String [] mes = new String[tamMes];
 		String [] ano = new String[tamAno];
 		
+		usuario = new NovoUsuario();
+		
 //		Criando os campos data, mes e ano
 		for(i=1;i<=31;i++){
 			data[i-1] = String.format("%d",i);
@@ -287,7 +289,6 @@ public class Cadastro_Usuario extends JFrame{
 			
 //			O usuario apertou em enviar
 			if (event.getSource() == enviar) {
-				usuario = new NovoUsuario();
 				usuario.setNome(nome.getText());
 				usuario.setSobrenome(sobrenome.getText());
 				usuario.setEmail(email.getText());

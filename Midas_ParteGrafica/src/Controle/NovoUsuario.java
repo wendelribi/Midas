@@ -7,6 +7,7 @@ package Controle;
 public class NovoUsuario {
 	private String nome, sobrenome, email, cpf, senha, senhaValidacao, profissao;
 	private boolean opcaoMasc, opcaoFem;
+	private int nivelDeAcesso;
 	
 	
 	public String getProfissao() {
