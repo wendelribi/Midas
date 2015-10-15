@@ -8,6 +8,7 @@ import javax.swing.*;
 import Controle.Controle;
 import Controle.NovoUsuario;
 import Controle.ConfirmacaoCadastro.Confirmacao_Cadastro;
+import midas.entidades.Usuario;
 /* 
  * Classe que mostra a janela com todos os campos para o usuário preencher e fazer
  * o seu cadastro. Verifica por meio de outras classes se todos os campos estão corretos
@@ -29,7 +30,7 @@ public class Cadastro_Usuario extends JFrame{
 	int i;
 	private Font FonteUsual,FonteItalico;
 	private Controle controle; // Referencia para enviar as informações do novo usuário ao controle
-	private NovoUsuario usuario; // Armazena as informações do novo usuário
+	private Usuario usuario; // Armazena as informações do novo usuário
 
 	Confirmacao_Cadastro validaCadastro = new Confirmacao_Cadastro();
 
@@ -49,7 +50,7 @@ public class Cadastro_Usuario extends JFrame{
 		String [] mes = new String[tamMes];
 		String [] ano = new String[tamAno];
 		
-		usuario = new NovoUsuario();
+		usuario = new Usuario();
 		
 //		Criando os campos data, mes e ano
 		for(i=1;i<=31;i++){
@@ -289,17 +290,22 @@ public class Cadastro_Usuario extends JFrame{
 			
 //			O usuario apertou em enviar
 			if (event.getSource() == enviar) {
-				usuario.setNome(nome.getText());
-				usuario.setSobrenome(sobrenome.getText());
+				String Nome = nome.getText();
+				String Sobrenome = sobrenome.getText();
+				usuario.setNome(Nome + "" + Sobrenome);
 				usuario.setEmail(email.getText());
 				usuario.setCpf(cpf.getText());
 				usuario.setSenha(senha.getText());
-				usuario.setSenhaValidacao(confirmacaoSenha.getText());
-				usuario.setOpcaoFem(sexo_masc.isSelected());
-				usuario.setOpcaoMasc(sexo_fem.isSelected());
+				String senhaConfirmacao = confirmacaoSenha.getText();
+				if(sexo_masc.isSelected()){
+					usuario.setSexo('M');
+				}
+				else {
+					usuario.setSexo('F');
+				}
 				
-				valida = validaCadastro.confirmacao(usuario.getSenha(), usuario.getSenhaValidacao(), usuario.getNome(), usuario.getSobrenome(), usuario.getEmail(),
-						usuario.getCpf(), usuario.isOpcaoMasc(), usuario.isOpcaoFem());	
+				valida = validaCadastro.confirmacao(usuario.getSenha(), senhaConfirmacao, Nome, Sobrenome, usuario.getEmail(),
+						usuario.getCpf(), sexo_masc.isSelected(), sexo_fem.isSelected());	
 				
 //				Se a variavel booleana "valida", for true, entao o cadastro pode ser realizado
 				if (valida) {
