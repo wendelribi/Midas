@@ -19,6 +19,7 @@ public class testePersistencia {
 	private Usuario user2;
 	private Usuario user3;
 	private UsuarioDAO bd;
+	private List nao_autorizados;
 
 	@Before 
 	public void setUp(){
@@ -45,14 +46,14 @@ public class testePersistencia {
 
 	
 	
-	@Test
+	
 	public void testRemover(){
 		comecarOperacoes();
 		bd.remover("11111111110");
 		finalizarOperacoes();
 	}
 	
-	@Test
+	
 	public void testInsere() {
 
 		comecarOperacoes();
@@ -66,15 +67,21 @@ public class testePersistencia {
 		//System.out.println("CPF DO USER: "+ user2.getCpf());
 		finalizarOperacoes();
 	}
-	//@Test
-	//public void testListarNaoAutorizados(){
-	//	comecarOperacoes();
-	//	List nao_autorizados = bd.listarNaoAutorizado();
-	//	finalizarOperacoes();
-	//}
 	@Test
-	public void testLogin(){
+	public void testListarNaoAutorizados(){
+		comecarOperacoes();
+		nao_autorizados = (List) bd.listarNaoAutorizado();
 		
+		finalizarOperacoes();
+	}
+	@Test
+	public void testLogin(){ // deu como teste correto mas retornou Usuario e senha não batem
+		comecarOperacoes();
+		boolean cadastrado = bd.login("11111111110", "alvinlelek");
+		if (cadastrado == true)
+			System.out.println("Usuario e senha são corretas");
+		else
+			System.out.println("Usuario e senha não batem");
 	}
 	
 	@Test
@@ -91,4 +98,18 @@ public class testePersistencia {
 		finalizarOperacoes();
 		
 	}
+	@Test
+	public void testVeirificaUsuario(){
+		comecarOperacoes();
+		
+		boolean existe = bd.verificaExisteUsuario("11111111110");
+		if (existe == true)
+			System.out.println("Usuario existe");
+		else
+			System.out.println("Usuario não existe");
+		
+		
+		finalizarOperacoes();
+	}
+	
 }

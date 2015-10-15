@@ -43,7 +43,7 @@ public class UsuarioDAO {
 	}
 	
 	public java.util.List<Usuario> listarNaoAutorizado() {
-		Query q = em.createQuery("select u.CPF from Usuario u where u.nivelDeAcesso = 0", Usuario.class);
+		Query q = em.createQuery("select CPF from Usuario  where idAcesso = 0", Usuario.class);
 		@SuppressWarnings("unchecked")
 		java.util.List<Usuario> lista = q.getResultList();
 		return lista;
@@ -67,7 +67,7 @@ public class UsuarioDAO {
 	}
 	public boolean login(String cpf_usuario, String senha){
 		try {
-			Query q = em.createQuery("select u.senha from Usuario u where u.CPF = :cpf_usuario", Usuario.class );
+			Query q = em.createQuery("select senha from Usuario where CPF = :cpf_usuario", Usuario.class );
 			q.setParameter("cpf_usuario",cpf_usuario);
 			String senha_bd = (String) q.getSingleResult();
 			return senha_bd.equals(senha) ? true : false;
@@ -76,7 +76,7 @@ public class UsuarioDAO {
 		}
 	}
 	public boolean verificaExisteUsuario(String cpf_usuario){
-		Query q = em.createQuery("select u.CPF from Usuario u where u.CPF = :cpf_usuario", Usuario.class );
+		Query q = em.createQuery("select CPF from Usuario where CPF = :cpf_usuario", Usuario.class );
 		q.setParameter("cpf_usuario",cpf_usuario);
 		String cpf_encontrado = (String) q.getSingleResult();
 		return (cpf_encontrado != null) ? true : false;
