@@ -27,6 +27,9 @@ public class TelaUsuario extends JFrame{
 		this.setLocation(500,200);
 		this.setSize(300, 500);
 		
+		String espaco = "                ";
+		JOptionPane.showMessageDialog(null, espaco+"          Login realizado! \n"+espaco+"    Tipo de Conta: Usuario","Usuario",JOptionPane.DEFAULT_OPTION);
+		
 		String[] tamCisto = new String[quantTamanhos];
 		for (int i = 1; i <= quantTamanhos; i++) {
 			tamCisto[i - 1] = String.format("%d mm", i);
