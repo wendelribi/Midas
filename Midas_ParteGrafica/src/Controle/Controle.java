@@ -17,7 +17,19 @@ public class Controle {
 		return true;
 	}
 	
-	public void enviarLogin(LoginUsuario usuario){
-		//TODO conferir no banco de dados, caso exista, realiza o login e caso não exista mostra menssagem de erro
+	/*
+	 * Confere o login com o banco de dados
+	 */
+	public void realizarLogin(LoginUsuario login){
+		Usuario usuario = recuperar(login.getLogin());
+		if(usuario == null){
+			JOptionPane.showMessageDialog(null, "Cadastro não encontrado");
+		} else if(usuario.getNivelDeAcesso() == 0) {
+			JOptionPane.showMessageDialog(null, "Cadastro ainda não autorizado");
+		} else if(usuario.getNivelDeAcesso() == 1) {
+			//TODO janela de usuário normal
+		} else if(usuario.getNivelDeAcesso() == 2) {
+			// TODO janela de administrador
+		}
 	}
 }
