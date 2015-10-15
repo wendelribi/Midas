@@ -6,48 +6,48 @@ import javax.persistence.*;
 public class Usuario {
 	@Id
 	@Column(name="CPF")
-	private String[] cpf;
+	private String cpf;
 	@Column(name="primeiroNome")
-	private String[] nome;
+	private String nome;
 	@Column
-	private String[] endereco;
+	private String endereco;
 	@Column
-	private String[] senha;
+	private String senha;
 	@Column
-	private String[] email; 
+	private String email; 
 	@Column
 	private char sexo;
 	@Column(name="idAcesso")
 	private int nivelDeAcesso;
 	
-	public String[] getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(String[] cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String[] getNome() {
+	public String getNome() {
 		return nome;
 	}
-	public void setNome(String[] nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String[] getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(String[] endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public String[] getSenha() {
+	public String getSenha() {
 		return senha;
 	}
-	public void setSenha(String[] senha) {
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String[] getEmail() {
+	public String getEmail() {
 		return email;
 	}
-	public void setEmail(String[] email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 	public char getSexo() {
