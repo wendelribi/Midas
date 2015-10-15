@@ -23,7 +23,12 @@ public class UsuarioDAO {
 		emf.close();
 	}
 	public boolean inserir(Usuario usuario) {
-		return false;
+		try{
+			em.persist(usuario);
+			return true;
+		} catch(EntityExistsException e) {
+			return false;
+		}
 	}
 	public boolean remover(String cpf_usuario) {
 		return false;
