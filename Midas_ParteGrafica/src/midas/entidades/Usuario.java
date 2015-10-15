@@ -5,21 +5,34 @@ import javax.persistence.*;
 @Entity(name = "Usuario")
 public class Usuario {
 	@Id
-	@Column(name="CPF")
+	@Column(name="CPF", nullable = false)
 	private String cpf;
-	@Column(name="primeiroNome")
-	private String nome;
-	@Column
+	
+	@Column(nullable = false)
+	private String nome; // Nome completo
+	
+	@Column(nullable = false)
 	private String endereco;
-	@Column
+	
+	@Column(nullable = false)
+	private String profissao;
+	
+	@Column(nullable = false)
 	private String senha;
-	@Column
+	
+	@Column(nullable = false)
 	private String email; 
-	@Column
+	
+	@Column(nullable = false)
 	private char sexo;
-	@Column(name="idAcesso")
+	
+	@Column(name="idAcesso",nullable = false)
 	private int nivelDeAcesso;
 	
+	@Column (nullable = false)
+	private int dataNascimento;
+	
+	// GETS e SETS
 	public String getCpf() {
 		return cpf;
 	}
@@ -37,6 +50,12 @@ public class Usuario {
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	public String getProfissao(){
+		return profissao;
+	}
+	public void setProfissao(String profissao){
+		this.profissao = profissao;
 	}
 	public String getSenha() {
 		return senha;
