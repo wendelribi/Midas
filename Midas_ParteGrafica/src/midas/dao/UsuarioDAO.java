@@ -2,7 +2,9 @@ package midas.dao;
 
 import java.awt.List;
 import java.util.ArrayList;
+
 import javax.persistence.*;
+
 import midas.entidades.Usuario;
 
 public class UsuarioDAO {
@@ -36,9 +38,10 @@ public class UsuarioDAO {
 		return true;
 	}
 	
-	public List listarNaoAutorizado() {
+	public java.util.List<Usuario> listarNaoAutorizado() {
 		Query q = em.createQuery("select u.CPF from Usuario u where u.nivelDeAcesso = 0", Usuario.class);
-		List lista = (List) q.getResultList();
+		@SuppressWarnings("unchecked")
+		java.util.List<Usuario> lista = q.getResultList();
 		return lista;
 	}
 	
