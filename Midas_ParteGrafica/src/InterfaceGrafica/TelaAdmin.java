@@ -18,7 +18,7 @@ public class TelaAdmin extends JFrame {
 	private Font FonteUsual;
 	private ArrayList<JPanel> panelsEsq, panelsDir;
 	private ArrayList<String> usuariosAceitos,usuariosNegados;
-	private ArrayList<Usuario> arrayUsuario;
+//	private ArrayList<Usuario> Usuario;
 	private Toolkit toolkit;
 	private Dimension screensize;
 	private int num_usuarios,UsuariosSalvos,indice_aceito,indice_negado;
@@ -105,8 +105,8 @@ public class TelaAdmin extends JFrame {
 		}
 	}
 	
-	//Metodo que ajusta o tamanho da tela inicial de acordo com o numero de usuarios
-	public void AjustaTelaInicial(int num_usuarios) {
+	//Metodo que ajusta o tamanho da tela de acordo com o numero de usuarios
+	public void AjustaTela(int num_usuarios) {
 		String espaco = "                                       ";
 		mensagem = new JLabel(espaco + "Lista de Usuarios Pendentes:");
 		mensagem.setFont(FonteUsual);
@@ -135,30 +135,13 @@ public class TelaAdmin extends JFrame {
 			this.setBounds(screensize.width / 3, screensize.height / 30, 500, 700);
 		}
 	}
-
-	//Metodo que ajusta o tamanho da tela de acordo com o numero de usuarios
-	public void ajustaTela(int num_usuarios){
-		if (num_usuarios <= 7) {
-			if(num_usuarios <=2)
-				this.setBounds(screensize.width / 3, screensize.height / 6, 500, 300);	
-			else
-				this.setBounds(screensize.width / 3, screensize.height / 6, 500, 200 + (num_usuarios * 50));
-			this.repaint();
-		}
-		else{
-			this.setBounds(screensize.width / 3, screensize.height / 30, 500, 700);
-			this.repaint();
-		}
-	}
 	
-	//Metodo principal que imprimi a tela do Cadastros Pendentes para o Administrador
+	//Metodo princial que imprimi a tela do Cadastros Pendentes para o Administrador
 	public void DesenhaListaDeUsuarios() {
 		
-//		arrayUsuario  = controle.getUsuariosPendentes();
 		num_usuarios = 0;
-		
-		
 		// Adicionando aos JPanels os usuarios
+
 		for (; num_usuarios < 10/*usuario.length()*/; num_usuarios++)
 			AdicionarUsuarioNoPanel(num_usuarios);
 
@@ -177,10 +160,7 @@ public class TelaAdmin extends JFrame {
 		panelFundo.add(sair);
 		panelFundo.add(salvar);
 		
-		String espaco = "                ";
-		JOptionPane.showMessageDialog(null, espaco+"           Login realizado! \n"+espaco+"Tipo de Conta: Administrador","Administrador",JOptionPane.DEFAULT_OPTION);
-		
-		AjustaTelaInicial(num_usuarios);
+		AjustaTela(num_usuarios);
 		this.setVisible(true);
 
 		// Manipulador de evento de botao
@@ -277,7 +257,8 @@ public class TelaAdmin extends JFrame {
 						indice_negado++;
 					}
 				}
-				ajustaTela(num_usuarios-UsuariosSalvos);
+				
+				TelaAdmin.this.repaint();
 				
 				//Mensagem caso o Administrador tenha Alterado
 				//o Status de pendencia de todos os usuarios
