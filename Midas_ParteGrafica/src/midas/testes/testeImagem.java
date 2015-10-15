@@ -22,5 +22,10 @@ public class testeImagem {
 	public void test() {
 		bd.inserir();
 	}
-
+	
+	@Test
+	public void test_mostra_imagem() {
+		bd.recuperar(1);
+	}
+	
 }

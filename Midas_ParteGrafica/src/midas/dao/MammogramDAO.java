@@ -35,8 +35,11 @@ public class MammogramDAO {
 			return false;
 		}
 	}
-	public Mammogram recuperar(String mamoId) {
+	public Mammogram recuperar(int mamoId) {
 		try {
+			UsuarioDAO.comecarOperacoes();
+			Mammogram mamo = UsuarioDAO.em.find(Mammogram.class, mamoId);
+			UsuarioDAO.em.find(Mammogram.class, mamoId);
 			return UsuarioDAO.em.find(Mammogram.class, mamoId);
 		} catch(IllegalArgumentException e) {
 			return null;
