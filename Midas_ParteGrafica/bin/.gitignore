@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-/Controle/
-/InterfaceGrafica/
-=======
-/Usuario$ManipuladorMouse.class
-/ValidacaoCpf.class
-/ValidacaoEmail.class
+/.DS_Store
+/JPA-Hibernate/
+/META-INF/
 /midas/
->>>>>>> Parte-Banco-de-Dados
+/Controle/
