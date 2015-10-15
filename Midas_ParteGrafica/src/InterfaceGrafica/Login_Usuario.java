@@ -21,6 +21,10 @@ public class Login_Usuario extends JFrame {
 	private JPasswordField Senha;
 	private JButton fazerLogin; 
 	private Controle controle; // Referencia para enviar as informações do novo usuário ao controle
+	private final int CADASTRO_INVALIDO=-1;
+	private final int CADASTRO_PENDENTE=0;
+	private final int JANELA_USUARIO=1;
+	private final int JANELA_ADMIN = 2;
 	
 	public Login_Usuario(Controle controle){
 		
@@ -128,8 +132,40 @@ public class Login_Usuario extends JFrame {
 				LoginUsuario login = new LoginUsuario();
 				login.setLogin(Login.getText());
 				login.setSenha(Senha.getText());
-				controle.realizarLogin(login);
+				JanelaLogin(controle.realizarLogin(login));
 			}
+		}
+	}
+	
+//	Metodo, que a partir da opcao de login que o controle retornar, mostra a mensagem
+//	adequada ou executa o login do usuario/admin
+	public void JanelaLogin(int opcao){
+		switch (opcao) {
+
+		// Mostra que o cadastro nao foi encontrado e mantem a janela do Login		
+		case CADASTRO_INVALIDO:
+			JOptionPane.showMessageDialog(null, "Login e/ou senha incorreto(s). Nao foi possivel efetuar o login","Erro",JOptionPane.ERROR_MESSAGE);
+			break;
+	
+		// Mostra que o cadastro est� pendente e mantem a janela do Login
+		case CADASTRO_PENDENTE:
+			JOptionPane.showMessageDialog(null, "Cadastro pendente. Nao foi possivel efetuar o login","Pendente",JOptionPane.WARNING_MESSAGE);
+			break;
+			
+//		Abre a janela de usuario e fecha a do Login
+		case JANELA_USUARIO:
+			Login_Usuario.this.dispose();
+			TelaUsuario telaUsuario = new TelaUsuario(controle);
+			break;
+			
+//		Abre a janela de administrador e fecha a do Login
+		case JANELA_ADMIN:
+			Login_Usuario.this.dispose();
+			TelaAdmin telaAdmin = new TelaAdmin(controle);
+			telaAdmin.DesenhaListaDeUsuarios();
+			break;
+		default:
+			break;
 		}
 	}
 }

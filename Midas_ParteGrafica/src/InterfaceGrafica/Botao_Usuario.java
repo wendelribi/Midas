@@ -69,7 +69,7 @@ public class Botao_Usuario extends JFrame{
 				Botao_Usuario.this.dispose();				
 				
 //				Cria um frame da classe Login_Usuario, classe que mostra a janela de login do usuario
-				Login_Usuario textFieldFrame = new Login_Usuario(controle);
+				Login_Usuario paginaLogin = new Login_Usuario(controle);
 			}	
 //			A pessoa clicou em "Requisitar cadastro"
 			if(event.getSource() == nao_possui_cadastro ){
@@ -78,7 +78,7 @@ public class Botao_Usuario extends JFrame{
 				Botao_Usuario.this.dispose();
 				
 //				Cria um frame da classe Cadastro_Usuario, classe que mostra a janela de cadastro
-				Cadastro_Usuario frame = new Cadastro_Usuario(controle); 
+				Cadastro_Usuario paginaCadastro = new Cadastro_Usuario(controle); 
 			}
 		}
 	}
