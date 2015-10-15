@@ -34,8 +34,12 @@ public class UsuarioDAO {
 	}
 	
 	public boolean remover(String cpf_usuario) {
-		em.remove(recuperar(cpf_usuario));
-		return true;
+		try {
+			em.remove(recuperar(cpf_usuario));
+			return true;
+		} catch(IllegalArgumentException e) {
+			return false;
+		}
 	}
 	
 	public java.util.List<Usuario> listarNaoAutorizado() {
