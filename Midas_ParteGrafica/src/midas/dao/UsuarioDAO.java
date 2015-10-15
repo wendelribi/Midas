@@ -1,9 +1,8 @@
 package midas.dao;
 
 import java.awt.List;
-
+import java.util.ArrayList;
 import javax.persistence.*;
-
 import midas.entidades.Usuario;
 
 public class UsuarioDAO {
@@ -22,6 +21,7 @@ public class UsuarioDAO {
 		em.close(); 
 		emf.close();
 	}
+	
 	public boolean inserir(Usuario usuario) {
 		try{
 			em.persist(usuario);
@@ -30,12 +30,17 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
+	
 	public boolean remover(String cpf_usuario) {
 		return false;
 	}
+	
 	public List listarNaoAutorizado() {
-		return new List();
+		Query q = em.createQuery("select u.CPF from Usuario u where u.nivelDeAcesso = 0", Usuario.class);
+		List lista = (List) q.getResultList();
+		return lista;
 	}
+	
 	public boolean autorizar(String cpf_usuario) {
 		Usuario usuario = recuperar(cpf_usuario);
 		if(usuario != null) {
