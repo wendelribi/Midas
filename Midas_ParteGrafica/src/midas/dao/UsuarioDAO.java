@@ -57,4 +57,14 @@ public class UsuarioDAO {
 			return null;
 		}
 	}
+	public boolean login(String cpf_usuario, String senha){
+		try {
+			Query q = em.createQuery("select u.senha from Usuario u where u.CPF = :cpf_usuario", Usuario.class );
+			q.setParameter("cpf_usuario",cpf_usuario);
+			String senha_bd = (String) q.getSingleResult();
+			return senha_bd.equals(senha) ? true : false;
+		} catch(IllegalArgumentException e){
+			return false;
+		}
+	}
 }
