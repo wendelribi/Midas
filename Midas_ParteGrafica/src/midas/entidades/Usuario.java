@@ -1,5 +1,7 @@
 package midas.entidades;
 
+import java.sql.Date;
+
 import javax.persistence.*;
 
 @Entity(name = "Usuario")
@@ -30,7 +32,8 @@ public class Usuario {
 	private int nivelDeAcesso;
 	
 	@Column (nullable = false)
-	private int dataNascimento;
+	private Date dataNascimento;
+	// Ordem certa a ser inserida: aaaa-mm-dd
 	
 	// GETS e SETS
 	public String getCpf() {
@@ -80,6 +83,12 @@ public class Usuario {
 	}
 	public void setNivelDeAcesso(int nivelDeAcesso) {
 		this.nivelDeAcesso = nivelDeAcesso;
+	}
+	public Date getDataNascimento(){
+		return dataNascimento;
+	}
+	public void setDataNascimento(Date dataNascimento){
+		this.dataNascimento = dataNascimento;
 	}
 	
 	
