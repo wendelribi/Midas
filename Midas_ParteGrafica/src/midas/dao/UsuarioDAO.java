@@ -36,9 +36,9 @@ public class UsuarioDAO {
 		return true;
 	}
 	
-	public List listarNaoAutorizado() {
+	public java.util.List<Usuario> listarNaoAutorizado() {
 		Query q = em.createQuery("select u.CPF from Usuario u where u.nivelDeAcesso = 0", Usuario.class);
-		List lista = (List) q.getResultList();
+		java.util.List lista = q.getResultList();
 		return lista;
 	}
 	
