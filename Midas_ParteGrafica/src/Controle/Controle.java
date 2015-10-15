@@ -1,5 +1,7 @@
 package Controle;
 
+import java.util.ArrayList;
+
 import javax.swing.*;
 import InterfaceGrafica.Botao_Usuario;
 
@@ -11,7 +13,7 @@ public class Controle {
 	private final int JANELA_ADMIN = 2;
 	
 	public Controle() {
-		
+		// TODO iniciar o banco de dados
 		Botao_Usuario buttonFrame = new Botao_Usuario(this);
 	}
 	
@@ -28,7 +30,8 @@ public class Controle {
 	 * Confere o login com o banco de dados
 	 */
 	public int realizarLogin(LoginUsuario login){
-		Usuario usuario = recuperar(login.getLogin());
+		return JANELA_ADMIN; // Só para testar
+		/*Usuario usuario = recuperar(login.getLogin());
 		if(usuario == null){
 			return CADASTRO_INVALIDO;
 		} else if(usuario.getNivelDeAcesso() == 0) {
@@ -37,6 +40,27 @@ public class Controle {
 			return JANELA_USUARIO;
 		} else if(usuario.getNivelDeAcesso() == 2) {
 			return JANELA_ADMIN;
+		}*/
+	}
+	
+	public ArrayList<Usuario> getUsuariosPendentes(){
+		return listarNaoAutorizados();
+	}
+	
+	/*
+	 *  Atualiza o nível de acesso dos usuários autorizados e retira os usuarios negados do banco de dados
+	 */
+	public void atualizarAutorizacoes(ArrayList<Usuario> autorizados, ArrayList<Usuario> negados){
+		for(Usuario usuario : autorizados){
+			autorizar(usuario.getCpf());
 		}
+		
+		for(Usuario usuario : negados){
+			remover(usuario.getCpf());
+		}
+	}
+	
+	public void finalizarBandoDeDados(){
+		// TODO finalizar o banco de dados
 	}
 }
