@@ -1,12 +1,14 @@
+package InterfaceGrafica;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-/* Classe que que mostra a janela (JFrame) com duas opções para o  
- * usuário escolher se já possui ou deseja solicitar cadastro. Essa escolha
- * é feita por meio de botoes (JButton). Essa classe é chamada pela classe Main.
+/* Classe que que mostra a janela (JFrame) com duas opï¿½ï¿½es para o  
+ * usuï¿½rio escolher se jï¿½ possui ou deseja solicitar cadastro. Essa escolha
+ * ï¿½ feita por meio de botoes (JButton). Essa classe ï¿½ chamada pela classe Main.
  */
 
 public class Botao_Usuario extends JFrame{

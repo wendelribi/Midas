@@ -1,7 +1,8 @@
+package InterfaceGrafica;
 import javax.swing.JOptionPane;
 
 /* Classe responsavel por verificar o campo Cpf, quando o usuario for se cadastrar.
- * Informa o erro, caso exista e é chamada pela classe Confirmacao_Cadastro.
+ * Informa o erro, caso exista e ï¿½ chamada pela classe Confirmacao_Cadastro.
  */
 
 public class ValidacaoCpf {
@@ -13,12 +14,12 @@ public class ValidacaoCpf {
 	
 	/*	Metodo: cpfValidacao.
 	Descricao: 
-		Essa funcao retorna em booleano se o campo cpf é valido ou nao.	
+		Essa funcao retorna em booleano se o campo cpf ï¿½ valido ou nao.	
 	Parametros:
  		String cpf: Campo onde o usuario coloca o cpf.
  	Valor retornado:
 		A funcao retorna true ou false por meio da variavel validacaoCpf. True, caso
-		o cpf tenha 11 numeros. False, caso contrário. 
+		o cpf tenha 11 numeros. False, caso contrï¿½rio. 
 	 */
 	
 	public boolean cpfValidacao(String cpf) {

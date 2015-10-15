@@ -1,5 +1,6 @@
+package InterfaceGrafica;
 /* Classe que verifica se todos os campos que o usuario digitou, na hora de fazer o
- * cadastro, estão corretos ou válidos. Essa classe é chamada pela classe Classe_Usuario. 
+ * cadastro, estï¿½o corretos ou vï¿½lidos. Essa classe ï¿½ chamada pela classe Classe_Usuario. 
  */
 
 public class Confirmacao_Cadastro {

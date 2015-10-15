@@ -1,7 +1,8 @@
+package InterfaceGrafica;
 import javax.swing.JOptionPane;
 
 /* Classe responsavel por verificar o campo Email, quando o usuario for se cadastrar.
- * Informa o erro, caso exista e é chamada pela classe Confirmacao_Cadastro. 
+ * Informa o erro, caso exista e ï¿½ chamada pela classe Confirmacao_Cadastro. 
  */
 
 public class ValidacaoEmail {
@@ -14,12 +15,12 @@ public class ValidacaoEmail {
 	
 	/*	Metodo: emailValido.
 	Descricao: 
-		Essa funcao retorna em booleano se o campo email é valido ou nao.	
+		Essa funcao retorna em booleano se o campo email ï¿½ valido ou nao.	
 	Parametros:
  		String email: Campo onde o usuario coloca o email.
  	Valor retornado:
 		A funcao retorna true ou false por meio da variavel validacaoEmail. True, caso
-		o email contenha arroba e ponto. False, caso contrário. 
+		o email contenha arroba e ponto. False, caso contrï¿½rio. 
 	 */
 
 	public boolean emailValido(String email) {

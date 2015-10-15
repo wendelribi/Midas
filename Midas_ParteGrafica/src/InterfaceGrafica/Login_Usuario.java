@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Collections;
@@ -5,8 +6,8 @@ import java.util.Collections;
 import javax.swing.*;
 
 /*	Classe que mostra a janela para o usuario fazer o login em sua conta. E a partir
- *  do login e senha digitados pelo usuario, mostra se o usuario está cadastrado 
- *  ou se os campos Login ou senha estão incorretos. Essa classe é chamada pela 
+ *  do login e senha digitados pelo usuario, mostra se o usuario estï¿½ cadastrado 
+ *  ou se os campos Login ou senha estï¿½o incorretos. Essa classe ï¿½ chamada pela 
  *  classe Botao_Usuario.
 */
 
@@ -67,7 +68,7 @@ public class Login_Usuario extends JFrame {
 	}	
 	
 //	Classe interna para tratamento de mouse, para caso o usuario clicar em um
-//	dos campos, a borda do campo em que ele está digitando ficar vermelha.
+//	dos campos, a borda do campo em que ele estï¿½ digitando ficar vermelha.
 	private class ManipuladorMouse implements MouseListener{  
         public void mousePressed(MouseEvent event){  
 //        	Caso o usuario clique em Login, a borda desse campo fica vermelha.
@@ -93,8 +94,8 @@ public class Login_Usuario extends JFrame {
          }  
     }  
 	
-//	Classe interna que trata evento de teclado para caso o usuário apertar a tecla
-//	TAB, vá para o campo Senha e a borda desse campo fique vermelha.
+//	Classe interna que trata evento de teclado para caso o usuï¿½rio apertar a tecla
+//	TAB, vï¿½ para o campo Senha e a borda desse campo fique vermelha.
 	private class myKeyListener implements KeyListener { 
 	      public void keyPressed( KeyEvent event ) {
 	    	  if ( event.getKeyCode() == KeyEvent.VK_TAB ) {

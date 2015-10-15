@@ -1,10 +1,12 @@
+package InterfaceGrafica;
+
 import java.awt.event.*;
 import java.util.Collections;
 import java.awt.*;
 import javax.swing.*;
 /* 
- * Classe que mostra a janela com todos os campos para o usu·rio preencher e fazer
- * o seu cadastro. Verifica por meio de outras classes se todos os campos est„o corretos
+ * Classe que mostra a janela com todos os campos para o usu√°rio preencher e fazer
+ * o seu cadastro. Verifica por meio de outras classes se todos os campos est√£o corretos
  * e informa ao usuario se foi possivel ou nao fazer o cadastro.
  */
 public class Cadastro_Usuario extends JFrame{
@@ -56,7 +58,7 @@ public class Cadastro_Usuario extends JFrame{
 		nome = new JTextField("Primeiro Nome", 12);
 		nome.setFont(FonteItalico);
 		nome.setToolTipText("Insira aqui seu primeiro nome"); // Dicas que aparecem quando o passar o mouse por cima
-		nome.setBounds(10,20,170,40); // Definindo o tamanho do campo e o lugar que ficar· no frame
+		nome.setBounds(10,20,170,40); // Definindo o tamanho do campo e o lugar que ficar√° no frame
 		add(nome);
 
 		sobrenome = new JTextField("Ultimo Nome", 12);
@@ -162,7 +164,7 @@ public class Cadastro_Usuario extends JFrame{
 		add(campoSenha);
 		senha = new JPasswordField("****", 10);
 		senha.setBounds(210,300,160,35);
-		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de seguran√ßa
+		senha.setToolTipText("A senha deve ter tamanho 6 e conter characteres e numeros"); // refazer com o pessoal de seguran√É¬ßa
 		add(senha);
 
 		campoSenha = new JLabel("Confirmacao Senha:");
@@ -209,8 +211,8 @@ public class Cadastro_Usuario extends JFrame{
 		confirmacaoSenha.addMouseListener(handler_mouse);
 	}
 	
-//	Classe interna que trata evento de teclado para caso o usu·rio apertar a tecla
-//	TAB,v· para o prÛximo campo, limpe ele e deixe ele com a cor cinza.
+//	Classe interna que trata evento de teclado para caso o usu√°rio apertar a tecla
+//	TAB,v√° para o pr√≥ximo campo, limpe ele e deixe ele com a cor cinza.
 	private class myKeyListener implements KeyListener { 
 	      public void keyPressed( KeyEvent event ) {
 	    
@@ -260,7 +262,7 @@ public class Cadastro_Usuario extends JFrame{
 //	Classe de tratamento de botao para caso o usuario selecione um dos generos,
 //	pegar qual dos dois generos foi selecionado. E para caso o usuario aperte
 //	em enviar pegar todos os campos e verificar por meio de outras classes se 
-//	todos os campos s„o validos
+//	todos os campos s√£o validos
 	
 	public class ButtonHandler implements ActionListener { 
 		public void actionPerformed(ActionEvent event) {
@@ -306,7 +308,7 @@ public class Cadastro_Usuario extends JFrame{
 	}
 
 	//	Classe interna para tratamento de mouse, para caso o usuario clicar em um
-	//	dos campos, apagar o que tem no campo e ficar cinza no campo que ele est· digitando. 
+	//	dos campos, apagar o que tem no campo e ficar cinza no campo que ele est√° digitando. 
 	private class ManipuladorMouse implements MouseListener {
 		public void mousePressed(MouseEvent event) {
 			

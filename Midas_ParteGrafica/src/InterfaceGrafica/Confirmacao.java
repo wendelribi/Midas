@@ -1,8 +1,9 @@
+package InterfaceGrafica;
 import javax.swing.JOptionPane;
 
 /* Classe que verifica os campos nome,sobrenome,genero,senha e confirmacao de senha
  * quando o usuario for se cadastrar. E informa o erro de cada campo, se existir. 
- * Essa classe é chamda pela classe Confirmacao_Cadastro.
+ * Essa classe ï¿½ chamda pela classe Confirmacao_Cadastro.
  */
 
 public class Confirmacao {
@@ -15,13 +16,13 @@ public class Confirmacao {
 	
 	/*	Metodo: confirmacaoSenha.
 	Descricao: 
-		Essa funcao retorna em booleano se o campo de confirmacao da senha está correto ou nao.	
+		Essa funcao retorna em booleano se o campo de confirmacao da senha estï¿½ correto ou nao.	
 	Parametros:
  		String senha1: Primeiro campo que o usuario coloca como senha.
  		String senha2: Segundo campo que o usuario coloca como confirmacao da senha.
  	Valor retornado:
 		A funcao retorna true ou false por meio da variavel validacaoSenha. True, caso
-		as Strings da senha e confirmacao da senha forem iguais. False, caso contrário. 
+		as Strings da senha e confirmacao da senha forem iguais. False, caso contrï¿½rio. 
 	 */
 
 	public boolean confirmacaoSenha(String Senha1, String Senha2) {
