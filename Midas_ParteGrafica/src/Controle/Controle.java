@@ -3,8 +3,15 @@ package Controle;
 import javax.swing.*;
 import InterfaceGrafica.Botao_Usuario;
 
-public class Controle {	
+public class Controle {
+
+	private final int CADASTRO_INVALIDO=-1;
+	private final int CADASTRO_PENDENTE=0;
+	private final int JANELA_USUARIO=1;
+	private final int JANELA_ADMIN = 2;
+	
 	public Controle() {
+		
 		Botao_Usuario buttonFrame = new Botao_Usuario(this);
 	}
 	
@@ -20,16 +27,16 @@ public class Controle {
 	/*
 	 * Confere o login com o banco de dados
 	 */
-	public void realizarLogin(LoginUsuario login){
+	public int realizarLogin(LoginUsuario login){
 		Usuario usuario = recuperar(login.getLogin());
 		if(usuario == null){
-			JOptionPane.showMessageDialog(null, "Cadastro não encontrado");
+			return CADASTRO_INVALIDO;
 		} else if(usuario.getNivelDeAcesso() == 0) {
-			JOptionPane.showMessageDialog(null, "Cadastro ainda não autorizado");
+			return CADASTRO_PENDENTE;
 		} else if(usuario.getNivelDeAcesso() == 1) {
-			//TODO janela de usuário normal
+			return JANELA_USUARIO;
 		} else if(usuario.getNivelDeAcesso() == 2) {
-			// TODO janela de administrador
+			return JANELA_ADMIN;
 		}
 	}
 }
