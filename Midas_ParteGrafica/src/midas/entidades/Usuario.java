@@ -31,8 +31,8 @@ public class Usuario {
 	@Column(name="idAcesso",nullable = false)
 	private int nivelDeAcesso;
 	
-	@Column (nullable = false)
-	private Date dataNascimento;
+	@Column
+	private String dataNascimento;
 	// Ordem certa a ser inserida: aaaa-mm-dd
 	
 	// GETS e SETS
@@ -84,10 +84,10 @@ public class Usuario {
 	public void setNivelDeAcesso(int nivelDeAcesso) {
 		this.nivelDeAcesso = nivelDeAcesso;
 	}
-	public Date getDataNascimento(){
+	public String getDataNascimento(){
 		return dataNascimento;
 	}
-	public void setDataNascimento(Date dataNascimento){
+	public void setDataNascimento(String dataNascimento){
 		this.dataNascimento = dataNascimento;
 	}
 	

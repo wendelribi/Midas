@@ -32,7 +32,8 @@ public class UsuarioDAO {
 	}
 	
 	public boolean remover(String cpf_usuario) {
-		return false;
+		em.remove(recuperar(cpf_usuario));
+		return true;
 	}
 	
 	public List listarNaoAutorizado() {
@@ -66,5 +67,12 @@ public class UsuarioDAO {
 		} catch(IllegalArgumentException e){
 			return false;
 		}
+	}
+	public boolean verificaExisteUsuario(String cpf_usuario){
+		Query q = em.createQuery("select u.CPF from Usuario u where u.CPF = :cpf_usuario", Usuario.class );
+		q.setParameter("cpf_usuario",cpf_usuario);
+		String cpf_encontrado = (String) q.getSingleResult();
+		return (cpf_encontrado != null) ? true : false;
+
 	}
 }
