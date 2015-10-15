@@ -7,7 +7,7 @@ import midas.entidades.Usuario;
 
 public class UsuarioDAO {
 	private static EntityManagerFactory emf;
-	private static EntityManager em;
+	public static EntityManager em;
 	private static EntityTransaction tx;
 	
 	public static void comecarOperacoes() {
