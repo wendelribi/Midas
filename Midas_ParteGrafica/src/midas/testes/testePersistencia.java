@@ -17,12 +17,13 @@ public class testePersistencia {
 
 	private Usuario user;
 	private Usuario user2;
+	private Usuario user3;
 	private UsuarioDAO bd;
 
 	@Before 
 	public void setUp(){
 		user = new Usuario();
-		user.setCpf("12345678922");
+		user.setCpf("11111111111");
 		user.setEmail("pepeca_colorida@gmail.com");
 		user.setEndereco("De baixo da ponte");
 		user.setNivelDeAcesso(0);
@@ -47,7 +48,7 @@ public class testePersistencia {
 	@Test
 	public void testRemover(){
 		comecarOperacoes();
-		bd.remover("12345678922");
+		bd.remover("11111111110");
 		finalizarOperacoes();
 	}
 	
@@ -62,7 +63,7 @@ public class testePersistencia {
 	public void testRecupera(){
 		comecarOperacoes();
 		user2 = bd.recuperar(user.getCpf());
-		System.out.println("CPF DO USER: "+ user2.getCpf());
+		//System.out.println("CPF DO USER: "+ user2.getCpf());
 		finalizarOperacoes();
 	}
 	//@Test
@@ -76,4 +77,18 @@ public class testePersistencia {
 		
 	}
 	
+	@Test
+	public void testAutorizar(){
+		comecarOperacoes();
+		
+		boolean acesso = bd.autorizar("11111111110");
+		if (acesso == true)
+			System.out.println("Nivel de acesso: 1");
+		else
+			System.out.println("Nivel de acessso: 0");
+		
+		
+		finalizarOperacoes();
+		
+	}
 }
