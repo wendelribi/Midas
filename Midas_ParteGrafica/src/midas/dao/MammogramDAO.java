@@ -13,17 +13,20 @@ import javax.persistence.EntityExistsException;
 import midas.dao.UsuarioDAO;
 
 public class MammogramDAO {
+	private BufferedImage image;
 	public boolean inserir() {
 		try{
 			try{
+				UsuarioDAO.comecarOperacoes();
 				Mammogram mamo = new Mammogram();
-				BufferedImage image = ImageIO.read(new File("./images.jpg"));
+				image = ImageIO.read(new File("/Users/alvarovieira/Dropbox/MIDAS/teste.jpg"));
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				baos.flush();
 				mamo.setImagem(baos.toByteArray());
-				mamo.setMammogramId(1);
+				
 				baos.close();
 				UsuarioDAO.em.persist(mamo);
+				UsuarioDAO.finalizarOperacoes();
 				return true;
 			} catch(IOException ex) {
 				return false;
