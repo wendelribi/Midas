@@ -66,14 +66,19 @@ public class UsuarioDAO {
 		}
 	}
 	public boolean login(String cpf_usuario, String senha){
-		try {
-			Query q = em.createQuery("select senha from Usuario where CPF = :cpf_usuario", Usuario.class );
+		//try {
+			Query q = em.createQuery("select A.senha from Usuario as A where A.cpf = :cpf_usuario", Usuario.class );
 			q.setParameter("cpf_usuario",cpf_usuario);
-			String senha_bd = (String) q.getSingleResult();
-			return senha_bd.equals(senha) ? true : false;
-		} catch(IllegalArgumentException e){
-			return false;
-		}
+			Usuario usuario = (Usuario) q.getSingleResult();
+			//System.out.println("senha:"+ senha_usuario);
+			if(usuario.getSenha().equals(senha)){
+				return true;
+			}else
+				return false;
+		//	return usuario.getSenha().equals(senha) ? true : false;
+		//} catch(IllegalArgumentException e){
+		//	return false;
+		//}
 	}
 	public boolean verificaExisteUsuario(String cpf_usuario){
 		Query q = em.createQuery("select CPF from Usuario where CPF = :cpf_usuario", Usuario.class );

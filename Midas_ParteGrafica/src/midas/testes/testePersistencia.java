@@ -24,8 +24,8 @@ public class testePersistencia {
 	@Before 
 	public void setUp(){
 		user = new Usuario();
-		user.setCpf("11111111111");
-		user.setEmail("pepeca_colorida@gmail.com");
+		user.setCpf("0000000000");
+		user.setEmail("wow@gmail.com");
 		user.setEndereco("De baixo da ponte");
 		user.setNivelDeAcesso(0);
 		user.setSenha("alvinlelek");
@@ -53,7 +53,6 @@ public class testePersistencia {
 		finalizarOperacoes();
 	}
 	
-	
 	public void testInsere() {
 
 		comecarOperacoes();
@@ -67,7 +66,7 @@ public class testePersistencia {
 		//System.out.println("CPF DO USER: "+ user2.getCpf());
 		finalizarOperacoes();
 	}
-	@Test
+	
 	public void testListarNaoAutorizados(){
 		comecarOperacoes();
 		nao_autorizados = (List) bd.listarNaoAutorizado();
@@ -77,18 +76,22 @@ public class testePersistencia {
 	@Test
 	public void testLogin(){ // deu como teste correto mas retornou Usuario e senha não batem
 		comecarOperacoes();
-		boolean cadastrado = bd.login("11111111110", "alvinlelek");
+		boolean cadastrado = bd.login("0000000000", "alvinlelek");
+
 		if (cadastrado == true)
 			System.out.println("Usuario e senha são corretas");
-		else
+		else{
 			System.out.println("Usuario e senha não batem");
+			fail("usuario e senhas diferentes");
+		}
+		//finalizarOperacoes();
 	}
 	
 	@Test
 	public void testAutorizar(){
 		comecarOperacoes();
 		
-		boolean acesso = bd.autorizar("11111111110");
+		boolean acesso = bd.autorizar("0000000000");
 		if (acesso == true)
 			System.out.println("Nivel de acesso: 1");
 		else
@@ -102,15 +105,13 @@ public class testePersistencia {
 	public void testVeirificaUsuario(){
 		comecarOperacoes();
 		
-//		boolean existe = bd.verificaExisteUsuario("11111111110");
-//		if (existe == true)
-//			System.out.println("Usuario existe");
-//		else
-//			System.out.println("Usuario não existe");
-		if(null != bd.recuperar("11111111110"))
+
+		if(null != bd.recuperar("0000000000"))
 			System.out.println("Usuario existe");
-		else
+		else{
 			System.out.println("Usuario não existe");
+			fail("Usuario nao existe");
+		}
 		
 		finalizarOperacoes();
 	}
