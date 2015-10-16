@@ -12,9 +12,11 @@ public class Controle {
 	private final int CADASTRO_PENDENTE=0;
 	private final int JANELA_USUARIO=1;
 	private final int JANELA_ADMIN = 2;
+	private UsuarioDAO bancoDeDadosUsuario;
 	
 	public Controle() {
-//		comecarOperacoes();
+		bancoDeDadosUsuario = new UsuarioDAO();
+		UsuarioDAO.comecarOperacoes();
 		Botao_Usuario buttonFrame = new Botao_Usuario(this);
 	}
 	
@@ -25,8 +27,7 @@ public class Controle {
 	 * 													false - para falha ao enviar o cadastro
 	 */
 	public boolean enviarCadastro(Usuario novoUsuario){
-		// TODO return inserir(novoUsuario);
-		return true;
+		return bancoDeDadosUsuario.inserir(novoUsuario);
 	}
 	
 	
@@ -35,9 +36,8 @@ public class Controle {
 	 * Confere o login com o banco de dados
 	 */
 	public int realizarLogin(LoginUsuario login){
-		return JANELA_USUARIO; // Só para testar
-//		Usuario usuario = recuperar(login.getLogin());
-		/*if(usuario == null){
+		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
+		if(usuario == null){
 			return CADASTRO_INVALIDO;
 		} else if(usuario.getNivelDeAcesso() == 0) {
 			return CADASTRO_PENDENTE;
@@ -45,7 +45,8 @@ public class Controle {
 			return JANELA_USUARIO;
 		} else if(usuario.getNivelDeAcesso() == 2 && (usuario.getSenha() == login.getSenha())) {
 			return JANELA_ADMIN;
-		}*/
+		}
+		return -2;
 	}
 	
 	
@@ -54,7 +55,7 @@ public class Controle {
 	 * Retorna uma lista com os usuários pendentes no banco de dados
 	 */
 	public ArrayList<Usuario> getUsuariosPendentes(){
-		return listarNaoAutorizados();
+		return new ArrayList<Usuario>(bancoDeDadosUsuario.listarNaoAutorizado());
 	}
 	
 	
@@ -64,17 +65,16 @@ public class Controle {
 	 */
 	public void atualizarAutorizacoes(ArrayList<Usuario> autorizados, ArrayList<Usuario> negados){
 		for(Usuario usuario : autorizados){
-			autorizar(usuario.getCpf());
+			bancoDeDadosUsuario.autorizar(usuario.getCpf());
 		}
 		
 		for(Usuario usuario : negados){
-			remover(usuario.getCpf());
+			bancoDeDadosUsuario.remover(usuario.getCpf());
 		}
 	}
 	
-	
-	
+	// Finaliza as operações no banco de dados
 	public void finalizarBandoDeDados(){
-		finalizarOperacoes();
+		UsuarioDAO.finalizarOperacoes();
 	}
 }

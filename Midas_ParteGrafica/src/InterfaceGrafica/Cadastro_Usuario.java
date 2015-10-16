@@ -8,7 +8,7 @@ import javax.swing.*;
 import Controle.Controle;
 import Controle.NovoUsuario;
 import Controle.ConfirmacaoCadastro.Confirmacao_Cadastro;
-import midas.entidades.Usuario;
+import midas.entidades.*;
 /* 
  * Classe que mostra a janela com todos os campos para o usuário preencher e fazer
  * o seu cadastro. Verifica por meio de outras classes se todos os campos estão corretos
