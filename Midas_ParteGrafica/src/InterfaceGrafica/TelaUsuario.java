@@ -33,10 +33,10 @@ public class TelaUsuario extends JFrame{
 		
 		String[] tamCisto = new String[quantTamanhos];
 		for (int i = 1; i <= quantTamanhos; i++) {
-			tamCisto[i - 1] = String.format("%d mm", i);
+			tamCisto[i - 1] = String.format("%d", i);
 		}
 		
-		JLabel opcoes = new JLabel("Tamanhos de cisto: ");
+		JLabel opcoes = new JLabel("Tamanhos de cisto (mm): ");
 		opcoes.setBounds(10, 10, 200, 60);
 		add(opcoes);
 
@@ -46,10 +46,11 @@ public class TelaUsuario extends JFrame{
 			public void itemStateChanged (ItemEvent event){
 				if(event.getStateChange() == ItemEvent.SELECTED){
 					tamanhoEscolhido = Integer.parseInt(event.getItem().toString());
+				
 				}
 			}
 		});
-		tamanhosCisto.setBounds(10,60,100,40);
+		tamanhosCisto.setBounds(60,60,70,40);
 		add(tamanhosCisto);
 		
 		logOut = new JButton("Deslogar");
@@ -77,7 +78,7 @@ public class TelaUsuario extends JFrame{
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == logOut){	
 				TelaUsuario.this.dispose();
-				Login_Usuario paginaLogin = new Login_Usuario(controle); //Se o usuario solicitar para dar log out, o programa deve voltar para a tela de login					
+				paginaLogin = new Login_Usuario(controle); //Se o usuario solicitar para dar log out, o programa deve voltar para a tela de login					
 			}
 			if(event.getSource() == sair){
 				TelaUsuario.this.dispose();
@@ -85,7 +86,7 @@ public class TelaUsuario extends JFrame{
 			}
 			if(event.getSource() == abrirImagem){
 				//abre a imagem
-				AbreImagem imagemMamografia = new AbreImagem();
+				imagemMamografia = new AbreImagem();
 			}
 		}
 	}
