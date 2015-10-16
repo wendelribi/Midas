@@ -102,12 +102,15 @@ public class testePersistencia {
 	public void testVeirificaUsuario(){
 		comecarOperacoes();
 		
-		boolean existe = bd.verificaExisteUsuario("11111111110");
-		if (existe == true)
+//		boolean existe = bd.verificaExisteUsuario("11111111110");
+//		if (existe == true)
+//			System.out.println("Usuario existe");
+//		else
+//			System.out.println("Usuario não existe");
+		if(null != bd.recuperar("11111111110"))
 			System.out.println("Usuario existe");
 		else
 			System.out.println("Usuario não existe");
-		
 		
 		finalizarOperacoes();
 	}
