@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
 import midas.dao.UsuarioDAO;
 import midas.entidades.Usuario;
 
@@ -14,14 +15,13 @@ public class testePersistencia {
 
 	private Usuario user;
 	private Usuario user2;
-	private Usuario user3;
 	private UsuarioDAO bd;
 	private List nao_autorizados;
 
 	@Before 
 	public void setUp(){
 		user = new Usuario();
-		user.setCpf("0000000000");
+		user.setCpf("03915432105");
 		user.setEmail("wow@gmail.com");
 		user.setEndereco("De baixo da ponte");
 		user.setNivelDeAcesso(0);
@@ -29,7 +29,7 @@ public class testePersistencia {
 		user.setProfissao("engenheiro");
 		user.setNome("Ismael");
 		user.setSexo('M');
-		user.setDataNascimento("");
+		user.setDataNascimento("06.04.1995");
 		
 		bd = new UsuarioDAO();
 	}
@@ -43,36 +43,40 @@ public class testePersistencia {
 
 	
 	
-	
+	@Test
 	public void testRemover(){
 		comecarOperacoes();
-		bd.remover("11111111110");
+		bd.remover("03915432105");
 		finalizarOperacoes();
 	}
 	
+	@Test
 	public void testInsere() {
 
 		comecarOperacoes();
 		bd.inserir(user);
 		finalizarOperacoes();
 	}
+	
 	@Test
 	public void testRecupera(){
 		comecarOperacoes();
 		user2 = bd.recuperar(user.getCpf());
-		//System.out.println("CPF DO USER: "+ user2.getCpf());
-		finalizarOperacoes();
-	}
-	
-	public void testListarNaoAutorizados(){
-		comecarOperacoes();
-		List<Usuario> nao_autorizados =  bd.listarNaoAutorizado();
+		assertEquals(user2.getCpf(), user.getCpf());
 		finalizarOperacoes();
 	}
 	@Test
-	public void testLogin(){ // deu como teste correto mas retornou Usuario e senha não batem
+	public void testListarNaoAutorizados(){
 		comecarOperacoes();
-		boolean cadastrado = bd.login("0000000000", "alvinlelek");
+		List<Usuario> nao_autorizados =  bd.listarNaoAutorizado();
+		assertEquals(0, nao_autorizados.size());
+		finalizarOperacoes();
+	}
+	
+	@Test
+	public void testLogin(){
+		comecarOperacoes();
+		boolean cadastrado = bd.login("03915432105", "alvinlelek");
 
 		if (cadastrado == true)
 			System.out.println("Usuario e senha são corretas");
@@ -80,14 +84,13 @@ public class testePersistencia {
 			System.out.println("Usuario e senha não batem");
 			fail("usuario e senhas diferentes");
 		}
-		//finalizarOperacoes();
 	}
 	
 	@Test
 	public void testAutorizar(){
 		comecarOperacoes();
 		
-		boolean acesso = bd.autorizar("0000000000");
+		boolean acesso = bd.autorizar("03915432105");
 		if (acesso == true)
 			System.out.println("Nivel de acesso: 1");
 		else
@@ -102,7 +105,7 @@ public class testePersistencia {
 		comecarOperacoes();
 		
 
-		if(null != bd.recuperar("0000000000"))
+		if(null != bd.recuperar("03915432105"))
 			System.out.println("Usuario existe");
 		else{
 			System.out.println("Usuario não existe");
