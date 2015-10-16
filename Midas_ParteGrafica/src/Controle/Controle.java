@@ -14,7 +14,7 @@ public class Controle {
 	private final int JANELA_ADMIN = 2;
 	
 	public Controle() {
-		comecarOperacoes();
+//		comecarOperacoes();
 		Botao_Usuario buttonFrame = new Botao_Usuario(this);
 	}
 	
@@ -35,8 +35,8 @@ public class Controle {
 	 * Confere o login com o banco de dados
 	 */
 	public int realizarLogin(LoginUsuario login){
-		return JANELA_ADMIN; // Só para testar
-		Usuario usuario = recuperar(login.getLogin());
+		return JANELA_USUARIO; // Só para testar
+//		Usuario usuario = recuperar(login.getLogin());
 		/*if(usuario == null){
 			return CADASTRO_INVALIDO;
 		} else if(usuario.getNivelDeAcesso() == 0) {

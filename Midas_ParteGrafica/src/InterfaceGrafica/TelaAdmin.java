@@ -3,10 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
+import java.util.*;
 
 import Controle.Controle;
-
-import java.util.*;
+import midas.entidades.*;
 
 public class TelaAdmin extends JFrame {
 
@@ -17,7 +17,7 @@ public class TelaAdmin extends JFrame {
 	private JLabel usuario, mensagem;
 	private Font FonteUsual;
 	private ArrayList<JPanel> panelsEsq, panelsDir;
-	private ArrayList<String> usuariosAceitos,usuariosNegados;
+	private ArrayList<Usuario> usuariosAceitos,usuariosNegados;
 	private ArrayList<Usuario> arrayUsuario;
 	private Toolkit toolkit;
 	private Dimension screensize;
@@ -36,8 +36,8 @@ public class TelaAdmin extends JFrame {
 		panelDireito = new JPanel();
 		panelFundo = new JPanel();
 		
-		usuariosAceitos = new ArrayList<>();
-		usuariosNegados = new ArrayList<>();
+		usuariosAceitos = new ArrayList<Usuario>();
+		usuariosNegados = new ArrayList<Usuario>();
 		
 		panelsEsq = new ArrayList<>();
 		panelsDir = new ArrayList<>();
@@ -47,11 +47,22 @@ public class TelaAdmin extends JFrame {
 	
 	//Metodo que escreve os paineis esquerdo e direito
 	public void AdicionarUsuarioNoPanel(int i) {
+		String informacoes = "<html>";
 		
-		String string = "<html>" + "Augusto" + "da Silva" + "<br/>" + "022323232" + "<br/>" + "augusto@gmail.com"
-				+ "<br/>" + "</html>";
-//		String string = "<html>" + usuario.get(i,nome) +...
-		usuario = new JLabel(string);
+		for(Usuario arrayAux: arrayUsuario){
+			informacoes += arrayAux.getNome()+"<br/>"; //<br/> = \n em html pois, Jlabel funciona em html
+			informacoes += arrayAux.getCpf()+"<br/>";
+			informacoes += arrayAux.getEmail()+"<br/>";
+			informacoes += arrayAux.getSexo()+"<br/>";
+			informacoes += arrayAux.getProfissao()+"<br/>";
+			informacoes += "</html>";
+		}
+		
+//		Base de como eu criei as strings só para testar
+//		String string = "<html>" + "Augusto" + "da Silva" + "<br/>" + "022323232" + "<br/>" + "augusto@gmail.com"
+//				+ "<br/>" + "</html>";
+		
+		usuario = new JLabel(informacoes);
 		usuario.setFont(FonteUsual);
 
 		panelesq = new JPanel();
@@ -107,6 +118,7 @@ public class TelaAdmin extends JFrame {
 	
 	//Metodo que ajusta o tamanho da tela inicial de acordo com o numero de usuarios
 	public void AjustaTelaInicial(int num_usuarios) {
+
 		String espaco = "                                       ";
 		mensagem = new JLabel(espaco + "Lista de Usuarios Pendentes:");
 		mensagem.setFont(FonteUsual);
@@ -154,12 +166,12 @@ public class TelaAdmin extends JFrame {
 	//Metodo principal que imprimi a tela do Cadastros Pendentes para o Administrador
 	public void DesenhaListaDeUsuarios() {
 		
-//		arrayUsuario  = controle.getUsuariosPendentes();
+		// Obtém a lista de Usuarios Pendentes		
+		arrayUsuario  = controle.getUsuariosPendentes();
 		num_usuarios = 0;
 		
-		
 		// Adicionando aos JPanels os usuarios
-		for (; num_usuarios < 10/*usuario.length()*/; num_usuarios++)
+		for (; num_usuarios < arrayUsuario.size(); num_usuarios++)
 			AdicionarUsuarioNoPanel(num_usuarios);
 
 		AdicionarPanelEsquerdo(panelsEsq);
@@ -168,8 +180,8 @@ public class TelaAdmin extends JFrame {
 		panelEsquerdo.setLayout(new BoxLayout(panelEsquerdo, BoxLayout.PAGE_AXIS));
 		panelDireito.setLayout(new BoxLayout(panelDireito, BoxLayout.PAGE_AXIS));
 
-		voltar = new JButton("Voltar");
-		sair = new JButton("Sair da conta");
+		voltar = new JButton("Deslogar");
+		sair = new JButton("Sair");
 		salvar = new JButton("Salvar");
 
 		panelFundo.setLayout(new FlowLayout());
@@ -196,28 +208,30 @@ public class TelaAdmin extends JFrame {
 		panelDireito.remove(panelsDir.get(i));
 	}
 	
-	//Metodo que adiciona usuario na lista de Aceitos	
+	//Metodo que adiciona usuario na lista de cadastros aceitos	
 	public void UsuarioAceito(int indice_aceito,int i){
-//		Pegar o indice "i" com a lista de pessoa, o cpf e passar a string de nomesACeitos
-//		usuariosAceitos.add(indice_aceito,/*pessoa.get(i,cpf)*/);
+//		Pegar o indice "i" e o cpf da lista de usuarios e passar para a lista 
+//		de usuarios de cadastros aceitos com indice diferente (indice_aceito) 
+		usuariosAceitos.add(indice_aceito,arrayUsuario.get(i));
 	}
 	
-	//Metodo que adiciona usuario na lista de negados
+	//Metodo que adiciona usuario na lista de cadastros negados
 	public void UsuarioNegado(int indice_negado,int i){
-		
-//		usuariosNegados.add(indice_negado,panelsDir.get(i),/*pessoa.get(i,cpf)*/);
+
+//		Pegar o indice "i" e o cpf da lista de usuarios e passar para a lista 
+//		de usuarios de cadastros negados com indice diferente (indice_negado)
+		usuariosNegados.add(indice_negado,arrayUsuario.get(i));
 	}
 	
 	//Metodo que retorna lista de usuarios Aceitos	
-	public ArrayList<String> retornaUsuariosAceitos(){
-		
+	public ArrayList<Usuario> getUsuariosAceitos(){	
 		return usuariosAceitos;
 	}
 	//Metodo que retorna lista de usuarios Negados
-	public ArrayList<String> retornaUsuariosNegados(){
-		
+	public ArrayList<Usuario> getUsuariosNegados(){
 		return usuariosNegados;
 	}
+	
 	//Metodo que retorna mensagem de aviso na tela
 	public void MensagemNenhumUsuario(){
 		JOptionPane.showMessageDialog(null, "Nao ha usuarios pendentes","Aviso",JOptionPane.WARNING_MESSAGE);
@@ -263,20 +277,19 @@ public class TelaAdmin extends JFrame {
 						
 						apagaUsuario(i);
 						UsuarioAceito(indice_aceito,i);
-
-												
-						retornaUsuariosAceitos();
 						UsuariosSalvos++;
 						indice_aceito++;
 					}
 					else if((panelsEsq.get(i)).getBackground() == Color.RED){
 						apagaUsuario(i);
 						UsuarioNegado(indice_negado,i);
-						retornaUsuariosNegados();
 						UsuariosSalvos++;
 						indice_negado++;
 					}
 				}
+
+				// Manda para o controle atualizar os cadastros aceitos e recusados				
+				controle.atualizarAutorizacoes(getUsuariosAceitos(),getUsuariosNegados());
 				ajustaTela(num_usuarios-UsuariosSalvos);
 				
 				//Mensagem caso o Administrador tenha Alterado
