@@ -6,17 +6,17 @@
 	http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="Midas" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>program001.jpa.entidades.Cliente</class>
+		<class>program001.jpa.entidades.Usuario</class>
+		<class>program001.jpa.entidades.Mammogram</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Midas"></property>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/Midas"></property>
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="vieiralvaro1995" />							
+			<property name="javax.persistence.jdbc.password" value="postgres" />							
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
   			<property name="hibernate.show_sql" value="false" />
   			<property name="hibernate.format_sql" value="false" />
-			
 		</properties>
 	</persistence-unit>
 	
