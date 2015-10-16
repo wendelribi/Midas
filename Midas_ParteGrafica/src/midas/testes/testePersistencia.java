@@ -1,14 +1,11 @@
 package midas.testes;
 
 import static org.junit.Assert.*;
-
-import java.awt.List;
-
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
 import midas.dao.UsuarioDAO;
 import midas.entidades.Usuario;
 
@@ -70,8 +67,7 @@ public class testePersistencia {
 	@Test
 	public void testListarNaoAutorizados(){
 		comecarOperacoes();
-		nao_autorizados = (List) bd.listarNaoAutorizado();
-		
+		List<Usuario> nao_autorizados =  bd.listarNaoAutorizado();
 		finalizarOperacoes();
 	}
 	@Test
