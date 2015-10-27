@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="lib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/antlr-2.7.7.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/geronimo-jta_1.1_spec-1.1.1.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/hibernate-commons-annotations-5.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/hibernate-core-5.0.2.Final.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/hibernate-entitymanager-5.0.2.Final.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/jandex-1.2.2.Final.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/javassist-3.18.1-GA.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/jboss-logging-3.3.0.Final.jar"/>
-	<classpathentry kind="lib" path="lib/JPA-Hibernate/postgresql-9.2-1003-jdbc4.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
