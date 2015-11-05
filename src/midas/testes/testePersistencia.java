@@ -9,6 +9,7 @@ import org.junit.runners.JUnit4;
 
 import midas.dao.UsuarioDAO;
 import midas.entidades.Usuario;
+import midas.util.JPAUtil;
 
 @RunWith(JUnit4.class)
 public class testePersistencia {
@@ -35,10 +36,10 @@ public class testePersistencia {
 	}
 	
 	public void comecarOperacoes(){
-		UsuarioDAO.comecarOperacoes();
+		JPAUtil.comecarOperacoes();
 	}
 	public void finalizarOperacoes(){
-		UsuarioDAO.finalizarOperacoes();
+		JPAUtil.finalizarOperacoes();
 	}
 
 	

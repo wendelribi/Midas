@@ -5,6 +5,7 @@ import midas.dao.*;
 import javax.swing.*;
 import InterfaceGrafica.Botao_Usuario;
 import midas.entidades.Usuario;
+import midas.util.JPAUtil;
 
 public class Controle {
 
@@ -27,9 +28,9 @@ public class Controle {
 	 * 													false - para falha ao enviar o cadastro
 	 */
 	public boolean enviarCadastro(Usuario novoUsuario){
-		UsuarioDAO.comecarOperacoes();
+		JPAUtil.comecarOperacoes();
 		boolean sucesso = bancoDeDadosUsuario.inserir(novoUsuario);
-		UsuarioDAO.finalizarOperacoes();
+		JPAUtil.finalizarOperacoes();
 		return sucesso;
 	}
 	
@@ -39,9 +40,9 @@ public class Controle {
 	 * Confere o login com o banco de dados
 	 */
 	public int realizarLogin(LoginUsuario login){
-		UsuarioDAO.comecarOperacoes();
+		JPAUtil.comecarOperacoes();
 		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
-		UsuarioDAO.finalizarOperacoes();
+		JPAUtil.finalizarOperacoes();
 		if(usuario == null){
 			return CADASTRO_INVALIDO;
 		} else if(usuario.getNivelDeAcesso() == 0) {
@@ -61,9 +62,9 @@ public class Controle {
 	 * Retorna uma lista com os usuários pendentes no banco de dados
 	 */
 	public ArrayList<Usuario> getUsuariosPendentes(){
-		UsuarioDAO.comecarOperacoes();
+		JPAUtil.comecarOperacoes();
 		ArrayList<Usuario> retorno =  new ArrayList<Usuario>(bancoDeDadosUsuario.listarNaoAutorizado());
-		UsuarioDAO.finalizarOperacoes();
+		JPAUtil.finalizarOperacoes();
 		return retorno;
 	}
 	
@@ -73,7 +74,7 @@ public class Controle {
 	 *  Atualiza o nível de acesso dos usuários autorizados e retira os usuarios negados do banco de dados
 	 */
 	public void atualizarAutorizacoes(ArrayList<Usuario> autorizados, ArrayList<Usuario> negados){
-		UsuarioDAO.comecarOperacoes();
+		JPAUtil.comecarOperacoes();
 		for(Usuario usuario : autorizados){
 			bancoDeDadosUsuario.autorizar(usuario.getCpf());
 		}
@@ -81,7 +82,7 @@ public class Controle {
 		for(Usuario usuario : negados){
 			bancoDeDadosUsuario.remover(usuario.getCpf());
 		}
-		UsuarioDAO.finalizarOperacoes();
+		JPAUtil.finalizarOperacoes();
 	}
 	
 }

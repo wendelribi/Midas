@@ -2,6 +2,7 @@ package midas.dao;
 
 import midas.entidades.Mammogram;
 import midas.entidades.Usuario;
+import midas.util.JPAUtil;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -17,7 +18,7 @@ public class MammogramDAO {
 	public boolean inserir() {
 		try{
 			try{
-				UsuarioDAO.comecarOperacoes();
+				JPAUtil.comecarOperacoes();
 				Mammogram mamo = new Mammogram();
 				image = ImageIO.read(new File("/Users/alvarovieira/Dropbox/MIDAS/teste.jpg"));
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -25,8 +26,8 @@ public class MammogramDAO {
 				mamo.setImagem(baos.toByteArray());
 				
 				baos.close();
-				UsuarioDAO.em.persist(mamo);
-				UsuarioDAO.finalizarOperacoes();
+				JPAUtil.em.persist(mamo);
+				JPAUtil.finalizarOperacoes();
 				return true;
 			} catch(IOException ex) {
 				return false;
@@ -37,10 +38,10 @@ public class MammogramDAO {
 	}
 	public Mammogram recuperar(int mamoId) {
 		try {
-			UsuarioDAO.comecarOperacoes();
-			Mammogram mamo = UsuarioDAO.em.find(Mammogram.class, mamoId);
-			UsuarioDAO.em.find(Mammogram.class, mamoId);
-			return UsuarioDAO.em.find(Mammogram.class, mamoId);
+			JPAUtil.comecarOperacoes();
+			Mammogram mamo = JPAUtil.em.find(Mammogram.class, mamoId);
+			JPAUtil.em.find(Mammogram.class, mamoId);
+			return JPAUtil.em.find(Mammogram.class, mamoId);
 		} catch(IllegalArgumentException e) {
 			return null;
 		}

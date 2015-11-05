@@ -1,31 +1,14 @@
 package midas.dao;
 
 import java.util.List;
-
 import javax.persistence.*;
-
 import midas.entidades.Usuario;
+import midas.util.JPAUtil;
 
 public class UsuarioDAO {
-	private static EntityManagerFactory emf;
-	static EntityManager em;
-	private static EntityTransaction tx;
-	
-	public static void comecarOperacoes() {
-		emf = Persistence.createEntityManagerFactory("Midas");
-		em = emf.createEntityManager();
-		tx = em.getTransaction();
-		tx.begin();
-	}
-	public static void finalizarOperacoes(){
-		tx.commit();
-		em.close(); 
-		emf.close();
-	}
-	
 	public boolean inserir(Usuario usuario) {
 		try{
-			em.persist(usuario);
+			JPAUtil.em.persist(usuario);
 			return true;
 		} catch(EntityExistsException e) {
 			return false;
@@ -34,7 +17,7 @@ public class UsuarioDAO {
 	
 	public boolean remover(String cpf_usuario) {
 		try {
-			em.remove(recuperar(cpf_usuario));
+			JPAUtil.em.remove(recuperar(cpf_usuario));
 			return true;
 		} catch(IllegalArgumentException e) {
 			return false;
@@ -42,7 +25,7 @@ public class UsuarioDAO {
 	}
 	
 	public List<Usuario> listarNaoAutorizado() {
-		Query q = em.createQuery("select u from Usuario u where u.nivelDeAcesso = 0");
+		Query q = JPAUtil.em.createQuery("select u from Usuario u where u.nivelDeAcesso = 0");
 		@SuppressWarnings("unchecked")
 		List<Usuario> lista = q.getResultList();
 		return lista;
@@ -59,14 +42,14 @@ public class UsuarioDAO {
 	}
 	public Usuario recuperar(String cpf_usuario){
 		try {
-			return em.find(Usuario.class, cpf_usuario);
+			return JPAUtil.em.find(Usuario.class, cpf_usuario);
 		} catch(IllegalArgumentException e) {
 			return null;
 		}
 	}
 	public boolean login(String cpf_usuario, String senha){
 		try {
-			Query q = em.createQuery("select u from Usuario u where u.cpf = :cpf_usuario", Usuario.class );
+			Query q = JPAUtil.em.createQuery("select u from Usuario u where u.cpf = :cpf_usuario", Usuario.class );
 			q.setParameter("cpf_usuario",cpf_usuario);
 			Usuario usuario = (Usuario) q.getSingleResult();
 
@@ -77,7 +60,7 @@ public class UsuarioDAO {
 		}
 	}
 	public boolean verificaExisteUsuario(String cpf_usuario){
-		Query q = em.createQuery("select u from Usuario u where u.cpf = :cpf_usuario", Usuario.class );
+		Query q = JPAUtil.em.createQuery("select u from Usuario u where u.cpf = :cpf_usuario", Usuario.class );
 		q.setParameter("cpf_usuario",cpf_usuario);
 		String cpf_encontrado = (String) q.getSingleResult();
 		
