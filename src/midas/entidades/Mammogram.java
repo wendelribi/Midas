@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Mammogram {
 	@Id
 	@GeneratedValue
-	@Column(name="mammogramId", nullable=false)
+	@Column(nullable=false)
 	private int mammogramId;
 	@Column(name="image")
 	private byte[] imagem;
