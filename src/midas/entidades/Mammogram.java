@@ -15,6 +15,9 @@ public class Mammogram {
 	private int mammogramId;
 	@Column(name="image")
 	private byte[] imagem;
+	@Column
+	@OneToMany 
+	private int studyId;
 	
 	public int getMammogramId() {
 		return mammogramId;
