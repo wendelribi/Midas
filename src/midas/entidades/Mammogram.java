@@ -42,12 +42,4 @@ public class Mammogram {
 	public void setStudy(Study study) {
 		this.study = study;
 	}
-	public BufferedImage converte(byte[] vetorByte) {
-		try {
-			return ImageIO.read(new ByteArrayInputStream(vetorByte));
-		} catch (IOException e) {
-			return null;
-		}
-	}
-
 }
