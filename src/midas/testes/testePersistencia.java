@@ -24,7 +24,6 @@ public class testePersistencia {
 		user = new Usuario();
 		user.setCpf("11111111111");
 		user.setEmail("wow@gmail.com");
-		user.setEndereco("Av. Joaquim Neto");
 		user.setNivelDeAcesso(2);
 		user.setSenha("victor123");
 		user.setProfissao("engenheiro");

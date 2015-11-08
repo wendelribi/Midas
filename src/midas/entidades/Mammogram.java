@@ -16,21 +16,31 @@ public class Mammogram {
 	private int mammogramId;
 	@Column(name="image")
 	private byte[] imagem;
-	@Column
-	@OneToMany 
-	private List<Study> studyId;
+	@ManyToOne
+	@JoinColumn(name = "studyId")
+	private Study study;
+	
+	public Mammogram() {
+		
+	}
+	public Mammogram(byte[] imagem) {
+		this.imagem = imagem;
+	}
 	
 	public int getMammogramId() {
 		return mammogramId;
-	}
-	public void setMammogramId(int mammogramId) {
-		this.mammogramId = mammogramId;
 	}
 	public byte[] getImagem() {
 		return imagem;
 	}
 	public void setImagem(byte[] imagem) {
 		this.imagem = imagem;
+	}
+	public Study getStudy() {
+		return study;
+	}
+	public void setStudy(Study study) {
+		this.study = study;
 	}
 	public BufferedImage converte(byte[] vetorByte) {
 		try {

@@ -1,41 +1,49 @@
 package midas.entidades;
 
 import java.sql.Date;
-
+import java.util.List;
 import javax.persistence.*;
 
 @Entity(name = "Usuario")
 public class Usuario {
 	@Id
-	@Column(name="CPF", nullable = false)
+	@Column(name = "UsuarioId")
+	private int id;
+	@Column(nullable = false)
 	private String cpf;
-	
 	@Column(nullable = false)
 	private String nome; // Nome completo
-	
-	@Column
-	private String endereco;
-	
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String profissao;
-	
 	@Column(nullable = false)
 	private String senha;
-	
 	@Column(nullable = false)
 	private String email; 
-	
 	@Column(nullable = false)
 	private char sexo;
-	
-	@Column(name="idAcesso",nullable = false)
+	@Column(nullable = false)
 	private int nivelDeAcesso;
-	
 	@Column
 	private String dataNascimento;
 	// Ordem certa a ser inserida: aaaa-mm-dd
 	
+	public Usuario() {
+		
+	}
+	public Usuario(String cpf, String nome, String profissao, String senha, String email, char sexo, int nivelDeAcesso) {
+		this.cpf = cpf;
+		this.nome = nome;
+		this.profissao = profissao;
+		this.senha = senha;
+		this.email = email;
+		this.sexo = sexo;
+		this.nivelDeAcesso = nivelDeAcesso;
+	}
+	
 	// GETS e SETS
+	public int getId() {
+		return id;
+	}
 	public String getCpf() {
 		return cpf;
 	}
@@ -47,12 +55,6 @@ public class Usuario {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 	public String getProfissao(){
 		return profissao;
@@ -90,6 +92,4 @@ public class Usuario {
 	public void setDataNascimento(String dataNascimento){
 		this.dataNascimento = dataNascimento;
 	}
-	
-	
 }

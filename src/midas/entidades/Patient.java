@@ -1,5 +1,7 @@
 package midas.entidades;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity 
@@ -8,13 +10,25 @@ public class Patient {
 	@Id
 	@GeneratedValue
 	@Column 
-	public int patientId;
+	private int patientId;
 	@Column (nullable = false)
-	public String patientHistory;
+	private String patientHistory;
 	@Column (nullable = false)
-	public String birthday;
+	private String birthday;
+	@OneToMany(mappedBy = "patient")
+	private List<Study> studies;
 	
+	public Patient() {
+		
+	}
+	public Patient(String patientHistory, String birthday) {
+		this.patientHistory = patientHistory;
+		this.birthday = birthday;
+	}
 	
+	public int getPatientId() {
+		return patientId;
+	}
 	public String getPatientHistory() {
 		return patientHistory;
 	}
@@ -27,9 +41,11 @@ public class Patient {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	
-	
-	
-	
+	public List<Study> getStudies() {
+		return studies;
+	}
+	public void setStudies(List<Study> studies) {
+		this.studies = studies;
+	}
 	
 }

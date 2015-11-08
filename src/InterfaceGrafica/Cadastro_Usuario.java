@@ -300,7 +300,6 @@ public class Cadastro_Usuario extends JFrame{
 				usuario.setCpf(cpf.getText());
 				usuario.setSenha(senha.getText());
 				usuario.setDataNascimento(dataNascimento);
-				usuario.setEndereco("");//Corrigir
 				usuario.setNivelDeAcesso(0);
 				usuario.setProfissao(profissaoUsuario); 
 				String senhaConfirmacao = confirmacaoSenha.getText();
