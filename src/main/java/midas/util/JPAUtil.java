@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+
 public class JPAUtil {
 	public static EntityManagerFactory emf = null;
 	public static EntityManager em = null;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import midas.util.JPAUtil;
 
 @Controller
 @RequestMapping("/login")
+@Transactional (dontRollbackOn = {JPAUtil.class})
 public class LoginController {
 	private ArrayList<Usuario> arrayUsuario;
 	
@@ -40,7 +42,7 @@ public class LoginController {
 		UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 		JPAUtil.comecarOperacoes();
 		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
-		JPAUtil.finalizarOperacoes(); 
+		JPAUtil.finalizarOperacoes();
 		
 		if (usuario == null) {
 			System.out.println("Nao existe!");
@@ -57,7 +59,7 @@ public class LoginController {
 			// Obtem a lista de Usuarios Pendentes		
 //			arrayUsuario  = controle.getUsuariosPendentes();
 		
-			arrayUsuario.add(usuario);
+//			arrayUsuario.add(usuario);
 			return new ModelAndView("/login/loginAdmin/viewAdmin","arrayUsuario",arrayUsuario);
 		}
 		return new ModelAndView("/login/loginAdmin/viewAdmin","arrayUsuario",arrayUsuario);
