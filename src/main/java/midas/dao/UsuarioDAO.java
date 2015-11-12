@@ -1,11 +1,17 @@
 package midas.dao;
 
 import java.util.List;
+
+import javax.ejb.Stateless;
 import javax.persistence.*;
+import javax.transaction.Transactional;
+
 import midas.entidades.Usuario;
 import midas.util.JPAUtil;
 
+@Stateless
 public class UsuarioDAO {
+	@Transactional
 	public boolean inserir(Usuario usuario) {
 		try{
 			JPAUtil.em.persist(usuario);
@@ -15,6 +21,7 @@ public class UsuarioDAO {
 		}
 	}
 	
+	@Transactional
 	public boolean remover(String cpf_usuario) {
 		try {
 			JPAUtil.em.remove(recuperar(cpf_usuario));
@@ -30,7 +37,7 @@ public class UsuarioDAO {
 		List<Usuario> lista = q.getResultList();
 		return lista;
 	}
-	
+	@Transactional
 	public boolean autorizar(String cpf_usuario) {
 		Usuario usuario = recuperar(cpf_usuario);
 		if(usuario != null) {
@@ -40,6 +47,7 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
+	@Transactional
 	public Usuario recuperar(String cpf_usuario){
 		try {
 			return JPAUtil.em.find(Usuario.class, cpf_usuario);

@@ -42,7 +42,7 @@ public class LoginController {
 		UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 		JPAUtil.comecarOperacoes();
 		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
-		JPAUtil.finalizarOperacoes();
+		JPAUtil.em.close();
 		
 		if (usuario == null) {
 			System.out.println("Usuario ou senha incorretos!");
