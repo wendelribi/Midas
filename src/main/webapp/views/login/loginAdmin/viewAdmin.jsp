@@ -5,40 +5,50 @@
 <head>
 <title>Administrador</title>
 <link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-		<script
-			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script
-			src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
-	<h2>Usuarios</h2>
-	
-	<table>
-		<tr>
-			<th>Nome </th>
-			<th>Cpf </th>
-			<th>Profissao </th>
-			<th>Email </th>
-			<th>Sexo </th>
-			<th>Nivel de Acesso</th>
-			<th></th>
-			<th></th>
-		</tr>
-		<c:forEach items="${arrayUsuario}" var="usuario">
+
+	<div class="panel panel-primary">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Usuarios pendentes</div>
+		<table class="table">
 			<tr>
-				<td>${usuario.nome}</td>
-				<td>${usuario.cpf}</td>
-				<td>${usuario.profissao}</td>
-				<td>${usuario.email}</td>
-				<td>${usuario.sexo}</td>
-				<td>${usuario.nivelDeAcesso}</td>
-				<td> <a href="/save.html?id=${usuario.cpf}">Salvar</a> </td>
-				<td> <a href="/delete.html?id=${usuario.cpf}">Deletar</a> </td>
+				<th>Nome</th>
+				<th>Cpf</th>
+				<th>Profissao</th>
+				<th>Email</th>
+				<th>Sexo</th>
+				<th>Nivel de Acesso</th>
+				<th></th>
+				<th></th>
 			</tr>
-		</c:forEach>
-	</table>
-	
-	<br/>
+			<c:forEach items="${arrayUsuario}" var="usuario">
+				<tr>
+					<td>${usuario.nome}</td>
+					<td>${usuario.cpf}</td>
+					<td>${usuario.profissao}</td>
+					<td>${usuario.email}</td>
+					<td>${usuario.sexo}</td>
+					<td>${usuario.nivelDeAcesso}</td>
+					<td><a href="/save.html?id=${usuario.cpf}">Salvar</a></td>
+					<td><a href="/delete.html?id=${usuario.cpf}">Deletar</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+
+	</div>
+
+	<nav>
+		<ul class="pager">
+			<li><a href="./controller.html">Sair da conta</a></li>
+		</ul>
+	</nav>
+
+	<br />
 </body>
 </html>

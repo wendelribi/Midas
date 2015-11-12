@@ -45,17 +45,17 @@ public class LoginController {
 		JPAUtil.finalizarOperacoes();
 		
 		if (usuario == null) {
-			System.out.println("Nao existe!");
+			System.out.println("Usuario ou senha incorretos!");
 		} 
 		else if (usuario.getNivelDeAcesso() == 0) {
-			System.out.println("Nao tem acesso");
+			System.out.println("Usuario pendente!");
 		} 
 		else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
-			System.out.println("login");
+			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 			return new ModelAndView("/login/loginUsuario/viewUsuario");
 		} 
 		else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
-			System.out.println("admin");
+			System.out.println("Login realizado!\n Tipo de conta: Administrador");
 			// Obtem a lista de Usuarios Pendentes		
 //			arrayUsuario  = controle.getUsuariosPendentes();
 		
