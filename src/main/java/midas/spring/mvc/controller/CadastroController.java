@@ -29,8 +29,11 @@ public class CadastroController {
 			throws ServletException, IOException {
 		
 		Usuario usuario = new Usuario();
+		System.out.println("1");
 		ConfirmacaoCadastro validaCadastro = new ConfirmacaoCadastro();
+		System.out.println("2");
 		Controle controle = new Controle();
+		System.out.println("3");
 		boolean valida;
 
 		usuario.setNome(request.getParameter("nome") + " " + request.getParameter("sobrenome"));
@@ -49,6 +52,8 @@ public class CadastroController {
 		valida = validaCadastro.confirmacao(usuario.getSenha(), request.getParameter("confirmacaoSenha"),
 				usuario.getNome(), usuario.getDataNascimento(), usuario.getEmail(), usuario.getCpf(),
 				usuario.getSexo());
+		
+//		valida = true;
 		
 		if(valida){
 			if(controle.enviarCadastro(usuario))

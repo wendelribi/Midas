@@ -34,7 +34,7 @@ public class ValidacaoData {
 
 			/* Vê se a barra está nas posicoes correta */
 			if (i == 2 || i == 5) {
-				if (data.charAt(i) != '/') {
+				if (data.charAt(i) == '/') {
 					contNBarra++;
 				}
 			}

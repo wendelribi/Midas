@@ -25,8 +25,13 @@ public class ConfirmacaoCadastro {
 	public boolean confirmacao(String senha, String senha2, String nome, String dataNascimento, String email, String cpf,
 			char sexo) {
 
-		if (valida.confirmacaoSenha(senha, senha2) == true & valida.camposValidos(nome) == true
-				& valida.campoGenero(sexo) & cpfValido.cpfValidacao(cpf) & emailValido.emailValido(email) & dataValida.dataValida(dataNascimento)) {
+		if (	  valida.confirmacaoSenha(senha, senha2) == true 
+				& valida.camposValidos(nome) == true
+				& valida.campoGenero(sexo) 
+				& cpfValido.cpfValidacao(cpf) 
+				& emailValido.emailValido(email) 
+				& dataValida.dataValida(dataNascimento)
+				) {
 			return true;
 		} else {
 

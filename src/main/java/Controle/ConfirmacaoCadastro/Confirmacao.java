@@ -89,13 +89,10 @@ public class Confirmacao {
 
 	public boolean campoGenero(char sexo) {
 
-		sexoValido = true;
-
-		if (sexo != 'M' || sexo != 'm' || sexo != 'F' || sexo != 'f') {
-			sexoValido = false;
-			System.err.println("Erro no campo Genero");
-
+		if (sexo == 'M' || sexo == 'm' || sexo == 'F' || sexo == 'f') {
+			return true;
 		}
-		return sexoValido;
+		System.err.println("Erro no campo Genero");
+		return false;
 	}
 }

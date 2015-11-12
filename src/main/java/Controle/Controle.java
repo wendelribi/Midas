@@ -18,7 +18,7 @@ public class Controle {
 	public Controle() {
 		bancoDeDadosUsuario = new UsuarioDAO();
 		//UsuarioDAO.comecarOperacoes();
-		Botao_Usuario buttonFrame = new Botao_Usuario(this);
+		//Botao_Usuario buttonFrame = new Botao_Usuario(this);
 	}
 	
 	
