@@ -29,11 +29,8 @@ public class CadastroController {
 			throws ServletException, IOException {
 		
 		Usuario usuario = new Usuario();
-		System.out.println("1");
 		ConfirmacaoCadastro validaCadastro = new ConfirmacaoCadastro();
-		System.out.println("2");
 		Controle controle = new Controle();
-		System.out.println("3");
 		boolean valida;
 
 		usuario.setNome(request.getParameter("nome") + " " + request.getParameter("sobrenome"));
@@ -59,10 +56,10 @@ public class CadastroController {
 			if(controle.enviarCadastro(usuario))
 				System.out.println("Cadastro enviado com sucesso");
 			else
-				System.out.println("Falha ao enviar o cadastro");
+				System.err.println("Falha ao enviar o cadastro");
 		}
 		else{
-			System.out.println("Nao foi possivel realizar o cadastro. Tente novamente");
+			System.err.println("Nao foi possivel realizar o cadastro. Tente novamente");
 		}
 	}
 }

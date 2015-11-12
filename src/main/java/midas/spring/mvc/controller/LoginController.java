@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import Controle.Controle;
 import Controle.LoginUsuario;
 import midas.dao.UsuarioDAO;
 import midas.entidades.*;
@@ -35,6 +36,7 @@ public class LoginController {
 	public ModelAndView fazerLogin(HttpServletRequest request){
 
 		LoginUsuario login = new LoginUsuario();
+		Controle controle = new Controle();
 		login.setLogin(request.getParameter("nome"));
 		login.setSenha(request.getParameter("senha"));
 		System.out.println(login.getLogin() + " " + login.getSenha());
@@ -57,12 +59,12 @@ public class LoginController {
 		else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
 			System.out.println("Login realizado!\n Tipo de conta: Administrador");
 			// Obtem a lista de Usuarios Pendentes		
-//			arrayUsuario  = controle.getUsuariosPendentes();
-		
-//			arrayUsuario.add(usuario);
+			arrayUsuario  = controle.getUsuariosPendentes();
+			System.out.println(arrayUsuario);
+//			controle.atualizarAutorizacoes(getUsuariosAceitos(),getUsuariosNegados());
 			return new ModelAndView("/login/loginAdmin/viewAdmin","arrayUsuario",arrayUsuario);
 		}
-		return new ModelAndView("/login/loginAdmin/viewAdmin","arrayUsuario",arrayUsuario);
+		return null;
 	}
 	
 //	@RequestMapping(value = "/delete", method = RequestMethod.GET)
