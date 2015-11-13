@@ -65,10 +65,9 @@ public class CadastroController {
 			}
 		}
 		
-		
 		System.out.println(contV+"<- NUMERO DE V");
 		
-		if(contV==7){
+		if(contV==6){
 			if(controle.enviarCadastro(usuario))
 				System.out.println("Cadastro enviado com sucesso");
 			else
