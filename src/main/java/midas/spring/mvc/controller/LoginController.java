@@ -1,5 +1,6 @@
 package midas.spring.mvc.controller;
 
+import java.awt.Window;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -22,9 +23,13 @@ import midas.util.JPAUtil;
 
 @Controller
 @RequestMapping("/login")
-@Transactional (dontRollbackOn = {JPAUtil.class})
+@Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
-	private ArrayList<Usuario> arrayUsuario;
+	
+	ArrayList<Usuario> arrayUsuario;
+	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
+	LoginUsuario login = new LoginUsuario();
+	Controle controle = new Controle();
 	
 	@RequestMapping("/controller")
 	public ModelAndView login() {
@@ -33,44 +38,70 @@ public class LoginController {
 	}
 
 	@RequestMapping("/controle")
-	public ModelAndView fazerLogin(HttpServletRequest request){
+	public ModelAndView fazerLogin(HttpServletRequest request) {
 
-		LoginUsuario login = new LoginUsuario();
-		Controle controle = new Controle();
 		login.setLogin(request.getParameter("nome"));
 		login.setSenha(request.getParameter("senha"));
 		System.out.println(login.getLogin() + " " + login.getSenha());
+
 		
-		UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 		JPAUtil.comecarOperacoes();
 		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
 		JPAUtil.em.close();
-		
+
 		if (usuario == null) {
-			System.out.println("Usuario ou senha incorretos!");
-		} 
-		else if (usuario.getNivelDeAcesso() == 0) {
-			System.out.println("Usuario pendente!");
-		} 
-		else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
+			System.err.println("Usuario ou senha incorreto(s)!");
+			return new ModelAndView("/login/view");
+		} else if (usuario.getNivelDeAcesso() == 0) {
+			System.err.println("Usuario pendente!");
+			return new ModelAndView("/login/view");
+		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 			return new ModelAndView("/login/loginUsuario/viewUsuario");
-		} 
-		else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
+		} else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
 			System.out.println("Login realizado!\n Tipo de conta: Administrador");
-			// Obtem a lista de Usuarios Pendentes		
-			arrayUsuario  = controle.getUsuariosPendentes();
+			// Obtem a lista de Usuarios Pendentes
+			arrayUsuario = controle.getUsuariosPendentes();
 			System.out.println(arrayUsuario);
-//			controle.atualizarAutorizacoes(getUsuariosAceitos(),getUsuariosNegados());
-			return new ModelAndView("/login/loginAdmin/viewAdmin","arrayUsuario",arrayUsuario);
+			// controle.atualizarAutorizacoes(getUsuariosAceitos(),getUsuariosNegados());
+			return new ModelAndView("/login/loginAdmin/viewAdmin", "arrayUsuario", arrayUsuario);
 		}
-		return null;
+		else{
+			System.err.println("Usuario ou senha incorreto(s)!");
+			return new ModelAndView("/login/view");
+		}
+	
+	}
+
+	@RequestMapping(value = "/recusar", method = RequestMethod.GET)
+	public ModelAndView recusar(@RequestParam("cpf") String cpf) {
+		
+		// Retirar o usuario
+		JPAUtil.comecarOperacoes();
+		boolean sucesso = bancoDeDadosUsuario.remover(cpf);
+		JPAUtil.finalizarOperacoes();
+		if(sucesso){
+			System.out.println("Cpf retirado: " + cpf);
+		}
+		else{
+			System.err.println("Nao foi possivel recusar o cpf: "+cpf);
+		}
+		arrayUsuario = controle.getUsuariosPendentes();
+		return new ModelAndView("/login/loginAdmin/viewAdmin", "arrayUsuario", arrayUsuario);
 	}
 	
-//	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-//	public ModelAndView delete(@RequestParam("arrayUsuario") Usuario arrayUsuario) {
-////		Retirar o usuario
-//		return this.list(arrayUsuario);
-//		
+	@RequestMapping(value = "/autorizar", method = RequestMethod.GET)
+	public ModelAndView autorizar(@RequestParam("cpf") String cpf) {
+		System.out.println("Entr");
+		JPAUtil.comecarOperacoes();
+		boolean sucesso = bancoDeDadosUsuario.autorizar(cpf);
+		JPAUtil.finalizarOperacoes();
+		if(sucesso){
+			System.out.println("Cpf autorizado: " + cpf);
+		}
+		else{
+			System.err.println("Nao foi possivel recusar o cpf: "+cpf);
+		}
+		return new ModelAndView("/login/loginAdmin/viewAdmin", "arrayUsuario", arrayUsuario);
+	}
 }
-	

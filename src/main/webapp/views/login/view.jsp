@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="checkbox">
-			<label> <input type="checkbox"> Lembrar de mim </label>
+			<label> <input type="checkbox"> Lembrar Login </label>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Fazer Login</button>

@@ -63,7 +63,7 @@ public class UsuarioDAO {
 			Query q = JPAUtil.em.createQuery("select u from Usuario u where u.cpf = :cpf_usuario", Usuario.class);
 			q.setParameter("cpf_usuario", cpf_usuario);
 			return (Usuario) q.getSingleResult();
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | NoResultException e) {
 			return null;
 		}
 	}

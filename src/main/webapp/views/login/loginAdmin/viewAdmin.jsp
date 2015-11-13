@@ -35,8 +35,8 @@
 					<td>${usuario.email}</td>
 					<td>${usuario.sexo}</td>
 					<td>${usuario.nivelDeAcesso}</td>
-					<td><a href="/save.html?id=${usuario.cpf}">Salvar</a></td>
-					<td><a href="/delete.html?id=${usuario.cpf}">Deletar</a></td>
+					<td><a href="./autorizar.html?cpf=${usuario.cpf}">Autorizar</a></td>
+					<td><a href="./recusar.html?cpf=${usuario.cpf}">Recusar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
