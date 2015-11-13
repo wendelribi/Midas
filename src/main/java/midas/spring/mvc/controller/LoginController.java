@@ -102,6 +102,7 @@ public class LoginController {
 		else{
 			System.err.println("Nao foi possivel recusar o cpf: "+cpf);
 		}
+		arrayUsuario = controle.getUsuariosPendentes();
 		return new ModelAndView("/login/loginAdmin/viewAdmin", "arrayUsuario", arrayUsuario);
 	}
 }

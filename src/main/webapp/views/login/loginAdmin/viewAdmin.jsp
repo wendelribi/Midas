@@ -23,7 +23,7 @@
 				<th>Profissao</th>
 				<th>Email</th>
 				<th>Sexo</th>
-				<th>Nivel de Acesso</th>
+				<th>Data de Nascimento</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -34,7 +34,7 @@
 					<td>${usuario.profissao}</td>
 					<td>${usuario.email}</td>
 					<td>${usuario.sexo}</td>
-					<td>${usuario.nivelDeAcesso}</td>
+					<td>${usuario.dataNascimento}</td>
 					<td><a href="./autorizar.html?cpf=${usuario.cpf}">Autorizar</a></td>
 					<td><a href="./recusar.html?cpf=${usuario.cpf}">Recusar</a></td>
 				</tr>

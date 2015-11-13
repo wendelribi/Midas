@@ -31,10 +31,14 @@ public class UsuarioDAO {
 
 	@Transactional
 	public boolean remover(String cpf_usuario) {
+		tx = JPAUtil.em.getTransaction();
+		tx.begin();
 		try {
 			JPAUtil.em.remove(recuperar(cpf_usuario));
+			tx.commit();
 			return true;
 		} catch (IllegalArgumentException e) {
+			tx.rollback();
 			return false;
 		}
 	}
@@ -48,11 +52,15 @@ public class UsuarioDAO {
 
 	@Transactional
 	public boolean autorizar(String cpf_usuario) {
+		tx = JPAUtil.em.getTransaction();
+		tx.begin();
 		Usuario usuario = recuperar(cpf_usuario);
 		if (usuario != null) {
 			usuario.setNivelDeAcesso(1);
+			tx.commit();
 			return true;
 		} else {
+			tx.rollback();
 			return false;
 		}
 	}
