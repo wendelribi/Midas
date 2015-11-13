@@ -23,7 +23,7 @@ public class ValidacaoEmail {
 		o email contenha arroba e ponto. False, caso contr�rio. 
 	 */
 
-	public boolean emailValido(String email) {
+	public boolean CampoEmail(String email) {
 		boolean validacaoEmail = true;
 		
 		// Variaveis que contam o numero de pontos,arrobas e letras.

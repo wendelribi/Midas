@@ -31,7 +31,7 @@ public class CadastroController {
 		Usuario usuario = new Usuario();
 		ConfirmacaoCadastro validaCadastro = new ConfirmacaoCadastro();
 		Controle controle = new Controle();
-		boolean valida;
+		boolean valida[];
 
 		usuario.setNome(request.getParameter("nome") + " " + request.getParameter("sobrenome"));
 		usuario.setCpf(request.getParameter("cpf"));
@@ -48,11 +48,27 @@ public class CadastroController {
 
 		valida = validaCadastro.confirmacao(usuario.getSenha(), request.getParameter("confirmacaoSenha"),
 				usuario.getNome(), usuario.getDataNascimento(), usuario.getEmail(), usuario.getCpf(),
-				usuario.getSexo());
+				usuario.getSexo(),usuario.getProfissao());
 		
 //		valida = true;
 		
-		if(valida){
+		
+		int contV=0;
+		
+		for(int i=0;i<7;i++)
+		{
+			if(valida[i]==true)
+			{
+			System.out.println("VERDADEIRO NUMERO "+i);	
+				
+			contV++;
+			}
+		}
+		
+		
+		System.out.println(contV+"<- NUMERO DE V");
+		
+		if(contV==7){
 			if(controle.enviarCadastro(usuario))
 				System.out.println("Cadastro enviado com sucesso");
 			else

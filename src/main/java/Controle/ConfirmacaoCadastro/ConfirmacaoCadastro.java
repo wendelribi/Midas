@@ -1,41 +1,39 @@
 package Controle.ConfirmacaoCadastro;
-/* Classe que verifica se todos os campos que o usuario digitou, na hora de fazer o
- * cadastro, est�o corretos ou v�lidos. Essa classe � chamada pela classe Classe_Usuario. 
- */
 
 public class ConfirmacaoCadastro {
 
-	Confirmacao valida = new Confirmacao(); //Cria um objeto da classe Confirmacao
-	ValidacaoCpf cpfValido = new ValidacaoCpf();//Cria um objeto da classe ValidacaoCpf
-	ValidacaoEmail emailValido = new ValidacaoEmail();//Cria um objeto da classe ValidacaoEmail
+	ValidacaoCpf cpfValido = new ValidacaoCpf();
 	ValidacaoData dataValida = new ValidacaoData();
-	
-	/*	Metodo: confirmacao.
-	Descricao: 
-		Essa funcao retorna em booleano se todos os campos de cadastro estao corretos ou nao.	
-	Parametros:
- 		String senha1,senha2: Campos onde o usuario coloca a senha e a confirmacao da senha.
- 		String nome, sobrenome: Campos onde o usuario coloca o nome e o sobrenome.
- 		String cpf, email: Campos onde o usuario coloca o cpf e o email.
- 	Valor retornado:
-		A funcao retorna true, caso todos os campos estejam corretos. False, caso 
-		algum dos campos esteja incorreto. 
-	 */
+	ValidacaoEmail emailValido = new ValidacaoEmail();
+	ValidacaoNome nomeValido = new ValidacaoNome();
+	ValidacaoSenha senhaValida = new ValidacaoSenha();
+	ValidacaoSexo sexoValido = new ValidacaoSexo();
+	ValidacaoProfissao profissaoValida = new ValidacaoProfissao();
 
-	public boolean confirmacao(String senha, String senha2, String nome, String dataNascimento, String email, String cpf,
-			char sexo) {
 
-		if (	  valida.confirmacaoSenha(senha, senha2) == true 
-				& valida.camposValidos(nome) == true
-				& valida.campoGenero(sexo) 
-				& cpfValido.cpfValidacao(cpf) 
-				& emailValido.emailValido(email) 
-				& dataValida.dataValida(dataNascimento)
-				) {
-			return true;
-		} else {
+	public boolean[] confirmacao(String senha, String senha2, String nome , String data, String email , String cpf , char sexo,String profissao) {
 
-			return false;
+		int i;
+		
+		 boolean cadastrovalido[] = new boolean[7];
+		
+
+		// 0- SENHA 1- NOME 2- SOBRENOME 3- CPF 4- EMAIL 5- PROFISSAO 6- SEXO 7- DATA
+		
+
+		// INCIALIZADO COMO TRUE
+		for (i = 0; i < 7; i++) {
+			cadastrovalido[i] = true;
 		}
+		
+		cadastrovalido[0]=senhaValida.CampoSenha(senha,senha2);
+		cadastrovalido[1]=nomeValido.CampoNome(nome);
+		cadastrovalido[2]=cpfValido.CampoCpf(cpf);
+		cadastrovalido[3]=emailValido.CampoEmail(email);
+		cadastrovalido[4]=profissaoValida.CampoProfissao(profissao);
+		cadastrovalido[5]=sexoValido.CampoSexo(sexo);
+		cadastrovalido[6]=dataValida.CampoData(data);
+		
+		return cadastrovalido;
 	}
 }

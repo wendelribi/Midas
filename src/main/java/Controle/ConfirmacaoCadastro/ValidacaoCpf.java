@@ -22,7 +22,7 @@ public class ValidacaoCpf {
 		o cpf tenha 11 numeros. False, caso contr�rio. 
 	 */
 	
-	public boolean cpfValidacao(String cpf) {
+	public boolean CampoCpf(String cpf) {
 		boolean validacaoCpf = true;
 		int contadorDeNumeros = 0, i, tamanhoCpf;
 

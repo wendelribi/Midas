@@ -8,14 +8,7 @@ public class ValidacaoData {
 		comparacao = "";
 	}
 
-	/*
-	 * Metodo: dataValida. Descricao: Essa funcao retorna em booleano se o campo
-	 * data e valido ou nao. Parametros: String data: Campo onde o usuario
-	 * coloca o data. Valor retornado: A funcao retorna true ou false por meio
-	 * da variavel validacaoData.
-	 */
-
-	public boolean dataValida(String data) {
+	public boolean CampoData(String data) {
 
 		boolean validacaodata = true;
 
