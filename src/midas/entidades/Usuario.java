@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity(name = "Usuario")
 public class Usuario {
 	@Id
+	@GeneratedValue
 	@Column(name = "UsuarioId")
 	private int id;
 	@Column(nullable = false)
