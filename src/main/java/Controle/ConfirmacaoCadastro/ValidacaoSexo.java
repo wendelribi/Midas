@@ -4,7 +4,7 @@ public class ValidacaoSexo {
 
 	public boolean CampoSexo(char sexo) {
 
-		if (sexo == 'M' || sexo == 'm' || sexo == 'F' || sexo == 'f') {
+		if (sexo == 'm' || sexo == 'f') {
 			return true;
 		}
 		return false;

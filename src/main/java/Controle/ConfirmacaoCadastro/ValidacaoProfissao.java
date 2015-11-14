@@ -7,9 +7,9 @@ public class ValidacaoProfissao extends ValidacaoNome {
 	public boolean CampoProfissao(String profissao) {
 		validacaoProfissao = true;
 
-		validacaoProfissao= CampoSobrenome(profissao);
+		validacaoProfissao= CampoNome(profissao);
 				
-		return validacaoSobrenome;
+		return validacaoProfissao;
 	}
 
 }

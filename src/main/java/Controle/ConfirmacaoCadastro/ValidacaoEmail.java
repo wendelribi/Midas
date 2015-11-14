@@ -44,12 +44,10 @@ public class ValidacaoEmail {
 	
 		if (contA != 1 || contP <= 0 || contL<=5) {
 			validacaoEmail = false;
-			System.err.println("Erro no campo email");
 		}
 		
 		if (email.equals(comparacao) || email.equals("Email")) {
 			validacaoEmail=false;
-			System.err.println("Erro no campo email");
 		}
 		
 		return validacaoEmail;

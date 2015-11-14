@@ -28,7 +28,6 @@ public class ValidacaoCpf {
 
 		if (cpf.equals(comparacao) || cpf.equals("CPF") || ((tamanhoCpf = cpf.length()) != 11)) {
 			validacaoCpf = false;
-			System.err.println("Erro no campo CPF");
 		}
 
 		if (cpf.length() == 11) {
@@ -42,7 +41,6 @@ public class ValidacaoCpf {
 			if (cpf.length() != contadorDeNumeros) {
 				validacaoCpf = false; // Caso a senha não possua Caracteres ou
 										// Numeros
-				System.err.println("Erro no campo CPF. Digite só numeros!");
 			}
 		}
 

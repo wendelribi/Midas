@@ -41,5 +41,6 @@
 
 		<button type="submit" class="btn btn-primary">Fazer Login</button>
 	</form>
+
 </h:body>
 </html>

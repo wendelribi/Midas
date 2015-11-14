@@ -35,12 +35,11 @@
 					<td>${usuario.email}</td>
 					<td>${usuario.sexo}</td>
 					<td>${usuario.dataNascimento}</td>
-					<td><a href="./autorizar.html?cpf=${usuario.cpf}">Autorizar</a></td>
-					<td><a href="./recusar.html?cpf=${usuario.cpf}">Recusar</a></td>
+					<td><a class="btn btn-primary" href="./autorizar.html?cpf=${usuario.cpf}" role="button">Autorizar</a></td>
+					<td><a class="btn btn-danger" href="./recusar.html?cpf=${usuario.cpf}" role="button">Recusar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
-
 	</div>
 
 	<nav>

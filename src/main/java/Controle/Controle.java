@@ -21,8 +21,6 @@ public class Controle {
 		//Botao_Usuario buttonFrame = new Botao_Usuario(this);
 	}
 	
-	
-	
 	/*
 	 * Envia o cadastro para o banco de dados e retorna true - para cadastro enviado com sucesso
 	 * 													false - para falha ao enviar o cadastro
@@ -33,8 +31,6 @@ public class Controle {
 		JPAUtil.finalizarOperacoes();
 		return sucesso;
 	}
-	
-	
 	
 	/*
 	 * Confere o login com o banco de dados
@@ -55,9 +51,7 @@ public class Controle {
 	
 		return CADASTRO_INVALIDO;
 	}
-	
-	
-	
+
 	/*
 	 * Retorna uma lista com os usuários pendentes no banco de dados
 	 */
@@ -67,22 +61,4 @@ public class Controle {
 		JPAUtil.finalizarOperacoes();
 		return retorno;
 	}
-	
-	
-	
-	/*
-	 *  Atualiza o nível de acesso dos usuários autorizados e retira os usuarios negados do banco de dados
-	 */
-	public void atualizarAutorizacoes(ArrayList<Usuario> autorizados, ArrayList<Usuario> negados){
-		JPAUtil.comecarOperacoes();
-		for(Usuario usuario : autorizados){
-			bancoDeDadosUsuario.autorizar(usuario.getCpf());
-		}
-		
-		for(Usuario usuario : negados){
-			bancoDeDadosUsuario.remover(usuario.getCpf());
-		}
-		JPAUtil.finalizarOperacoes();
-	}
-	
 }

@@ -49,12 +49,7 @@
 			<input type="text" class="form-control" placeholder="Profissao"
 				name="profissao">
 		</div>
-
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Sexo"
-				name="sexo">
-		</div>
-
+	
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="(DD/MM/AAAA)"
 				name="dataNascimento">
@@ -69,7 +64,16 @@
 			<input type="password" class="form-control"
 				placeholder="Confirmacao da senha" name="confirmacaoSenha">
 		</div>
-
+		
+		<label class="radio-inline">
+		  <input type="radio" name="sexo" id="inlineRadio1" value="masculino"> Masculino
+		</label>
+		
+		<label class="radio-inline">
+		  <input type="radio" name="sexo" id="inlineRadio2" value="feminino"> Feminino
+		</label>
+		 </br> </br>
+		 
 		<button type="submit" class="btn btn-success">Cadastrar</button>
 	</form>
 </h:body>

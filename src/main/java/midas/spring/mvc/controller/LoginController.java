@@ -52,18 +52,23 @@ public class LoginController {
 		if (usuario == null) {
 			System.err.println("Usuario ou senha incorreto(s)!");
 			return new ModelAndView("/login/view");
+		
 		} else if (usuario.getNivelDeAcesso() == 0) {
+		
 			System.err.println("Usuario pendente!");
 			return new ModelAndView("/login/view");
+		
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
+		
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 			return new ModelAndView("/login/loginUsuario/viewUsuario");
+		
 		} else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
+		
 			System.out.println("Login realizado!\n Tipo de conta: Administrador");
+			
 			// Obtem a lista de Usuarios Pendentes
 			arrayUsuario = controle.getUsuariosPendentes();
-			System.out.println(arrayUsuario);
-			// controle.atualizarAutorizacoes(getUsuariosAceitos(),getUsuariosNegados());
 			return new ModelAndView("/login/loginAdmin/viewAdmin", "arrayUsuario", arrayUsuario);
 		}
 		else{
@@ -80,6 +85,7 @@ public class LoginController {
 		JPAUtil.comecarOperacoes();
 		boolean sucesso = bancoDeDadosUsuario.remover(cpf);
 		JPAUtil.finalizarOperacoes();
+		
 		if(sucesso){
 			System.out.println("Cpf retirado: " + cpf);
 		}
@@ -92,16 +98,18 @@ public class LoginController {
 	
 	@RequestMapping(value = "/autorizar", method = RequestMethod.GET)
 	public ModelAndView autorizar(@RequestParam("cpf") String cpf) {
-		System.out.println("Entr");
+		
 		JPAUtil.comecarOperacoes();
 		boolean sucesso = bancoDeDadosUsuario.autorizar(cpf);
 		JPAUtil.finalizarOperacoes();
+		
 		if(sucesso){
 			System.out.println("Cpf autorizado: " + cpf);
 		}
 		else{
 			System.err.println("Nao foi possivel recusar o cpf: "+cpf);
 		}
+		
 		arrayUsuario = controle.getUsuariosPendentes();
 		return new ModelAndView("/login/loginAdmin/viewAdmin", "arrayUsuario", arrayUsuario);
 	}
