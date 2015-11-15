@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import Controle.Controle;
 import Controle.LoginUsuario;
@@ -50,13 +51,13 @@ public class LoginController {
 		JPAUtil.em.close();
 
 		if (usuario == null) {
-			System.err.println("Usuario ou senha incorreto(s)!");
-			return new ModelAndView("/login/view");
+			System.err.println("Login ou senha incorreto(s)!");
+			return new ModelAndView(new RedirectView("../login/controller.html"),"loginIncorreto",true);
 		
 		} else if (usuario.getNivelDeAcesso() == 0) {
 		
 			System.err.println("Usuario pendente!");
-			return new ModelAndView("/login/view");
+			return new ModelAndView(new RedirectView("../login/controller.html"),"loginPendente",true);
 		
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
 		
@@ -72,8 +73,8 @@ public class LoginController {
 			return new ModelAndView("/login/loginAdmin/viewAdmin", "arrayUsuario", arrayUsuario);
 		}
 		else{
-			System.err.println("Usuario ou senha incorreto(s)!");
-			return new ModelAndView("/login/view");
+			System.err.println("Login ou senha incorreto(s)!");
+			return new ModelAndView(new RedirectView("../login/controller.html"),"loginIncorreto",true);
 		}
 	
 	}

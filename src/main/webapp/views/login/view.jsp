@@ -24,7 +24,26 @@
 			</nav>
 		</div>
 	</div>
-
+	
+	<%
+		if(request.getParameter("loginIncorreto") != null){	
+			if(request.getParameter("loginIncorreto").equals("true")){
+	%>	
+		<div class="alert alert-danger" role="alert">
+  			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  			<span class="sr-only">Error:</span>	Login ou senha incorreto(s)
+		</div>
+	<% } } %>
+	
+	<%
+		if(request.getParameter("loginPendente") != null){	
+			if(request.getParameter("loginPendente").equals("true")){
+	%>	<div class="alert alert-danger" role="alert">
+  			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  			<span class="sr-only">Error:</span>	Login pendente
+		</div>
+	<% } } %>
+	
 	<form action="controle.html" method="post">
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Login"

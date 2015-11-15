@@ -52,10 +52,6 @@ public class CadastroController {
 			System.err.println("Você deixou algum dos campos em branco.");
 			System.err.println("Nao foi possivel realizar o cadastro. Tente novamente.");			
 		}
-		
-//		System.out.println(usuario.getNome() + "\n" + usuario.getCpf() + "\n" + usuario.getDataNascimento() + "\n"
-//				+ usuario.getEmail() + "\n" + usuario.getSenha() + "\n" + usuario.getProfissao() + "\n"
-//				+ usuario.getSexo() + "\n" + usuario.getNivelDeAcesso() + "\n");
 
 		valida = validaCadastro.confirmacao(usuario.getSenha(), request.getParameter("confirmacaoSenha"),
 				usuario.getNome(), usuario.getDataNascimento(), usuario.getEmail(), usuario.getCpf(), usuario.getSexo(),
