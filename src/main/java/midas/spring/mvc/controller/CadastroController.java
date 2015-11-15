@@ -35,50 +35,48 @@ public class CadastroController {
 		
 		;
 		try {
-			usuario.setNome(request.getParameter("nome") + " " + request.getParameter("sobrenome"));
+			usuario.setNome(request.getParameter("nome"));
 			usuario.setCpf(request.getParameter("cpf"));
 			usuario.setEmail(request.getParameter("email"));
 			usuario.setDataNascimento(request.getParameter("dataNascimento"));
 			usuario.setProfissao(request.getParameter("profissao"));
 			usuario.setSenha(request.getParameter("senha"));
 			usuario.setNivelDeAcesso(0);
-			if(request.getParameter("sexo").equals("masculino") || request.getParameter("sexo").equals("feminino")){
+			if(request.getParameter("sexo") == null)
+				usuario.setSexo('n');
+			else if(request.getParameter("sexo").equals("masculino") || request.getParameter("sexo").equals("feminino")){
 				usuario.setSexo(request.getParameter("sexo").charAt(0));
 			}
-			else{
-				usuario.setSexo('n');
-			}
-		} catch (StringIndexOutOfBoundsException | NullPointerException e) {
+		}catch (StringIndexOutOfBoundsException | NullPointerException e) {
 			
 			System.err.println("Você deixou algum dos campos em branco.");
-			System.err.println("Nao foi possivel realizar o cadastro. Tente novamente.");
-			return new ModelAndView("/cadastro/cadastrar");
+			System.err.println("Nao foi possivel realizar o cadastro. Tente novamente.");			
 		}
 		
-		System.out.println(usuario.getNome() + "\n" + usuario.getCpf() + "\n" + usuario.getDataNascimento() + "\n"
-				+ usuario.getEmail() + "\n" + usuario.getSenha() + "\n" + usuario.getProfissao() + "\n"
-				+ usuario.getSexo() + "\n" + usuario.getNivelDeAcesso() + "\n");
+//		System.out.println(usuario.getNome() + "\n" + usuario.getCpf() + "\n" + usuario.getDataNascimento() + "\n"
+//				+ usuario.getEmail() + "\n" + usuario.getSenha() + "\n" + usuario.getProfissao() + "\n"
+//				+ usuario.getSexo() + "\n" + usuario.getNivelDeAcesso() + "\n");
 
 		valida = validaCadastro.confirmacao(usuario.getSenha(), request.getParameter("confirmacaoSenha"),
 				usuario.getNome(), usuario.getDataNascimento(), usuario.getEmail(), usuario.getCpf(), usuario.getSexo(),
 				usuario.getProfissao());
 
-		if (validaCadastro.confirmaCadastro(valida)) {
-			if (controle.enviarCadastro(usuario)) {
+		if (validaCadastro.confirmaCadastro(valida,request)) {
+			if (controle.enviarCadastro(usuario,request)) {
 				
 				System.out.println("Cadastro enviado com sucesso");
-				return new ModelAndView(new RedirectView("../"));
+				return new ModelAndView(new RedirectView("../"),"cadastroSucesso",true);
 				
 			} else {
 				
 				System.err.println("Falha ao enviar o cadastro");
-				return new ModelAndView(new RedirectView("./controller.html"));
+				return new ModelAndView("/cadastro/cadastrar","usuario",usuario);
 			}
 			
 		} else {
 			
 			System.err.println("Nao foi possivel realizar o cadastro. Tente novamente.");
-			return new ModelAndView("/cadastro/cadastrar","valida",valida);
+			return new ModelAndView("/cadastro/cadastrar","usuario",usuario);
 		}
 	}
 }

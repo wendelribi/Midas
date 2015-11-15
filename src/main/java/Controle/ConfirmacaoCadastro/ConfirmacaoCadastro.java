@@ -1,5 +1,7 @@
 package Controle.ConfirmacaoCadastro;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class ConfirmacaoCadastro {
 	
 	ValidacaoCpf cpfValido = new ValidacaoCpf();
@@ -35,24 +37,34 @@ public class ConfirmacaoCadastro {
 		return cadastrovalido;
 	}
 
-	public boolean confirmaCadastro(boolean valida[]) {
+	public boolean confirmaCadastro(boolean valida[],HttpServletRequest request) {
 		int contV = 0;
 		for (int i = 0; i < 7; i++) {
 			if (valida[i] == true) {
 				contV++;
+				switch(i){
+					case 0: request.setAttribute("erroSenha","true"); break;
+					case 1: request.setAttribute("erroNome","true"); break;
+					case 2: request.setAttribute("erroCpf","true"); break;
+					case 3: request.setAttribute("erroEmail","true"); break;
+					case 4: request.setAttribute("erroProfissao","true"); break;
+					case 5: request.setAttribute("erroGenero","true"); break;
+					case 6: request.setAttribute("erroData","true"); break;
+				}
 			}
 			else{
 				switch(i){
-					case 0: System.err.println("Erro no campo senha"); break;
-					case 1: System.err.println("Erro no campo nome"); break;
-					case 2: System.err.println("Erro no campo cpf"); break;
-					case 3: System.err.println("Erro no campo email"); break;
-					case 4: System.err.println("Erro no campo profissao"); break;
-					case 5: System.err.println("Erro no campo genero"); break;
-					case 6: System.err.println("Erro no campo data de nascimento"); break;
+					case 0: request.setAttribute("erroSenha","false"); break;
+					case 1: request.setAttribute("erroNome","false"); break;
+					case 2: request.setAttribute("erroCpf","false"); break;
+					case 3: request.setAttribute("erroEmail","false"); break;
+					case 4: request.setAttribute("erroProfissao","false"); break;
+					case 5: request.setAttribute("erroGenero","false"); break;
+					case 6: request.setAttribute("erroData","false"); break;
 				}
 			}
 		}
+		
 		if(contV == 7)
 			return true;
 		else

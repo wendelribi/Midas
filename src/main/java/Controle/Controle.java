@@ -2,6 +2,8 @@ package Controle;
 
 import java.util.ArrayList;
 import midas.dao.*;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.*;
 import InterfaceGrafica.Botao_Usuario;
 import midas.entidades.Usuario;
@@ -25,9 +27,9 @@ public class Controle {
 	 * Envia o cadastro para o banco de dados e retorna true - para cadastro enviado com sucesso
 	 * 													false - para falha ao enviar o cadastro
 	 */
-	public boolean enviarCadastro(Usuario novoUsuario){
+	public boolean enviarCadastro(Usuario novoUsuario,HttpServletRequest request){
 		JPAUtil.comecarOperacoes();
-		boolean sucesso = bancoDeDadosUsuario.inserir(novoUsuario);
+		boolean sucesso = bancoDeDadosUsuario.inserir(novoUsuario,request);
 		JPAUtil.finalizarOperacoes();
 		return sucesso;
 	}

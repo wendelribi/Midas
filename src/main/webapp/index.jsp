@@ -25,7 +25,18 @@
 		<h4>
 			<a href="./login/controller.html">Login</a> <br /> <a
 				href="./cadastro/controller.html">Requisitar Cadastro</a>
+				<input type="text" hidden="true" name="cadastro" value="${cadastroSucesso}">
+		<% String nome = request.getParameter("cadastroSucesso"); 
+		if(nome != null){	
+			if(nome.equals("true")){
+		%>
+		<script language="JavaScript" type="text/javascript">
+			alert ("Cadastro enviado com sucesso! Confirmacao pendente!")
+		</script>
 		</h4>
+		<%}} %>
 	</center>
+	
+	
 </h:body>
 </html>

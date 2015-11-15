@@ -12,7 +12,6 @@
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
-
 	<div class="panel panel-primary">
 		<!-- Default panel contents -->
 		<div class="panel-heading">Usuarios pendentes</div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.postgresql.util.PSQLException;
@@ -16,15 +17,17 @@ public class UsuarioDAO {
 	public static EntityTransaction tx = null;
 	
 	@Transactional
-	public boolean inserir(Usuario usuario) {
+	public boolean inserir(Usuario usuario,HttpServletRequest request) {
 		try {
 			tx = JPAUtil.em.getTransaction();
 			tx.begin();
+			request.setAttribute("cpfExiste","false");
 			JPAUtil.em.persist(usuario);
 			tx.commit();
 			return true;
 		} catch (RollbackException e) {
-			System.err.println("CPF já existente! Nao foi possivel realizar o cadastro!");
+			request.setAttribute("cpfExiste","true");
+			System.err.println("CPF ja existente! Nao foi possivel realizar o cadastro!");
 			return false;
 		}
 	}
