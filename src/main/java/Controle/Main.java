@@ -1,8 +1,6 @@
 package Controle;
 import javax.swing.*;
 
-import InterfaceGrafica.Botao_Usuario;
-
 /* Classe que chama que cria um objeto da classe Botao_Usuario para mostrar
  * a janela de opçoes para o usuario.
  */

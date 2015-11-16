@@ -80,7 +80,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/recusar", method = RequestMethod.GET)
-	public ModelAndView recusar(@RequestParam("cpf") String cpf) {
+	public ModelAndView recusar(@RequestParam("cpfRecusado") String cpf) {
 		
 		// Retirar o usuario
 		JPAUtil.comecarOperacoes();
@@ -98,7 +98,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/autorizar", method = RequestMethod.GET)
-	public ModelAndView autorizar(@RequestParam("cpf") String cpf) {
+	public ModelAndView autorizar(@RequestParam("cpfAutorizado") String cpf) {
 		
 		JPAUtil.comecarOperacoes();
 		boolean sucesso = bancoDeDadosUsuario.autorizar(cpf);

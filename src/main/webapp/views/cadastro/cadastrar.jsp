@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	
-	<form action="validacao.html" method="get">
+	<form action="validacao.html" method="post">
 		<c:forEach items="${usuario}" var="usuario">
 		
 			<input type="text" hidden="true" name="erroNome" value="${erroNome}"> 
@@ -186,11 +186,6 @@
 		
 		
 	</form>
-	
-	 
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  	<span aria-hidden="true">&times;</span>
-	</button>
 	
 </h:body>
 </html>

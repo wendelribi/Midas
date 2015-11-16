@@ -54,7 +54,7 @@ public class testePersistencia {
 	public void testInsere() {
 
 		comecarOperacoes();
-		bd.inserir(user);
+//		bd.inserir(user);
 		finalizarOperacoes();
 	}
 	

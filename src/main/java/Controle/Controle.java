@@ -5,7 +5,6 @@ import midas.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.*;
-import InterfaceGrafica.Botao_Usuario;
 import midas.entidades.Usuario;
 import midas.util.JPAUtil;
 

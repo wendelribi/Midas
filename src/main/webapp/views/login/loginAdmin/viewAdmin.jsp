@@ -34,13 +34,22 @@
 					<td>${usuario.email}</td>
 					<td>${usuario.sexo}</td>
 					<td>${usuario.dataNascimento}</td>
-					<td><a class="btn btn-primary" href="./autorizar.html?cpf=${usuario.cpf}" role="button">Autorizar</a></td>
-					<td><a class="btn btn-danger" href="./recusar.html?cpf=${usuario.cpf}" role="button">Recusar</a></td>
+					<td><a class="btn btn-primary" href="./autorizar.html?cpfAutorizado=${usuario.cpf}" role="button">Autorizar</a></td>
+					<td><a class="btn btn-danger" href="./recusar.html?cpfRecusado=${usuario.cpf}" role="button">Recusar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-
+	
+	
+	<% if(request.getParameter("cpfAutorizado") != null){ %>
+		<div class="alert alert-success" role="alert">Cpf autorizado:<%out.println(request.getParameter("cpfAutorizado")); %> </div>
+	<%} %>
+	
+	<% if(request.getParameter("cpfRecusado") != null){ %>
+		<div class="alert alert-danger" role="alert">Cpf recusado:<%out.println(request.getParameter("cpfRecusado")); %> </div>
+	<%} %>
+	
 	<nav>
 		<ul class="pager">
 			<li><a href="./controller.html">Sair da conta</a></li>

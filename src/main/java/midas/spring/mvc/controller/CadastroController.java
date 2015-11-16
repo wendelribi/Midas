@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -25,7 +26,7 @@ public class CadastroController {
 		return new ModelAndView("/cadastro/cadastrar");
 	}
 
-	@RequestMapping("/validacao")
+	@RequestMapping(value = "/validacao",method = RequestMethod.POST)
 	public ModelAndView validacao(HttpServletRequest request) {
 
 		Usuario usuario = new Usuario();
