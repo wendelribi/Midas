@@ -13,6 +13,14 @@
 </h:head>
 
 <h:body>
+	<button type="button" class="btn btn-default btn-lg">
+  		<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Procurar
+	</button>
+	<button type="file" class="btn btn-default btn-lg">
+  		<span class="glyphicon glyphicon-save" aria-hidden="true"></span> Salvar
+	</button>
+	<img src="C:\Users\Victor\Pictures\Exemplo.jpg" width = "800" height = "600"/>
+	
 	<nav>
 		<ul class = "pager">
 			<li><a href ="./controller.html">Sair da conta</a></li>
