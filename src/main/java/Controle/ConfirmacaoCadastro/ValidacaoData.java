@@ -23,8 +23,8 @@ public class ValidacaoData {
 			if (i == 0 || i == 1 || i == 3 || i == 4 || i == 6 || i == 7 || i == 8 || i == 9) {
 				if (data.charAt(i) >= '0' && data.charAt(i) <= '9')
 					contNNum++;
-			}
-
+			}	
+			
 			/* Vê se a barra está nas posicoes correta */
 			if (i == 2 || i == 5) {
 				if (data.charAt(i) == '/') {
@@ -32,8 +32,11 @@ public class ValidacaoData {
 				}
 			}
 		}
+		
+		System.out.println(contNNum);
+		
 
-		if (contbarra != 2 || contNBarra != 2 || contNNum != 8) {
+		if (contbarra != 2 || contNBarra != 2 || contNNum != 8 || data.length()!=10){
 			validacaodata = false;
 		}
 

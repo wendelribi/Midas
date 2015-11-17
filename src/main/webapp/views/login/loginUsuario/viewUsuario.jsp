@@ -62,7 +62,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-		<img src="C:\Users\Victor\Pictures\Exemplo.jpg" width = "800" height = "600"/>
+		<img src="C:\Users\Gabriel\Dropbox\MIDAS\Exemplo.jpg" width = "800" height = "600"/>
 
 </h:body>
 </html>
