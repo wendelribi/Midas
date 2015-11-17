@@ -33,7 +33,7 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Pesquisar">
         </div>
-        <button type="submit" class="btn btn-primary btn">
+        <button type="button" class="btn btn-primary btn">
         <span class ="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
         

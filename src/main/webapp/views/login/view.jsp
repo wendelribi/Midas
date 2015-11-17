@@ -13,17 +13,30 @@
 </h:head>
 
 <h:body>
-	<div class="container">
+
+
+<div class="container">
 		<div class="row">
-			<nav class="nav navbar-nav">
+			<nav class="navbar-form navbar-left">
 			<ul class="nav nav-pills">
-				<li role="presentation"><a href="../">Midas-Home</a></li>
-				<li role="presentation"><a href="../cadastro/controller.html">Fazer
-						Cadastro</a></li>
+				<li><a  href="../" >
+					<button type="button" class="btn btn-primary btn-lg">
+						<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Midas Home  
+						</button>
+						</a></li>
+						
+						<li><a href="../cadastro/controller.html" >  
+						<button type="button" class="btn btn-primary btn-lg">  
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Fazer Cadastro  
+					</button>
+					
+				</a></li>
 			</ul>
 			</nav>
 		</div>
 	</div>
+
+
 	
 	<%
 		if(request.getParameter("loginIncorreto") != null){	

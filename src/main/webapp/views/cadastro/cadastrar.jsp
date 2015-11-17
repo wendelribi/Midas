@@ -14,13 +14,23 @@
 </h:head>
 
 <h:body>
+	
+	
 	<div class="container">
 		<div class="row">
 			<nav class="nav navbar-nav">
 			<ul class="nav nav-pills">
-				<li role="presentation"><a href="../">Midas-Home</a></li>
-				<li role="presentation"><a href="../login/controller.html">Fazer
-						Login   </a></li> 
+				<li><a  href="../" >
+					<button type="button" class="btn btn-primary btn-lg">
+						<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Midas Home  
+						</button>
+						</a></li>
+						
+						<li><a href="../login/controller.html" >
+						<button type="button" class="btn btn-primary btn-lg">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Fazer Login  
+					</button>
+				</a></li>
 			</ul>
 			</nav>
 		</div>

@@ -22,9 +22,21 @@
 <h:body>
 	<center>
 		<h2>MIDAS</h2>
+		</br>
 		<h4>
-			<a href="./login/controller.html">Login</a> <br /> <a
-				href="./cadastro/controller.html">Requisitar Cadastro</a>
+		<li><a href="./login/controller.html" >
+					<button type="button" class="btn btn-primary btn-lg">
+						<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> LOGIN
+						</button>
+						</a></li>
+						</br>
+						<li><a href="./cadastro/controller.html" >
+						<button type="button" class="btn btn-primary btn-lg">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> REQUISITAR CADASTRO  
+					</button>
+				</a></li>
+		  		</ul>
+			</div>
 		
 		<% String nome = request.getParameter("cadastroSucesso"); 
 		if(nome != null){	
