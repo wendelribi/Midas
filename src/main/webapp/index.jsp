@@ -21,9 +21,17 @@
 </h:head>
 <h:body>
 	<center>
-		<h2>MIDAS</h2>
+		<h2></h2>
 		</br>
 		<h4>
+		
+<div class="jumbotron">
+  <h1>MIDAS</h1>
+  <p>Mammographic Image Database for Automated Analysis</p>
+  </p>
+</div>
+		
+		
 		<li><a href="./login/controller.html" >
 					<button type="button" class="btn btn-primary btn-lg">
 						<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> LOGIN
@@ -35,6 +43,14 @@
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> REQUISITAR CADASTRO  
 					</button>
 				</a></li>
+				</br>				
+				
+						<li><a href="./login/controller.html" >
+					<button type="button" class="btn btn-primary btn-lg">
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> SOBRE
+						</button>
+						</a></li>
+				
 		  		</ul>
 			</div>
 		
