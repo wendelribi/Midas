@@ -3,6 +3,7 @@ package midas.spring.mvc.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
@@ -19,22 +20,21 @@ import midas.entidades.Usuario;
 
 @Controller
 @RequestMapping("/cadastro")
-public class CadastroController {
+public class CadastroController extends HttpServlet {
 
 	@RequestMapping("/controller")
 	public ModelAndView cadastrar() {
 		return new ModelAndView("/cadastro/cadastrar");
 	}
-
+	
 	@RequestMapping(value = "/validacao",method = RequestMethod.POST)
-	public ModelAndView validacao(HttpServletRequest request) {
+	public ModelAndView get (HttpServletRequest request, HttpServletResponse resp) {
 
 		Usuario usuario = new Usuario();
 		ConfirmacaoCadastro validaCadastro = new ConfirmacaoCadastro();
 		Controle controle = new Controle();
 		boolean valida[];
 		
-		;
 		try {
 			usuario.setNome(request.getParameter("nome"));
 			usuario.setCpf(request.getParameter("cpf"));

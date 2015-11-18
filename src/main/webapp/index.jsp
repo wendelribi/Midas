@@ -45,7 +45,7 @@
 				</a></li>
 				</br>				
 				
-						<li><a href="./login/controller.html" >
+						<li><a href="./info/controller.html" >
 					<button type="button" class="btn btn-primary btn-lg">
 						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> SOBRE
 						</button>
