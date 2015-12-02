@@ -19,7 +19,6 @@ public class JPAUtil {
 	}
 
 	public static void finalizarOperacoes() {
-		
 		em.close();
 		emf.close();
 	}

@@ -10,7 +10,7 @@ public class Patient {
 	@Id
 	@GeneratedValue
 	@Column 
-	private int patientId;
+	private Long patientId;
 	@Column (nullable = false)
 	private String patientHistory;
 	@Column (nullable = false)
@@ -26,7 +26,7 @@ public class Patient {
 		this.birthday = birthday;
 	}
 	
-	public int getPatientId() {
+	public Long getPatientId() {
 		return patientId;
 	}
 	public String getPatientHistory() {
