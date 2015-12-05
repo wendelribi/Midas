@@ -23,7 +23,7 @@ import midas.entidades.*;
 import midas.util.JPAUtil;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/usuario/login")
 @Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
 	

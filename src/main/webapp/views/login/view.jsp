@@ -19,7 +19,7 @@
 		<div class="row">
 			<nav class="navbar-form navbar-left">
 			<ul class="nav nav-pills">
-				<li><a  href="../" >
+				<li><a  href="../../" >
 					<button type="button" class="btn btn-primary btn-lg">
 						<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Midas Home  
 						</button>

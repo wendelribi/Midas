@@ -19,7 +19,7 @@ import Controle.ConfirmacaoCadastro.ConfirmacaoCadastro;
 import midas.entidades.Usuario;
 
 @Controller
-@RequestMapping("/cadastro")
+@RequestMapping("/usuario/cadastro")
 public class CadastroController extends HttpServlet {
 
 	@RequestMapping("/controller")
@@ -28,7 +28,7 @@ public class CadastroController extends HttpServlet {
 	}
 	
 	@RequestMapping(value = "/validacao",method = RequestMethod.POST)
-	public ModelAndView get (HttpServletRequest request, HttpServletResponse resp) {
+	public ModelAndView post (HttpServletRequest request, HttpServletResponse resp) {
 
 		Usuario usuario = new Usuario();
 		ConfirmacaoCadastro validaCadastro = new ConfirmacaoCadastro();

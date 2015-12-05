@@ -32,13 +32,13 @@
 </div>
 		
 		
-		<li><a href="./login/controller.html" >
+		<li><a href="./usuario/login/controller.html" >
 					<button type="button" class="btn btn-primary btn-lg">
 						<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> LOGIN
 						</button>
 						</a></li>
 						</br>
-						<li><a href="./cadastro/controller.html" >
+						<li><a href="./usuario/cadastro/controller.html" >
 						<button type="button" class="btn btn-primary btn-lg">
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> REQUISITAR CADASTRO  
 					</button>

@@ -38,7 +38,7 @@
 						- Victor Araujo    </br>
 						- Victor Dantas    </br>
 						- Bruno Reis       </br>
-						- Lucas Resende    </br>
+						- Lucas Rezende    </br>
 						- Álvaro Vieira    </br>
 			
 			</p>
