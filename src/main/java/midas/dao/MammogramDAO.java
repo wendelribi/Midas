@@ -11,7 +11,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.persistence.EntityExistsException;
-import midas.dao.UsuarioDAO;
 
 public class MammogramDAO {
 	private BufferedImage image;

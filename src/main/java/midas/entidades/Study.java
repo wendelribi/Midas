@@ -9,7 +9,7 @@ public class Study {
 	@Id
 	@GeneratedValue
 	@Column (name = "studyId")
-	private int id;
+	private Long id;
 	@Column
 	private String date;
 	@Column (length = 1024)
@@ -64,7 +64,7 @@ public class Study {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	public List<Mammogram> getMammograms() {

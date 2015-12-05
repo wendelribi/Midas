@@ -19,6 +19,8 @@ public class Mammogram {
 	@ManyToOne
 	@JoinColumn(name = "studyId")
 	private Study study;
+	@OneToMany(mappedBy = "mammogram")
+	private List<Historico> historicos;
 	
 	public Mammogram() {
 		
@@ -42,4 +44,14 @@ public class Mammogram {
 	public void setStudy(Study study) {
 		this.study = study;
 	}
+	public void adicionaHistorico(Historico historico) {
+		historicos.add(historico);
+	}
+	public List<Historico> getHistoricos() {
+		return historicos;
+	}
+	public void setHistoricos(List<Historico> historicos) {
+		this.historicos = historicos;
+	}
+	
 }

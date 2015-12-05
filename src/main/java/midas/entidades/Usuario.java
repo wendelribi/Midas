@@ -27,6 +27,8 @@ public class Usuario {
 	@Column
 	private String dataNascimento;
 	// Ordem certa a ser inserida: aaaa-mm-dd
+	@OneToMany(mappedBy = "usuario")
+	private List<Historico> historicos;
 	
 	public Usuario() {
 		
@@ -92,5 +94,14 @@ public class Usuario {
 	}
 	public void setDataNascimento(String dataNascimento){
 		this.dataNascimento = dataNascimento;
+	}
+	public void adicionaHistorico(Historico historico) {
+		historicos.add(historico);
+	}
+	public List<Historico> getHistoricos() {
+		return historicos;
+	}
+	public void setHistoricos(List<Historico> historicos) {
+		this.historicos = historicos;
 	}
 }

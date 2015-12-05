@@ -13,11 +13,11 @@ import midas.entidades.Usuario;
 import midas.util.JPAUtil;
 
 @Stateless
-public class UsuarioDAO {
+public class UsuarioDAO extends GenericDAO<Usuario, String>{
 	public static EntityTransaction tx = null;
 	
 	@Transactional
-	public boolean inserir(Usuario usuario,HttpServletRequest request) {
+	public boolean inserir(Usuario usuario, HttpServletRequest request) {
 		try {
 			tx = JPAUtil.em.getTransaction();
 			tx.begin();
@@ -27,23 +27,13 @@ public class UsuarioDAO {
 			return true;
 		} catch (RollbackException e) {
 			request.setAttribute("cpfExiste","true");
-			System.err.println("CPF ja existente! Nao foi possivel realizar o cadastro!");
 			return false;
 		}
 	}
 
 	@Transactional
 	public boolean remover(String cpf_usuario) {
-		tx = JPAUtil.em.getTransaction();
-		tx.begin();
-		try {
-			JPAUtil.em.remove(recuperar(cpf_usuario));
-			tx.commit();
-			return true;
-		} catch (IllegalArgumentException e) {
-			tx.rollback();
-			return false;
-		}
+		return this.remover(recuperar(cpf_usuario));
 	}
 
 	public List<Usuario> listarNaoAutorizado() {
@@ -68,6 +58,7 @@ public class UsuarioDAO {
 		}
 	}
 
+	@Override
 	@Transactional
 	public Usuario recuperar(String cpf_usuario) {
 		try {
@@ -100,4 +91,12 @@ public class UsuarioDAO {
 		return (cpf_encontrado != null) ? true : false;
 
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> recuperarTodos() {
+		return JPAUtil.em.createQuery("select u from Usuario u").getResultList();
+	}
+	
+	
 }
