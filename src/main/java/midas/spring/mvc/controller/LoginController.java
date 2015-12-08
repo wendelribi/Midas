@@ -39,7 +39,7 @@ public class LoginController {
 	}
 
 	@RequestMapping("/controle")
-	public ModelAndView fazerLogin(HttpServletRequest request) {
+	public ModelAndView get(HttpServletRequest request) {
 
 		login.setLogin(request.getParameter("nome"));
 		login.setSenha(request.getParameter("senha"));

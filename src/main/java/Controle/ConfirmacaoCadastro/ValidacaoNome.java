@@ -8,15 +8,14 @@ public class ValidacaoNome {
 	public boolean CampoNome(String nome) {
 		validacaoNome = true;
 
-		int contL = 0;
 		if(nome != null){
 			for (i = 0; i < nome.length(); i++) {
 	
-				if ((nome.charAt(i) >= 'A' && nome.charAt(i) <= 'Z') || (nome.charAt(i) >= 'a' && nome.charAt(i) <= 'z') || (nome.charAt(i) == ' ')) {
-					contL++;
+				if (nome.charAt(i) >= '0' && nome.charAt(i) <= '9') {
+					validacaoNome = false;
 				}
 			}
-			if (contL != nome.length() || nome.length() < 3) {
+			if (nome.length() < 3) {
 				validacaoNome = false;
 			}
 		}

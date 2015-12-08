@@ -1,23 +1,14 @@
 package Controle.ConfirmacaoCadastro;
-
 import javax.swing.JOptionPane;
-
 public class ValidacaoSenha {
-	String comparacao;
-
+	
+	//Verifica as senhas 
 	public boolean CampoSenha(String Senha1, String Senha2) {
-		comparacao = "";
+
 		boolean validacaoSenha = true;
 		int i, contadorDeLetras = 0;
-
-		if (!(Senha1.equals(Senha2))) {
-
-			validacaoSenha = false; // Caso as senhas sejam iguais, retorna true
-
-		}
-		if (Senha1.length() < 6) {
-			validacaoSenha = false; // Caso a senha seja muito curta
-
+		if (!(Senha1.equals(Senha2) || Senha1.length() < 6)) {
+			validacaoSenha = false;
 		} else {
 			for (i = 0; i < Senha1.length(); i++) {
 				if ((Senha1.charAt(i) >= 'A' && Senha1.charAt(i) <= 'Z')
@@ -25,14 +16,10 @@ public class ValidacaoSenha {
 					contadorDeLetras++;
 				}
 			}
-
 			if (Senha1.length() == contadorDeLetras) {
-				validacaoSenha = false; // Caso a senha nao possua Caracteres ou
-										// Numeros
+				validacaoSenha = false;
 			}
 		}
-
 		return validacaoSenha;
 	}
-
 }

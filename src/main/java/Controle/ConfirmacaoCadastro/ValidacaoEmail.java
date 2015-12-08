@@ -30,19 +30,22 @@ public class ValidacaoEmail {
 		int i, contA = 0, contP = 0,contL=0;
 		
 		for (i = 0; i < email.length(); i++) {
-			if (email.charAt(i) == '@') {
+			if (email.charAt(i) == '@' && email.charAt(i+1) != '@' && i != 0) {
 				contA++;
 			}
-			if (email.charAt(i) == '.') {
+			if (email.charAt(i) == '.' && email.charAt(i+1) != '.' && email.charAt(i-1) != '@' && i > 2) {
 				contP++;
 			}
 			if ((email.charAt(i) >= 'A' && email.charAt(i) <= 'Z')
 						|| (email.charAt(i) >= 'a' && email.charAt(i) <= 'z')) {
 					contL++;
 			}
+			if(email.charAt(i) == ' ') {
+				validacaoEmail = false;
+			}
 		}
 	
-		if (contA != 1 || contP <= 0 || contL<=5) {
+		if (contA != 1 || contP < 1 || contL < 3) {
 			validacaoEmail = false;
 		}
 		
