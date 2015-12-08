@@ -180,8 +180,6 @@
 				if(request.getAttribute("erroGenero").equals("false")){
 			 %>
 				<div class="alert alert-danger" role="alert">Erro no campo genero</div>
-			<%}else{ %>
-				<div class="alert alert-success" role="alert">Campo genero correto</div>
 			<%}} %>
 			
 			<% if(request.getAttribute("cpfExiste") != null){

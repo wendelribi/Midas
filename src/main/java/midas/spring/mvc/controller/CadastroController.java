@@ -61,8 +61,8 @@ public class CadastroController extends HttpServlet {
 		if (validaCadastro.confirmaCadastro(valida,request)) {
 			if (controle.enviarCadastro(usuario,request)) {
 				
-				System.out.println("Cadastro enviado com sucesso");
-				return new ModelAndView(new RedirectView("../"),"cadastroSucesso",true);
+				System.out.println("Cadastro enviado com sucesso!!!!!");
+				return new ModelAndView(new RedirectView("../../"),"cadastroSucesso",true);
 				
 			} else {
 				
