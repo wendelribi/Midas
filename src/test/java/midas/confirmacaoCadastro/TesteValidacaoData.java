@@ -1,4 +1,4 @@
-package confirmacaoCadastro;
+package midas.confirmacaoCadastro;
 
 import static org.junit.Assert.*;
 
