@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: alvarovieira
 Build-Jdk: 1.8.0_51
+=======
+Built-By: GustvoHenrique
+Build-Jdk: 1.8.0_66
+>>>>>>> origin/master
 Created-By: Maven Integration for Eclipse
 
