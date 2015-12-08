@@ -3,7 +3,6 @@ package midas.dao;
 import midas.entidades.Historico;
 import midas.entidades.Mammogram;
 import midas.entidades.Usuario;
-import midas.spring.mvc.controller.HistoricoController;
 import midas.util.JPAUtil;
 
 import java.awt.image.BufferedImage;
@@ -14,6 +13,8 @@ import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.persistence.EntityExistsException;
+
+import Controle.HistoricoController;
 
 public class MammogramDAO {
 	private BufferedImage image;
