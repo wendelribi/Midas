@@ -26,7 +26,7 @@ import midas.util.JPAUtil;
 @RequestMapping("/usuario/login")
 @Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
-	
+	public static Usuario usuario;
 	ArrayList<Usuario> arrayUsuario;
 	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 	LoginUsuario login = new LoginUsuario();
@@ -47,7 +47,7 @@ public class LoginController {
 
 		
 		JPAUtil.comecarOperacoes();
-		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
+		usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
 		JPAUtil.em.close();
 
 		if (usuario == null) {
