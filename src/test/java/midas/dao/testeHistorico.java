@@ -12,25 +12,17 @@ import midas.entidades.Favorito;
 import midas.entidades.Mammogram;
 import midas.entidades.Usuario;
 
-public class testeFavorito {
+public class testeHistorico {
 
 	@Test
-	public void testFavorito(){
-		Favorito favorito = new Favorito();
-		FavoritoDAO DAOFavorito = new FavoritoDAO();
-		UsuarioDAO DAOUsuario = new UsuarioDAO();
-		Usuario usuario = new Usuario();
+	public void testInserirHistorico(){
+	
+		
 		Mammogram mammogram = new Mammogram();
 		MammogramDAO DAOMammogram = new MammogramDAO();
 		
 		mammogram = DAOMammogram.recuperar(1);
-		usuario = DAOUsuario.recuperar("12345678901");
-		
-		
-		favorito.setUsuario(usuario);
-		favorito.setMammogram(mammogram);
-		
-		DAOFavorito.inserir(favorito);
+
 		
 	}
 
