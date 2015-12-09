@@ -11,21 +11,30 @@ import midas.dao.UsuarioDAO;
 import midas.entidades.Favorito;
 import midas.entidades.Mammogram;
 import midas.entidades.Usuario;
+import midas.util.JPAUtil;
 
 public class testeHistorico {
 
-	@Test
+	
 	public void testInserirHistorico(){
 	
 		
 		Mammogram mammogram = new Mammogram();
 		MammogramDAO DAOMammogram = new MammogramDAO();
 		
-		mammogram = DAOMammogram.recuperar(1);
+		mammogram = DAOMammogram.recuperar((long) 1);
 
+		
 		
 	}
 
+	@Test
+	public void testRecuperaHistorico(){
+		JPAUtil.comecarOperacoes();
+		MammogramDAO DAOMammogram = new MammogramDAO();
+		DAOMammogram.recuperaPorUsuario();
+		JPAUtil.finalizarOperacoes();
+	}
 }
 
 

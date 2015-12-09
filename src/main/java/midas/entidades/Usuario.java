@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class Usuario {
 	@Id
 	@GeneratedValue
-	@Column(name = "UsuarioId")
-	private int id;
+	@Column(name = "usuarioId")
+	private long id;
 	@Column(nullable = false,unique = true)
 	private String cpf;
 	@Column(nullable = false)
@@ -44,7 +44,7 @@ public class Usuario {
 	}
 	
 	// GETS e SETS
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	public String getCpf() {

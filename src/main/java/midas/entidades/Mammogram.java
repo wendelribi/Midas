@@ -13,7 +13,7 @@ public class Mammogram {
 	@Id
 	@GeneratedValue
 	@Column(nullable=false)
-	private int mammogramId;
+	private Long mammogramId;
 	@Column(name="image")
 	private byte[] imagem;
 	@ManyToOne
@@ -29,7 +29,7 @@ public class Mammogram {
 		this.imagem = imagem;
 	}
 	
-	public int getMammogramId() {
+	public Long getMammogramId() {
 		return mammogramId;
 	}
 	public byte[] getImagem() {

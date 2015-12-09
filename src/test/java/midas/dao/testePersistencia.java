@@ -54,7 +54,7 @@ public class testePersistencia {
 	public void testInsere() {
 
 		comecarOperacoes();
-//		bd.inserir(user);
+		bd.inserir(user);
 		finalizarOperacoes();
 	}
 	
@@ -76,7 +76,7 @@ public class testePersistencia {
 	@Test
 	public void testLogin(){
 		comecarOperacoes();
-		boolean cadastrado = bd.login("03915432105", "alvinlelek");
+		boolean cadastrado = bd.login("11111111111", "victor123");
 
 		if (cadastrado == true)
 			System.out.println("Usuario e senha são corretas");
@@ -90,7 +90,7 @@ public class testePersistencia {
 	public void testAutorizar(){
 		comecarOperacoes();
 		
-		boolean acesso = bd.autorizar("03915432105");
+		boolean acesso = bd.autorizar("11111111111");
 		if (acesso == true)
 			System.out.println("Nivel de acesso: 1");
 		else

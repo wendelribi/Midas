@@ -11,11 +11,13 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.persistence.EntityExistsException;
+import javax.persistence.Query;
 
 import Controle.HistoricoController;
 
@@ -25,14 +27,16 @@ public class MammogramDAO {
 		try{
 			try{
 				JPAUtil.comecarOperacoes();
+				JPAUtil.em.getTransaction().begin();
 				Mammogram mamo = new Mammogram();
-				image = ImageIO.read(new File("/Users/alvarovieira/Dropbox/MIDAS/teste.jpg"));
+				image = ImageIO.read(new File("/Users/alvarovieira/Dropbox/MIDAS/Exemplo.jpg"));
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ImageIO.write(image, "jpg", baos);
 				baos.flush();
 				mamo.setImagem(baos.toByteArray());
-				
 				baos.close();
 				JPAUtil.em.persist(mamo);
+				JPAUtil.em.getTransaction().commit();
 				JPAUtil.finalizarOperacoes();
 				return true;
 			} catch(IOException ex) {
@@ -42,10 +46,8 @@ public class MammogramDAO {
 			return false;
 		}
 	}
-	public Mammogram recuperar(int mamoId) {
+	public Mammogram recuperar(Long mamoId) {
 		
-
-		new Date(System.currentTimeMillis());
 		
 		try {
 			JPAUtil.comecarOperacoes();
@@ -62,14 +64,26 @@ public class MammogramDAO {
 		return JPAUtil.em.createQuery("select u from Mammogram u, Study y where u.studyId = y.studyId AND y.findings LIKE :tituloParam")
 				.setParameter("tituloParam", procura).getResultList();
 	}
-	
+
 	public List<Mammogram> recuperaPorUsuario(){
-		List<Historico> historico = JPAUtil.em.createQuery("selec u from Historico u where u.usuarioId =: TituloParam").setParameter("TituloParam",LoginController.usuario.getId()).getResultList();
-		List<Mammogram> mammogram = null;
-		for(int i = 0; i < historico.size(); i++){
+		List<Historico> historico = new ArrayList<Historico>(); 
+				historico = JPAUtil.em.createQuery("select u from Historico u where usuario = 2").getResultList();
+		if(historico.isEmpty()){
+			System.out.println("deu ruim");
+		}
+				System.out.println("tamanho:  "+historico.size());
+		List<Mammogram> mammogram = new ArrayList<>();
+		for(int i = 0; i < historico.size()-1; i++){
+			System.out.println(""+historico.get(i).getMammogram().getMammogramId());
 			mammogram.add(recuperar(historico.get(i).getMammogram().getMammogramId()));
-		}	
+		
+		}
+
 		return mammogram;
+	}
+	
+	public List<Mammogram> recuperaTudo(){
+		return JPAUtil.em.createQuery("FROM Mammogram").getResultList();
 	}
 }
 

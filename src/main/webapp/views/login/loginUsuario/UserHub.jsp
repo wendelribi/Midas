@@ -74,8 +74,13 @@
 			</button><span class="sr-only">(current)</span></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
-    <img src="C:\Users\Victor\Dropbox\MIDAS\exemplo2.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+    <!-- <c:set var="count" value="0" scope="page">
+    <c:forEach items="${imagem}" var="imagem" >
+    -->
+    	<img src="/Midas/src/main/resources/imagens/Exemplo.jpg" class="img-thumbnail" alt="${pageContext.request.contextPath}" width="304" height="236">
+    	<img src="/Midas/src/main/resources/imagens/exemplo2.png" class="img-thumbnail" alt="Mamografia" width="304" height="236">
+    <!-- </c:forEach>
+    <c:set var="count" value="${count + 1}" scope="page"/>
+    -->
   </div><!-- /.container-fluid -->
 </nav>
-
-	

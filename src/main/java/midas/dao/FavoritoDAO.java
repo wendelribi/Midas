@@ -28,8 +28,9 @@ public class FavoritoDAO extends GenericDAO<Favorito, Integer> {
 		return JPAUtil.em.createQuery("select u from Mammogram u, Study y where u.studyId = y.studyId AND y.findings LIKE tituloParam1")
 				.setParameter("tituloParam", processamento).getResultList();
 	}
-	
+
 	public List<Favorito> recuperaPorUsuario (){
-		return JPAUtil.em.createQuery("select u from Favorito u where u.usuarioId =: TituloParam").setParameter("TituloParam", LoginController.usuario.getId()).getResultList();
+		return JPAUtil.em.createQuery("select u from Favorito u where u.usuario = 2").getResultList();
 	}
+
 }

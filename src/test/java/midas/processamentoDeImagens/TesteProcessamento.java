@@ -23,7 +23,7 @@ public class TesteProcessamento {
 		BufferedImage imagem = null;
 		BufferedImage res = null;
 		try {
-			imagem = ImageIO.read(new File("C:/Users/Lucas Rezende/Dropbox/MIDAS/Exemplo.jpg"));
+			imagem = ImageIO.read(new File("/Users/alvarovieira/Dropbox/MIDAS/Exemplo.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

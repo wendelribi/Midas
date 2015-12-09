@@ -11,11 +11,13 @@ import midas.dao.UsuarioDAO;
 import midas.entidades.Favorito;
 import midas.entidades.Mammogram;
 import midas.entidades.Usuario;
+import midas.util.JPAUtil;
 
 public class testeFavorito {
 
 	@Test
 	public void testFavorito(){
+		JPAUtil.comecarOperacoes();
 		Favorito favorito = new Favorito();
 		FavoritoDAO DAOFavorito = new FavoritoDAO();
 		UsuarioDAO DAOUsuario = new UsuarioDAO();
@@ -23,7 +25,7 @@ public class testeFavorito {
 		Mammogram mammogram = new Mammogram();
 		MammogramDAO DAOMammogram = new MammogramDAO();
 		
-		mammogram = DAOMammogram.recuperar(1);
+		//mammogram = DAOMammogram.recuperar();
 		usuario = DAOUsuario.recuperar("12345678901");
 		
 		
