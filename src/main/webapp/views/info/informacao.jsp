@@ -47,7 +47,7 @@
 			<center>
 				<p>Duvidas ou reclamações ?</p>
 				<p><button type="button" class="btn btn-primary btn-lg">
-  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> midas@hotmail.com.br
+  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> grupomidas2015@gmail.com.br
 </button>
 				</p>
 			</center>

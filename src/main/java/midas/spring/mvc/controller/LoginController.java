@@ -26,7 +26,7 @@ import midas.util.JPAUtil;
 @RequestMapping("/usuario/login")
 @Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
-	public static Usuario usuario;
+	
 	ArrayList<Usuario> arrayUsuario;
 	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 	LoginUsuario login = new LoginUsuario();
@@ -39,7 +39,7 @@ public class LoginController {
 	}
 
 	@RequestMapping("/controle")
-	public ModelAndView get(HttpServletRequest request) {
+	public ModelAndView fazerLogin(HttpServletRequest request) {
 
 		login.setLogin(request.getParameter("nome"));
 		login.setSenha(request.getParameter("senha"));
@@ -47,7 +47,7 @@ public class LoginController {
 
 		
 		JPAUtil.comecarOperacoes();
-		usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
+		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
 		JPAUtil.em.close();
 
 		if (usuario == null) {
@@ -62,7 +62,7 @@ public class LoginController {
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
 		
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
-			return new ModelAndView("/login/loginUsuario/viewUsuario");
+			return new ModelAndView("/login/loginUsuario/UserHub","usuario",usuario);
 		
 		} else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
 		
