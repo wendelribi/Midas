@@ -15,7 +15,7 @@
 		<div class="row">
 			<nav class="navbar-form navbar-left">
 				<ul class="nav nav-pills">
-					<li><a href="../">
+					<li><a href="javascript:history.go(-1)">
 							<button type="button" class="btn btn-primary btn-lg">
 								<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 								Midas Home
@@ -47,8 +47,8 @@
 			<center>
 				<p>Duvidas ou reclamações ?</p>
 				<p><button type="button" class="btn btn-primary btn-lg">
-  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> grupomidas2015@gmail.com.br
-</button>
+  					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> grupomidas2015@gmail.com.br
+				</button>
 				</p>
 			</center>
 		</div>
