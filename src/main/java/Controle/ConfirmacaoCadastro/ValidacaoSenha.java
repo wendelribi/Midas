@@ -7,7 +7,7 @@ public class ValidacaoSenha {
 
 		boolean validacaoSenha = true;
 		int i, contadorDeLetras = 0;
-		if (!(Senha1.equals(Senha2) || Senha1.length() < 6)) {
+		if (!Senha1.equals(Senha2) || Senha1.length() < 6) {
 			validacaoSenha = false;
 		} else {
 			for (i = 0; i < Senha1.length(); i++) {

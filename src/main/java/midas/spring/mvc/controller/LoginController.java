@@ -27,7 +27,7 @@ import midas.util.JPAUtil;
 @Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
 	
-	public static Usuario usuario = new Usuario();
+	public static Usuario usuario;
 	ArrayList<Usuario> arrayUsuario;
 	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 	LoginUsuario login = new LoginUsuario();
@@ -48,7 +48,7 @@ public class LoginController {
 
 		
 		JPAUtil.comecarOperacoes();
-		Usuario usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
+		usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
 		JPAUtil.em.close();
 
 		if (usuario == null) {
@@ -61,7 +61,7 @@ public class LoginController {
 			return new ModelAndView(new RedirectView("../login/controller.html"),"loginPendente",true);
 		
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
-			usuario = usuario;
+			
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 			return new ModelAndView("/login/loginUsuario/UserHub","usuario",usuario);
 		
@@ -77,9 +77,26 @@ public class LoginController {
 			System.err.println("Login ou senha incorreto(s)!");
 			return new ModelAndView(new RedirectView("../login/controller.html"),"loginIncorreto",true);
 		}
-	
 	}
+	
+	@RequestMapping("/favoritos")
+	public ModelAndView favoritos(){
 
+		return new ModelAndView("/login/loginUsuario/viewFavoritos");
+	}
+	
+	@RequestMapping("/historico")
+	public ModelAndView historico(){
+
+		return new ModelAndView("/login/loginUsuario/viewHistorico");
+	}
+	
+	@RequestMapping("/imagemProc")
+	public ModelAndView imagensProcessadas(){
+
+		return new ModelAndView("/login/loginUsuario/viewImgProc");
+	}
+	
 	@RequestMapping(value = "/recusar", method = RequestMethod.GET)
 	public ModelAndView recusar(@RequestParam("cpfRecusado") String cpf) {
 		

@@ -35,7 +35,7 @@
       	
         <li class="active"><a href="#">
         	<button type="button" class="btn btn-primary" aria-label="Left Align">
-  				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${usuario.nome}
+  				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> OLA
 			</button><span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-primary" aria-label="Left Align">
@@ -44,9 +44,9 @@
           <ul class="dropdown-menu">
             <li><a href="favoritos.html">Favoritos</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="historico.html">Historico</a></li>
+            <li><a href="#">Historico</a></li>
 			<li role="separator" class="divider"></li>
-            <li><a href="imagemProc.html">Imagens processadas salvas</a></li>
+            <li><a href="#">Imagens processadas salvas</a></li>
           </ul>
         </li>
       </ul>
