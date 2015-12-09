@@ -33,20 +33,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       	
-        <li class="active"><a href="#">
+        <li class="active"><a href="inicio.html">
         	<button type="button" class="btn btn-primary" aria-label="Left Align">
-  				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> OLA
+  				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${usuario.nome}
 			</button><span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-primary" aria-label="Left Align">
   				<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Menu <span class="caret"></span>
 			</button></a>
           <ul class="dropdown-menu">
-            <li><a href="favoritos.html">Favoritos</a></li>
+            <li><a href="#">Favoritos</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Historico</a></li>
+            <li><a href="historico.html">Historico</a></li>
 			<li role="separator" class="divider"></li>
-            <li><a href="#">Imagens processadas salvas</a></li>
+            <li><a href="imagemProc.html">Imagens processadas salvas</a></li>
           </ul>
         </li>
       </ul>
