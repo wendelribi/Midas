@@ -1,8 +1,10 @@
+
 package midas.dao;
 
 import midas.entidades.Historico;
 import midas.entidades.Mammogram;
 import midas.entidades.Usuario;
+import midas.spring.mvc.controller.LoginController;
 import midas.util.JPAUtil;
 
 import java.awt.image.BufferedImage;
@@ -10,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.persistence.EntityExistsException;
@@ -54,4 +57,13 @@ public class MammogramDAO {
 			return null;
 		}
 	}
+	
+	public List<Mammogram> search(String procura){
+		return JPAUtil.em.createQuery("select u from Mammogram u, Study y where u.studyId = y.studyId AND y.findings LIKE :tituloParam")
+				.setParameter("tituloParam", procura).getResultList();
+	}
+
+	
 }
+
+

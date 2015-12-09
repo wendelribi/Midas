@@ -22,4 +22,6 @@ public class StudyDAO extends GenericDAO<Study, Long> {
 	public List<Study> recuperarTodos() {
 		return JPAUtil.em.createQuery("select u from Study u").getResultList();
 	}
+	
+
 }

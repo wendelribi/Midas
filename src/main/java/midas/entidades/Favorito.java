@@ -3,12 +3,17 @@ package midas.entidades;
 import java.util.Date;
 import javax.persistence.*;
 
+import midas.processamentoDeImagens.Processamento;
+
 @Entity
 public class Favorito {
 	@Id
 	@GeneratedValue
 	@Column(name = "favoritoId")
 	private Integer id;
+	
+	@Enumerated(EnumType.STRING)
+	private Processamento processamento;
 	
 	@ManyToOne
 	@JoinColumn(name = "usuarioId")
@@ -36,4 +41,12 @@ public class Favorito {
 	public void setMammogram(Mammogram mammogram) {
 		this.mammogram = mammogram;
 	}
+	public Processamento getProcessamento (){
+		return processamento;
+	}
+	public void setProcessamento(Processamento processamento){
+		this.processamento = processamento;
+	}
+	
 }
+

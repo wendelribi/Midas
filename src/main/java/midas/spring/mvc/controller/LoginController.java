@@ -27,6 +27,7 @@ import midas.util.JPAUtil;
 @Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
 	
+	public static Usuario usuario = new Usuario();
 	ArrayList<Usuario> arrayUsuario;
 	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 	LoginUsuario login = new LoginUsuario();
@@ -60,7 +61,7 @@ public class LoginController {
 			return new ModelAndView(new RedirectView("../login/controller.html"),"loginPendente",true);
 		
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
-		
+			usuario = usuario;
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 			return new ModelAndView("/login/loginUsuario/UserHub","usuario",usuario);
 		

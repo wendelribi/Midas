@@ -1,10 +1,12 @@
 
+
 package midas.dao;
 
 import java.util.Date;
 import java.util.List;
-
 import midas.entidades.Favorito;
+import midas.processamentoDeImagens.Processamento;
+import midas.spring.mvc.controller.LoginController;
 import midas.util.JPAUtil;
 
 public class FavoritoDAO extends GenericDAO<Favorito, Integer> {
@@ -22,6 +24,10 @@ public class FavoritoDAO extends GenericDAO<Favorito, Integer> {
 		return JPAUtil.em.createQuery("select u from Favorito u").getResultList();
 	}
 
+	public List<Favorito> recuperaPorProcessamento (Processamento processamento){
+		return JPAUtil.em.createQuery("select u from Mammogram u, Study y where u.studyId = y.studyId AND y.findings LIKE tituloParam1")
+				.setParameter("tituloParam", processamento).getResultList();
+	}
 
 
 }
