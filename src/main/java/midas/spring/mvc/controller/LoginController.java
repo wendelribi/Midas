@@ -29,7 +29,9 @@ import midas.util.JPAUtil;
 @RequestMapping("/usuario/login")
 @Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
-
+	
+	public List<Mammogram> Listmammogram;
+	public Mammogram mammogram;
 	public static Usuario usuario;
 	public MammogramDAO mammogramDAO;
 	public HistoricoDAO historicoDAO;
@@ -68,7 +70,11 @@ public class LoginController {
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
 
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
-			return new ModelAndView("/login/loginUsuario/UserHub", "usuario", usuario);
+//			Listmammogram = mammogram.getMammogram();
+			ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
+			model.addObject("usuario", usuario);
+			model.addObject("mammogram", Listmammogram);
+			return model;
 
 		} else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
 

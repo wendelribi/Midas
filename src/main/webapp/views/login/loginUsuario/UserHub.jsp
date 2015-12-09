@@ -74,5 +74,8 @@
 			</button><span class="sr-only">(current)</span></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
+    <img src="C:\Users\Victor\Dropbox\MIDAS\exemplo2.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
   </div><!-- /.container-fluid -->
 </nav>
+
+	
