@@ -15,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import Controle.Controle;
+import Controle.Email;
 import Controle.ConfirmacaoCadastro.ConfirmacaoCadastro;
 import midas.entidades.Usuario;
+import midas.util.JPAUtil;
 
 @Controller
 @RequestMapping("/usuario/cadastro")
@@ -61,6 +63,8 @@ public class CadastroController extends HttpServlet {
 		if (validaCadastro.confirmaCadastro(valida,request)) {
 			if (controle.enviarCadastro(usuario,request)) {
 				
+				JPAUtil.comecarOperacoes();
+				Email.enviarEmail(usuario.getEmail(), "Cadastro Pendente", "Senhor(a), " + usuario.getNome() +",\n seu cadastro esta sujeito a aprovacao do Administrador. \n\n\n Grupo Midas 2015" );
 				System.out.println("Cadastro enviado com sucesso!!!!!");
 				return new ModelAndView(new RedirectView("../../"),"cadastroSucesso",true);
 				

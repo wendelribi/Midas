@@ -25,9 +25,18 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="marvin/framework/marvin_1.5.2.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/javamail1_4_7/javamail-1.4.7/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/javamail1_4_7/javamail-1.4.7/lib/gimap.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/javamail1_4_7/javamail-1.4.7/lib/imap.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/javamail1_4_7/javamail-1.4.7/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/javamail1_4_7/javamail-1.4.7/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/javamail1_4_7/javamail-1.4.7/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/junit-4.7.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/lib/javamail1_4_7/javamail-1.4.7/mail.jar"/>
+	<classpathentry kind="lib" path="/Users/GustvoHenrique/Documents/workspace/Midas/marvin/framework/marvin_1.5.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

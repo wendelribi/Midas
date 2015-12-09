@@ -55,6 +55,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.0.2.Final</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
 
 
 		<!-- SQL -->
