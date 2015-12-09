@@ -62,17 +62,15 @@ public class MammogramDAO {
 		return JPAUtil.em.createQuery("select u from Mammogram u, Study y where u.studyId = y.studyId AND y.findings LIKE :tituloParam")
 				.setParameter("tituloParam", procura).getResultList();
 	}
-	public List<Mammogram> recuperaPorUsuario(Usuario usuario){
-		System.out.println("Deu ruim antes");
-		List<Mammogram> mammogram = JPAUtil.em.createQuery("select u from Mammogram u,Usuario y, Historico z where z.usuarioId =: usuario AND y.mammogramId = z.mammogramId")
-				.setParameter("usuario", usuario.getId()).getResultList();
-		if(!(mammogram.size() == 0))
-		System.out.println(""+mammogram.get(0));
-		else
-			System.out.println("deu ruim");
+	
+	public List<Mammogram> recuperaPorUsuario(){
+		List<Historico> historico = JPAUtil.em.createQuery("selec u from Historico u where u.usuarioId =: TituloParam").setParameter("TituloParam",LoginController.usuario.getId()).getResultList();
+		List<Mammogram> mammogram = null;
+		for(int i = 0; i < historico.size(); i++){
+			mammogram.add(recuperar(historico.get(i).getMammogram().getMammogramId()));
+		}	
 		return mammogram;
 	}
-	
 }
 
 

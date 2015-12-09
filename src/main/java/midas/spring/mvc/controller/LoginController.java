@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import Controle.Controle;
 import Controle.LoginUsuario;
+import midas.dao.FavoritoDAO;
 import midas.dao.HistoricoDAO;
 import midas.dao.MammogramDAO;
 import midas.dao.UsuarioDAO;
@@ -32,6 +33,8 @@ public class LoginController {
 
 	public static Usuario usuario;
 	public MammogramDAO mammogramDAO;
+	public HistoricoDAO historicoDAO;
+	public FavoritoDAO favoritoDAO;
 	ArrayList<Usuario> arrayUsuario;
 	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 	LoginUsuario login = new LoginUsuario();
@@ -88,13 +91,15 @@ public class LoginController {
 
 	@RequestMapping("/favoritos")
 	public ModelAndView favoritos() {
-
+		List<Favorito> favorito = favoritoDAO.recuperaPorUsuario();
+		favorito.get(0).getMammogram();
 		return new ModelAndView("/login/loginUsuario/viewFavoritos", "usuario", usuario);
 	}
 
 	@RequestMapping("/historico")
 	public ModelAndView historico() {
-
+		List<Historico> historico = historicoDAO.recuperaPorUsuario();
+		historico.get(0).getMammogram();
 		return new ModelAndView("/login/loginUsuario/viewHistorico", "usuario", usuario);
 	}
 
