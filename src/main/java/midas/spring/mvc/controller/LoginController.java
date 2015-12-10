@@ -53,7 +53,7 @@ public class LoginController {
 		login.setLogin(request.getParameter("nome"));
 		login.setSenha(request.getParameter("senha"));
 		System.out.println(login.getLogin() + " " + login.getSenha());
-
+		
 		JPAUtil.comecarOperacoes();
 		usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
 		JPAUtil.em.close();
@@ -68,7 +68,7 @@ public class LoginController {
 			return new ModelAndView(new RedirectView("../login/controller.html"), "loginPendente", true);
 
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
-
+			
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 //			Listmammogram = mammogram.getMammogram();
 			ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
@@ -91,27 +91,33 @@ public class LoginController {
 
 	@RequestMapping("/inicio")
 	public ModelAndView inicio() {
-		return new ModelAndView("/login/loginUsuario/UserHub", "usuario", usuario);
+		ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
+		model.addObject("usuario", usuario);
+		return model;
 	}
 
 	@RequestMapping("/favoritos")
 	public ModelAndView favoritos() {
 //		List<Favorito> favorito = favoritoDAO.recuperaPorUsuario();
-//		favorito.get(0).getMammogram();
-		return new ModelAndView("/login/loginUsuario/viewFavoritos", "usuario", usuario);
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewFavoritos");
+		model.addObject("usuario", usuario);
+		return model;
 	}
 
 	@RequestMapping("/historico")
 	public ModelAndView historico() {
 //		List<Historico> historico = historicoDAO.recuperaPorUsuario();
 //		historico.get(0).getMammogram();
-		return new ModelAndView("/login/loginUsuario/viewHistorico", "usuario", usuario);
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewHistorico");
+		model.addObject("usuario", usuario);
+		return model;
 	}
 
 	@RequestMapping("/imagemProc")
 	public ModelAndView imagensProcessadas() {
-
-		return new ModelAndView("/login/loginUsuario/viewImgProc", "usuario", usuario);
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImgProc");
+		model.addObject("usuario", usuario);
+		return model;
 	}
 
 	@RequestMapping(value = "/recusar", method = RequestMethod.GET)

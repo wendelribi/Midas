@@ -65,7 +65,7 @@
           <ul class="dropdown-menu">
             <li><a href="../../info/controller.html">Sobre nos</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Suporte</a></li>
+            <li><a href="../../info/controle.html">Suporte</a></li>
           </ul>
         </li>
         <li class="active"><a href="./controller.html">
