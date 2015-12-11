@@ -17,6 +17,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.persistence.EntityExistsException;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import Controle.HistoricoController;
@@ -29,7 +30,7 @@ public class MammogramDAO {
 				JPAUtil.comecarOperacoes();
 				JPAUtil.em.getTransaction().begin();
 				Mammogram mamo = new Mammogram();
-				image = ImageIO.read(new File("C:/Users/Iure/Dropbox/MIDAS/Exemplo.jpg"));
+				image = ImageIO.read(new File("/Users/victordantas/Dropbox/MIDAS/Exemplo.jpg"));
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				ImageIO.write(image, "jpg", baos);
 				baos.flush();
@@ -66,12 +67,14 @@ public class MammogramDAO {
 	}
 
 	public List<Mammogram> recuperaPorUsuario(){
+		JPAUtil.comecarOperacoes();
 		List<Historico> historico = new ArrayList<Historico>(); 
-				historico = JPAUtil.em.createQuery("select u from Historico u where usuario = 2").getResultList();
+				historico = JPAUtil.em.createQuery("select u from Historico u where u.usuarioid = tituloParam").setParameter("tituloParam", LoginController.usuario.getId()).getResultList();
+		JPAUtil.finalizarOperacoes();
 		if(historico.isEmpty()){
 			System.out.println("deu ruim");
 		}
-				System.out.println("tamanho:  "+historico.size());
+		
 		List<Mammogram> mammogram = new ArrayList<>();
 		for(int i = 0; i < historico.size()-1; i++){
 			System.out.println(""+historico.get(i).getMammogram().getMammogramId());
@@ -80,11 +83,18 @@ public class MammogramDAO {
 		}
 
 		return mammogram;
-	}
-	
+	}	
 	public List<Mammogram> recuperaTudo(){
-		return JPAUtil.em.createQuery("FROM Mammogram").getResultList();
+		
+		try {
+			JPAUtil.comecarOperacoes();
+			List<Mammogram> mamograma = new ArrayList<Mammogram>();
+			mamograma =  JPAUtil.em.createQuery("FROM Mammogram").getResultList();
+			JPAUtil.finalizarOperacoes();
+			return mamograma;
+		}catch (Exception e) {
+			return null;
+		}
+		
 	}
 }
-
-

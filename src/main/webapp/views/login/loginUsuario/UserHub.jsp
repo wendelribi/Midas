@@ -78,6 +78,7 @@
     <!-- <c:set var="count" value="0" scope="page">
     <c:forEach items="${imagem}" var="imagem" >
     -->
+    	
     	<img src="/Midas/src/main/resources/imagens/Exemplo.jpg" class="img-thumbnail" alt="${pageContext.request.contextPath}" width="304" height="236">
     		<li><a href="imagem.html" >
  	   			<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align">

@@ -30,12 +30,12 @@ import midas.util.JPAUtil;
 @Transactional(dontRollbackOn = { JPAUtil.class })
 public class LoginController {
 
-	public List<Mammogram> Listmammogram = new ArrayList<>();
+	public List<Mammogram> listMammogram = new ArrayList<Mammogram>();
 	public Mammogram mammogram;
 	public static Usuario usuario;
-	public MammogramDAO mammogramDAO;
-	public HistoricoDAO historicoDAO;
-	public FavoritoDAO favoritoDAO;
+	public MammogramDAO mammogramDAO = new MammogramDAO();
+	public HistoricoDAO historicoDAO = new HistoricoDAO();
+	public FavoritoDAO favoritoDAO = new FavoritoDAO();
 	ArrayList<Usuario> arrayUsuario;
 	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 	LoginUsuario login = new LoginUsuario();
@@ -56,7 +56,6 @@ public class LoginController {
 
 		JPAUtil.comecarOperacoes();
 		usuario = bancoDeDadosUsuario.recuperar(login.getLogin());
-		JPAUtil.em.close();
 
 		if (usuario == null) {
 			System.err.println("Login ou senha incorreto(s)!");
@@ -68,12 +67,13 @@ public class LoginController {
 			return new ModelAndView(new RedirectView("../login/controller.html"), "loginPendente", true);
 
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
-
+			
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
-			// Listmammogram = mammogramDAO.recuperaPorUsuario();
+			
+			listMammogram = mammogramDAO.recuperaTudo();
 			ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
 			model.addObject("usuario", usuario);
-			model.addObject("mammogram", Listmammogram);
+			model.addObject("mammogram", listMammogram);
 			return model;
 
 		} else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
@@ -92,7 +92,6 @@ public class LoginController {
 	@RequestMapping("/submit")
 	public ModelAndView search(HttpServletRequest request) {
 		System.out.println("Pesquisa: " + request.getParameter("search"));
-
 		ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
 		model.addObject("usuario", usuario);
 		return model;
@@ -131,8 +130,12 @@ public class LoginController {
 
 	@RequestMapping("/imagem")
 	public ModelAndView imagem(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+			throws ServletException, IOException {	
+//				System.out.println("Roberts");
+//				System.out.println("Sobel");
+//				System.out.println("Negativo");
+//				System.out.println("Favoritar");
+		
 		// // Get ID from request.
 		// String imageId = request.getParameter("id");
 		//
@@ -162,7 +165,49 @@ public class LoginController {
 		model.addObject("usuario", usuario);
 		return model;
 	}
+	
+	@RequestMapping("/filtroBordas")
+	public ModelAndView filtroBordas(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
+	
+	@RequestMapping("/filtroPrewitt")
+	public ModelAndView filtroPrewitt(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
+	
+	@RequestMapping("/filtroRoberts")
+	public ModelAndView filtroRoberts(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
 
+	@RequestMapping("/filtroSobel")
+	public ModelAndView filtroSobel(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
+	
+	@RequestMapping("/filtroNegativo")
+	public ModelAndView filtroNegativo(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
+	
+	@RequestMapping("/favoritar")
+	public ModelAndView favoritar(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
+	
 	@RequestMapping(value = "/recusar", method = RequestMethod.GET)
 	public ModelAndView recusar(@RequestParam("cpfRecusado") String cpf) {
 
