@@ -17,8 +17,8 @@
 				<ul class="nav nav-pills">
 					<li><a href="javascript:history.go(-1)">
 							<button type="button" class="btn btn-primary btn-lg">
-								<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-								Midas Home
+								<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+								Voltar
 							</button>
 					</a></li>
 		</div>
