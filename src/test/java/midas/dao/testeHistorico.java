@@ -23,9 +23,6 @@ public class testeHistorico {
 		MammogramDAO DAOMammogram = new MammogramDAO();
 		
 		mammogram = DAOMammogram.recuperar((long) 1);
-
-		
-		
 	}
 
 	@Test

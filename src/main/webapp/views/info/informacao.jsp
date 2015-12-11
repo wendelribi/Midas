@@ -47,8 +47,6 @@
 			<center>
 				<p>Duvidas ou reclamações ?</p>
 				
-
-				
 				<p>
 				<a class="btn btn-primary" href="../info/controle.html"" role="button">Fale conosco</a>
 				</p>

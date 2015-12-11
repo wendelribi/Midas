@@ -29,7 +29,7 @@ public class MammogramDAO {
 				JPAUtil.comecarOperacoes();
 				JPAUtil.em.getTransaction().begin();
 				Mammogram mamo = new Mammogram();
-				image = ImageIO.read(new File("/Users/alvarovieira/Dropbox/MIDAS/Exemplo.jpg"));
+				image = ImageIO.read(new File("C:/Users/Iure/Dropbox/MIDAS/Exemplo.jpg"));
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				ImageIO.write(image, "jpg", baos);
 				baos.flush();

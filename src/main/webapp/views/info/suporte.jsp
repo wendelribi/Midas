@@ -58,10 +58,6 @@
 							}
 					%>
 
-
-
-
-
 					<button type="submit" class="btn btn-primary">Enviar
 						mensagem</button>
 				</form>

@@ -51,12 +51,13 @@
         </li>
       </ul>
       
-      <form class="navbar-form navbar-left" role="search">
+      <form action="submit.html" method="post" class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search" name="search">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
+      
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><button type="button" class="btn btn-primary" aria-label="Left Align">
@@ -65,7 +66,7 @@
           <ul class="dropdown-menu">
             <li><a href="../../info/controller.html">Sobre nos</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Suporte</a></li>
+            <li><a href="../../info/controle.html">Suporte</a></li>
           </ul>
         </li>
         <li class="active"><a href="./controller.html">
