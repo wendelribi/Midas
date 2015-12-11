@@ -1,10 +1,7 @@
 package Controle;
 
 import java.util.logging.Level;
-
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
+import org.apache.commons.mail.*;
 import org.apache.log4j.Logger;
 
 public class Email {
@@ -13,10 +10,11 @@ public class Email {
 	}
 
 	// Envia um email com o assunto e a mensagem recebida
-	public static void enviarEmail(String emailUsuario, String assunto, String mensagem) {
+	public static boolean enviarEmail(String emailUsuario, String assunto, String mensagem) {
 		try {
-
 			SimpleEmail email = new SimpleEmail();
+			email.setSocketTimeout(10000);
+			email.setSocketConnectionTimeout(10000);
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
 			email.setAuthentication("grupomidas2015@gmail.com", "grupomidas12");
@@ -27,7 +25,8 @@ public class Email {
 			email.addTo(emailUsuario);
 			email.send();
 		} catch (EmailException ex) {
-			// Logger.getLogger(Email.class.getName().log(Level.SEVERE,null,ex));
+			return false;
 		}
+		return true;
 	}
 }

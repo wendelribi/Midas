@@ -64,7 +64,8 @@ public class CadastroController extends HttpServlet {
 			if (controle.enviarCadastro(usuario,request)) {
 				
 				JPAUtil.comecarOperacoes();
-				Email.enviarEmail(usuario.getEmail(), "Cadastro Pendente", "Senhor(a), " + usuario.getNome() +",\n seu cadastro esta sujeito a aprovacao do Administrador. \n\n\n Grupo Midas 2015" );
+				boolean email_enviado = Email.enviarEmail(usuario.getEmail(), "Cadastro Pendente", "Senhor(a), " + usuario.getNome() +",\n seu cadastro esta sujeito a aprovacao do Administrador. \n\n\n Grupo Midas 2015" );
+				request.setAttribute("emailEnviado", email_enviado);
 				System.out.println("Cadastro enviado com sucesso!!!!!");
 				return new ModelAndView(new RedirectView("../../"),"cadastroSucesso",true);
 				

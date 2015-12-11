@@ -36,17 +36,17 @@ public class InfoController {
 		request.getParameter("mensagem");
 		
 		ValidacaoEmail valido = new ValidacaoEmail();
+		boolean email_enviado;
 		
 		if(valido.CampoEmail(request.getParameter("email")))
 		{
-			Email.enviarEmail("grupomidas2015@gmail.com","SUPORTE DO USUARIO :"+request.getParameter("email"),request.getParameter("Mensagem: \n "+"mensagem")+"\n\n"+"Enviado por : "+request.getParameter("email"));
-			request.setAttribute("emailInvalido", "false");
+			email_enviado = Email.enviarEmail("grupomidas2015@gmail.com","SUPORTE DO USUARIO :"+request.getParameter("email"),"Mensagem: " + request.getParameter("mensagem")+"\n\n"+"Enviado por : "+request.getParameter("email"));
+			request.setAttribute("emailEnviado", email_enviado);
+			request.setAttribute("emailInvalido", false);
 		}
 		else
 		{
-			System.err.println("Erro ao enviar o email, tente novamente");
-			request.setAttribute("emailInvalido","true");
-			
+			request.setAttribute("emailInvalido",true);
 		}
 		return new ModelAndView("/info/suporte");	
 	}

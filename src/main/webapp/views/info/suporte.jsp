@@ -40,23 +40,22 @@
 							name="mensagem"> </textarea>
 					</div>
 
-					<%
-						if (request.getAttribute("emailInvalido") != null) {
-								if (request.getAttribute("emailInvalido").equals("true")) {
-					%>
-					<script language="JavaScript" type="text/javascript">
-						alert("Email inválido")
-					</script>
-					<%
-						} else {
-					%>
-					<script language="JavaScript" type="text/javascript">
-						alert("Mensagem enviada com sucesso")
-					</script>
-					<%
-						}
-							}
-					%>
+					<% if (request.getAttribute("emailInvalido") != null && request.getAttribute("emailInvalido").equals(false)) { %>
+						alert("aasdfasdfMEOUT)")
+						<% if (request.getAttribute("emailEnviado") != null && request.getAttribute("emailEnviado").equals(false)) { %>
+							<script language="JavaScript" type="text/javascript">
+								alert("Erro ao enviar o e-mail (TIMEOUT)")
+							</script>
+						<% } %>
+					<% } else { %>
+						<% if (request.getAttribute("emailInvalido") != null && request.getAttribute("emailInvalido").equals(true)) { %>
+							<script language="JavaScript" type="text/javascript">
+								alert("E-mail inv·lido")
+							</script>
+						<% } %>
+					<% } %>
+
+
 
 					<button type="submit" class="btn btn-primary">Enviar
 						mensagem</button>

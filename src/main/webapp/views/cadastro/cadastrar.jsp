@@ -188,6 +188,10 @@
 						alert ("Erro! Cpf ja cadastrado!")
 					</script>
 			<%}}%>
+			
+			<% if (request.getAttribute("emailEnviado") != null && request.getAttribute("emailEnviado").equals(false)) { %>
+				alert("Erro ao enviar o e-mail (TIMEOUT)")
+			<% } %>
 			 
 		 </c:forEach>
 		<button type="submit" class="btn btn-success">Cadastrar</button>
