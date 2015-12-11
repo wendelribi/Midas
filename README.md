@@ -7,5 +7,18 @@ formações  do paciente associadas, como suas massas corporais, distorções ar
 associadas, composição dos seios e impressões gerais. Todas imagens de mamografias do MIDAS são obtidas da Clínica de Radiologia
 da Janice Lamas.
 
+
+Intruções para executar o programa:
+	É necessário possuir instalado em sua maquina, o servidor TomCat e o PostgreSQL criando um banco de nome com o nome "Midas" (este nome não deve ser alterado, pois sua alteração acarretará na não execução completa do código).
+	
+	
+	
+	
+Email funcional do programa:
+	email: grupomidas2015@gmail.com
+	senha: grupomidas12
+	Este email tem a funcionalidade de enviar email para usuarios ao se cadastrarem e ao serem aprovados pelo administrador.E tambem com a função de receber as mensagens vinda de suporte do programa.
+
+
 Fonte : MIDAS - Mammographic Image Database for Automated Analysis. Disponível em http://www.intechopen.com/books/mammography-recent-advances/midas-mammographic-image-database-for-automated-analysis. 
 Acessado no dia 20/09/2015

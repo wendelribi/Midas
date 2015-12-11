@@ -78,9 +78,24 @@
     <c:forEach items="${imagem}" var="imagem" >
     -->
     	<img src="/Midas/src/main/resources/imagens/Exemplo.jpg" class="img-thumbnail" alt="${pageContext.request.contextPath}" width="304" height="236">
+    	  <button type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
+</button>
     	<img src="/Midas/src/main/resources/imagens/exemplo2.png" class="img-thumbnail" alt="Mamografia" width="304" height="236">
+    	  <button type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
+</button>
     <!-- </c:forEach>
     <c:set var="count" value="${count + 1}" scope="page"/>
     -->
+    
+   
+    
+    
+    
+    
   </div><!-- /.container-fluid -->
+  
+
+</button>
 </nav>
