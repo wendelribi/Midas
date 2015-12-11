@@ -29,8 +29,25 @@ public class FavoritoDAO extends GenericDAO<Favorito, Integer> {
 				.setParameter("tituloParam", processamento).getResultList();
 	}
 
+	public List<Favorito> recuperaFavoritosProcessados(){
+		try{
+			JPAUtil.comecarOperacoes();
+			List<Favorito> favorito = JPAUtil.em.createQuery("select u from Favorito u where u.usuario = tituloParam AND u.processamento is not null ").setParameter("tituloParam", LoginController.usuario.getId()).getResultList();
+			JPAUtil.finalizarOperacoes();
+			return favorito;
+		}catch (Exception e) {
+		return null;
+	}
+	}
 	public List<Favorito> recuperaPorUsuario (){
-		return JPAUtil.em.createQuery("select u from Favorito u where u.usuario = 2").getResultList();
+		try {
+		JPAUtil.comecarOperacoes();
+		List<Favorito> favorito = JPAUtil.em.createQuery("select u from Favorito u where u.usuario = tituloParam").setParameter("tituloParam", LoginController.usuario.getId()).getResultList();
+		JPAUtil.finalizarOperacoes();
+		return favorito;
+		}catch (Exception e) {
+			return null;
+		}
 	}
 
 }

@@ -23,6 +23,13 @@ public class HistoricoDAO extends GenericDAO<Historico, Date> {
 	}
 	
 	public List<Historico> recuperaPorUsuario(){
-		return JPAUtil.em.createQuery("select u from Historico u where u.usuario = 2").getResultList();
+	try{
+		JPAUtil.comecarOperacoes();
+		List<Historico> historico = JPAUtil.em.createQuery("select u from Historico u where u.usuario = tituloParam").setParameter("tituloParam", LoginController.usuario.getId()).getResultList();
+		JPAUtil.finalizarOperacoes();
+		return historico;
+	}catch (Exception e) {
+		return null;
+	}
 	}
 }

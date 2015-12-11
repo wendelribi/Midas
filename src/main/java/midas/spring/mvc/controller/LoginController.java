@@ -31,6 +31,8 @@ import midas.util.JPAUtil;
 public class LoginController {
 
 	public List<Mammogram> listMammogram = new ArrayList<Mammogram>();
+	public List<Favorito> listFavorito = new ArrayList<Favorito>();
+	public List<Historico> listHistorico = new ArrayList<Historico>();
 	public Mammogram mammogram;
 	public static Usuario usuario;
 	public MammogramDAO mammogramDAO = new MammogramDAO();
@@ -99,32 +101,37 @@ public class LoginController {
 
 	@RequestMapping("/inicio")
 	public ModelAndView inicio() {
+		listMammogram = mammogramDAO.recuperaTudo();
 		ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
+		model.addObject("mammogram", listMammogram);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 
 	@RequestMapping("/favoritos")
 	public ModelAndView favoritos() {
-		// List<Favorito> favorito = favoritoDAO.recuperaPorUsuario();
+		listFavorito = favoritoDAO.recuperaPorUsuario();
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewFavoritos");
+		model.addObject("favorito",listFavorito);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 
 	@RequestMapping("/historico")
 	public ModelAndView historico() {
-		// List<Historico> historico = historicoDAO.recuperaPorUsuario();
-		// historico.get(0).getMammogram();
+		listHistorico = historicoDAO.recuperaPorUsuario();
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewHistorico");
+		model.addObject("historico",listHistorico);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 
 	@RequestMapping("/imagemProc")
 	public ModelAndView imagensProcessadas() {
+		listFavorito = favoritoDAO.recuperaFavoritosProcessados();
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImgProc");
 		model.addObject("usuario", usuario);
+		model.addObject("favorito",listFavorito);
 		return model;
 	}
 
@@ -203,7 +210,9 @@ public class LoginController {
 	
 	@RequestMapping("/favoritar")
 	public ModelAndView favoritar(HttpServletRequest request, HttpServletResponse response){
+		
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		
 		model.addObject("usuario", usuario);
 		return model;
 	}
