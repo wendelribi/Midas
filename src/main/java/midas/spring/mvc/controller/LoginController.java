@@ -23,6 +23,7 @@ import midas.dao.HistoricoDAO;
 import midas.dao.MammogramDAO;
 import midas.dao.UsuarioDAO;
 import midas.entidades.*;
+import midas.processamentoDeImagens.ProcessamentodeImagensMarvin;
 import midas.util.JPAUtil;
 
 @Controller
@@ -33,6 +34,7 @@ public class LoginController {
 	public List<Mammogram> listMammogram = new ArrayList<Mammogram>();
 	public List<Favorito> listFavorito = new ArrayList<Favorito>();
 	public List<Historico> listHistorico = new ArrayList<Historico>();
+	public ArrayList<Long> mammogramId = new ArrayList<>();
 	public Mammogram mammogram;
 	public static Usuario usuario;
 	public MammogramDAO mammogramDAO = new MammogramDAO();
@@ -72,12 +74,16 @@ public class LoginController {
 			
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 			
+			int i=0;
 			listMammogram = mammogramDAO.recuperaTudo();
 			ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
-			Long mammogramId = listMammogram.get(0).getMammogramId();
+			
+			for(Mammogram arrayList:listMammogram){
+				mammogramId.add(i, arrayList.getMammogramId());
+				i++;
+			}
 			model.addObject("usuario", usuario);
-			model.addObject("mammogram", listMammogram);
-			model.addObject("id", mammogramId);
+			model.addObject("mammogramId", mammogramId);
 			return model;
 
 		} else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
@@ -103,9 +109,8 @@ public class LoginController {
 
 	@RequestMapping("/inicio")
 	public ModelAndView inicio() {
-		listMammogram = mammogramDAO.recuperaTudo();
 		ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
-		model.addObject("mammogram", listMammogram);
+		model.addObject("mammogramId", mammogramId);
 		model.addObject("usuario", usuario);
 		return model;
 	}
@@ -136,85 +141,60 @@ public class LoginController {
 		model.addObject("favorito",listFavorito);
 		return model;
 	}
-
-	@RequestMapping("/imagem")
-	public ModelAndView imagem(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {	
-//				System.out.println("Roberts");
-//				System.out.println("Sobel");
-//				System.out.println("Negativo");
-//				System.out.println("Favoritar");
+	@RequestMapping(value = "/imagem", method = RequestMethod.GET)
+	public ModelAndView getImagemId(@RequestParam("mammogramId") Long id) {	
 		
-		// // Get ID from request.
-		// String imageId = request.getParameter("id");
-		//
-		// // Checando o id da imagem
-		// if (imageId == null) {
-		// response.sendError(HttpServletResponse.SC_NOT_FOUND); // 404.
-		// }
-		//
-		//
-		// Image image = imageDAO.find(imageId);
-		//
-		// // Caso a imagem não abra
-		// if (image == null) {
-		// response.sendError(HttpServletResponse.SC_NOT_FOUND); // 404.
-		// return null;
-		// }
-		//
-		// // Init servlet response.
-		// response.reset();
-		// response.setContentType(image.getContentType());
-		// response.setContentLength(image.getContent().length);
-		//
-		// // Write image content to response.
-		// response.getOutputStream().write(image.getContent());
-		//
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 	
-	@RequestMapping("/filtroBordas")
-	public ModelAndView filtroBordas(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value = "/filtroBordas",  method = RequestMethod.GET)
+	public ModelAndView filtroBordas(@RequestParam("mammogramId") Long id){
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 	
-	@RequestMapping("/filtroPrewitt")
-	public ModelAndView filtroPrewitt(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value = "/filtroPrewitt", method = RequestMethod.GET)
+	public ModelAndView filtroPrewitt(@RequestParam("mammogramId") Long id){
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 	
-	@RequestMapping("/filtroRoberts")
-	public ModelAndView filtroRoberts(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value = "/filtroRoberts", method = RequestMethod.GET)
+	public ModelAndView filtroRoberts(@RequestParam("mammogramId") Long id){
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 
-	@RequestMapping("/filtroSobel")
-	public ModelAndView filtroSobel(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value = "/filtroSobel", method = RequestMethod.GET)
+	public ModelAndView filtroSobel(@RequestParam("mammogramId") Long id){
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 	
-	@RequestMapping("/filtroNegativo")
-	public ModelAndView filtroNegativo(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value = "/filtroNegativo", method = RequestMethod.GET)
+	public ModelAndView filtroNegativo(@RequestParam("mammogramId") Long id){
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 	
-	@RequestMapping("/favoritar")
-	public ModelAndView favoritar(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value = "/favoritar",method = RequestMethod.GET)
+	public ModelAndView favoritar(@RequestParam("mammogramId") Long id){
 		
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
-		
+		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
 		return model;
 	}
