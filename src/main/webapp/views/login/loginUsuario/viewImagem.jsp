@@ -8,59 +8,39 @@
 		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 </h:head>
 
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>Filtro 1
+
+<button type="button" class="btn btn-primary btn-lg">
+	<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+	Bordas Comum
 </button>
 
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Filtro 2
+<button type="button" class="btn btn-primary btn-lg">
+	<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+	Prewitt
 </button>
 
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Filtro 3
+<button type="button" class="btn btn-primary btn-lg">
+	<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+	Roberts
 </button>
 
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Filtro 4
+<button type="button" class="btn btn-primary  btn-lg">
+	<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+	Sobel
 </button>
 
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Filtro 5
+<button type="button" class="btn btn-primary btn-lg">
+	<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+	Negativo
 </button>
 
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Filtro 6
+<button type="button" class="btn btn-primary btn-lg">
+	<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+	Favoritar
 </button>
-
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favoritar
-</button>
-
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Midas Home
-</button>
-
-
-
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="C:\Users\Gabriel\Dropbox\MIDAS\Exemplo2.jpg" alt="...">
-					<div class="caption">
-						<h3>FOTO 2</h3>
-						<p>Tamanho do cisto : x cm</p>
-						<p>Idade da mulher : x idade</p>
-						
-						<a href="C:\Users\Gabriel\Dropbox\MIDAS\Exemplo2.jpg" > 
-							<button type="button" class="btn btn-primary"
-								aria-label="Left Align">
-								<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-								Expandir
-							</button>
-							<button type="button" class="btn btn-primary"
-								aria-label="Left Align">
-								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Favoritar
-							</button>
-						</p></a>
-					</div>
-			</div>
-		</div>
+<a href="javascript:history.go(-1)">
+		<button type="button" class="btn btn-primary btn-lg">
+			<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+			Voltar
+		</button>
+</a>

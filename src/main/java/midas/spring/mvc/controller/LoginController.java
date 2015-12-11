@@ -70,7 +70,7 @@ public class LoginController {
 		} else if (usuario.getNivelDeAcesso() == 1 && (usuario.getSenha().equals(login.getSenha()))) {
 
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
-//			Listmammogram = mammogramDAO.recuperaPorUsuario();
+			// Listmammogram = mammogramDAO.recuperaPorUsuario();
 			ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
 			model.addObject("usuario", usuario);
 			model.addObject("mammogram", Listmammogram);
@@ -88,16 +88,16 @@ public class LoginController {
 			return new ModelAndView(new RedirectView("../login/controller.html"), "loginIncorreto", true);
 		}
 	}
-	
+
 	@RequestMapping("/submit")
 	public ModelAndView search(HttpServletRequest request) {
-		System.out.println("Pesquisa: "+request.getParameter("search"));
-		
+		System.out.println("Pesquisa: " + request.getParameter("search"));
+
 		ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
 		model.addObject("usuario", usuario);
 		return model;
 	}
-	
+
 	@RequestMapping("/inicio")
 	public ModelAndView inicio() {
 		ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
@@ -129,39 +129,39 @@ public class LoginController {
 		return model;
 	}
 
-	// @RequestMapping("/imagem")
-	// public ModelAndView imagem(HttpServletRequest request,
-	// HttpServletResponse response)throws ServletException, IOException {
-	//
-	// // Get ID from request.
-	// String imageId = request.getParameter("id");
-	//
-	// // Checando o id da imagem
-	// if (imageId == null) {
-	// response.sendError(HttpServletResponse.SC_NOT_FOUND); // 404.
-	// }
-	//
-	//
-	// Image image = imageDAO.find(imageId);
-	//
-	// // Caso a imagem não abra
-	// if (image == null) {
-	// response.sendError(HttpServletResponse.SC_NOT_FOUND); // 404.
-	// return null;
-	// }
-	//
-	// // Init servlet response.
-	// response.reset();
-	// response.setContentType(image.getContentType());
-	// response.setContentLength(image.getContent().length);
-	//
-	// // Write image content to response.
-	// response.getOutputStream().write(image.getContent());
-	//
-	// ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
-	// model.addObject("usuario", usuario);
-	// return model;
-	// }
+	@RequestMapping("/imagem")
+	public ModelAndView imagem(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// // Get ID from request.
+		// String imageId = request.getParameter("id");
+		//
+		// // Checando o id da imagem
+		// if (imageId == null) {
+		// response.sendError(HttpServletResponse.SC_NOT_FOUND); // 404.
+		// }
+		//
+		//
+		// Image image = imageDAO.find(imageId);
+		//
+		// // Caso a imagem não abra
+		// if (image == null) {
+		// response.sendError(HttpServletResponse.SC_NOT_FOUND); // 404.
+		// return null;
+		// }
+		//
+		// // Init servlet response.
+		// response.reset();
+		// response.setContentType(image.getContentType());
+		// response.setContentLength(image.getContent().length);
+		//
+		// // Write image content to response.
+		// response.getOutputStream().write(image.getContent());
+		//
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
 
 	@RequestMapping(value = "/recusar", method = RequestMethod.GET)
 	public ModelAndView recusar(@RequestParam("cpfRecusado") String cpf) {
