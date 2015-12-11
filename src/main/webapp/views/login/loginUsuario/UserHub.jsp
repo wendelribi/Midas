@@ -26,7 +26,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">MIDAS</a>
+      <a class="navbar-brand">MIDAS</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,14 +78,12 @@
     <c:forEach items="${imagem}" var="imagem" >
     -->
     	<img src="/Midas/src/main/resources/imagens/Exemplo.jpg" class="img-thumbnail" alt="${pageContext.request.contextPath}" width="304" height="236">
-    	  <button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
-</button>
-    	<img src="/Midas/src/main/resources/imagens/exemplo2.png" class="img-thumbnail" alt="Mamografia" width="304" height="236">
-    	  <button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
-</button>
-    <!-- </c:forEach>
+    		<li><a href="imagem.html" >
+ 	   			<button type="button" class="btn btn-default" aria-label="Left Align">
+  					<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
+				</button>
+    		</a></li>
+    	<!-- </c:forEach>
     <c:set var="count" value="${count + 1}" scope="page"/>
     -->
     

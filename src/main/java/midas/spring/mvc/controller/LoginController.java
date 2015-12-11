@@ -119,7 +119,14 @@ public class LoginController {
 		model.addObject("usuario", usuario);
 		return model;
 	}
-
+	
+	@RequestMapping("/imagem")
+	public ModelAndView imagem() {
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("usuario", usuario);
+		return model;
+	}
+	
 	@RequestMapping(value = "/recusar", method = RequestMethod.GET)
 	public ModelAndView recusar(@RequestParam("cpfRecusado") String cpf) {
 
