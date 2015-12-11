@@ -29,14 +29,35 @@
 			</br>
 			<center>
 				<p>Fale conosco:</p>
-				<p><form action="contato.html" method="post">
-				<div class="form-group"> 
-					<input type="text" class="form-control" placeholder="Email" name="email">
-				</div>
-				<div class="form-group">
-					<textarea class="form-control" rows="3" placeholder="Mensagem" name="mensagem" > </textarea>				 
-				</div>
-				<button type="submit" class="btn btn-primary">Enviar mensagem</button>
+				<p>
+				<form action="contato.html" method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Email"
+							name="email">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" rows="3" placeholder="Mensagem"
+							name="mensagem"> </textarea>
+					</div>
+
+					<%
+						if (request.getAttribute("emailInvalido") != null) {
+								if (request.getAttribute("emailInvalido").equals("true")) {
+					%>
+					<script language="JavaScript" type="text/javascript">
+						alert("Email inválido")
+					</script>
+					<%
+						}
+							}
+					%>
+
+
+
+
+
+					<button type="submit" class="btn btn-primary">Enviar
+						mensagem</button>
 				</form>
 				</p>
 			</center>

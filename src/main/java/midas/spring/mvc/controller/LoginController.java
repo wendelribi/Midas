@@ -147,7 +147,7 @@ public class LoginController {
 		if (sucesso) {
 			JPAUtil.comecarOperacoes();
 			Email.enviarEmail((bancoDeDadosUsuario.recuperar(cpf)).getEmail(), "Cadastro MIDAS", 
-					"Usuário " + (bancoDeDadosUsuario.recuperar(cpf)).getNome() + "\n			, seu cadastro foi aprovado com sucesso. A partir de agora "
+					"Usuário " + (bancoDeDadosUsuario.recuperar(cpf)).getNome() + "\n, seu cadastro foi aprovado com sucesso. A partir de agora "
 							+ " você podera acessar o nosso sistema com as seguintes credencias \n\n Usuario: "+  cpf + 
 							"\n Senha: " + bancoDeDadosUsuario.recuperar(cpf).getSenha() + 
 							"\n\nAtenciosamente,\n\n Grupo MIDAS 2015 \n\n OBSERVAÇÃO: Por favor, não responder este email. Mensagem gerada automaticamente.");

@@ -14,7 +14,8 @@ public class Email {
 
 	// Envia um email com o assunto e a mensagem recebida
 	public static void enviarEmail(String emailUsuario, String assunto, String mensagem) {
-		try{
+		try {
+
 			SimpleEmail email = new SimpleEmail();
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
@@ -25,9 +26,8 @@ public class Email {
 			email.setMsg(mensagem);
 			email.addTo(emailUsuario);
 			email.send();
-		} catch (EmailException ex)
-		{
-			//Logger.getLogger(Email.class.getName().log(Level.SEVERE,null,ex));
+		} catch (EmailException ex) {
+			// Logger.getLogger(Email.class.getName().log(Level.SEVERE,null,ex));
 		}
 	}
 }
