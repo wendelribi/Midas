@@ -40,13 +40,14 @@ public class InfoController {
 		if(valido.CampoEmail(request.getParameter("email")))
 		{
 			Email.enviarEmail("grupomidas2015@gmail.com","SUPORTE DO USUARIO :"+request.getParameter("email"),request.getParameter("Mensagem: \n "+"mensagem")+"\n\n"+"Enviado por : "+request.getParameter("email"));
-			return new ModelAndView(new RedirectView("../usuario/login/inicio.html"));
+			request.setAttribute("emailInvalido", "false");
 		}
 		else
 		{
 			System.err.println("Erro ao enviar o email, tente novamente");
 			request.setAttribute("emailInvalido","true");
-			return new ModelAndView("/info/suporte");	
+			
 		}
+		return new ModelAndView("/info/suporte");	
 	}
 }

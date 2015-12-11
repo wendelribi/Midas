@@ -48,6 +48,12 @@
 						alert("Email inválido")
 					</script>
 					<%
+						} else {
+					%>
+					<script language="JavaScript" type="text/javascript">
+						alert("Mensagem enviada com sucesso")
+					</script>
+					<%
 						}
 							}
 					%>

@@ -46,9 +46,11 @@
 			<br>
 			<center>
 				<p>Duvidas ou reclamações ?</p>
-				<p><button type="button" class="btn btn-primary btn-lg">
-  					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> grupomidas2015@gmail.com.br
-				</button>
+				
+
+				
+				<p>
+				<a class="btn btn-primary" href="../info/controle.html"" role="button">Fale conosco</a>
 				</p>
 			</center>
 		</div>
