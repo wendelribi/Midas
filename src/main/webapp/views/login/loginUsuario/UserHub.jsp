@@ -89,11 +89,10 @@
 			</a></li>
 		</ul>
 	</div>
-	
-	<c:forEach items="${listMammogram}" var="lista">
-		
-		<img src="/Midas/src/main/resources/imagens/Exemplo.jpg"
-			class="img-thumbnail" alt="${pageContext.request.contextPath}"
+	<!-- c:forEach items="${listMammogram}" var="lista"-->
+
+		<img src="${pageContext.request.contextPath}/imagens?id=15"
+			class="img-thumbnail" alt="${pageContext.request.contextPath}/images?id=${id}"
 			width="304" height="236">
 			<li><a href="imagem.html">
 					<button type="button" class="btn btn-primary btn-lg"
@@ -101,7 +100,7 @@
 						<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
 					</button>
 			</a></li>
-	</c:forEach>
+	<!-- /c:forEach-->
 
 </div>
 

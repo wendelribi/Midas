@@ -74,8 +74,10 @@ public class LoginController {
 			
 			listMammogram = mammogramDAO.recuperaTudo();
 			ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
+			Long mammogramId = listMammogram.get(0).getMammogramId();
 			model.addObject("usuario", usuario);
 			model.addObject("mammogram", listMammogram);
+			model.addObject("id", mammogramId);
 			return model;
 
 		} else if (usuario.getNivelDeAcesso() == 2 && (usuario.getSenha().equals(login.getSenha()))) {
