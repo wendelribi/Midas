@@ -7,7 +7,13 @@
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 </h:head>
-<a href="filtroBordas.html">
+
+<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
+	class="img-thumbnail"
+	alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
+	width="1000" height="600">
+
+<a href="filtroBordas.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary btn-lg" name="botao1"
 		value="1">
 		<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
@@ -15,7 +21,7 @@
 	</button>
 </a>
 
-<a href="filtroPrewitt.html">
+<a href="filtroPrewitt.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary btn-lg" name="botao2"
 		value="2">
 		<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
@@ -23,28 +29,28 @@
 	</button>
 </a>
 
-<a href="filtroRoberts.html">
+<a href="filtroRoberts.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary btn-lg" name="botao3">
 		<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 		Roberts
 	</button>
 </a>
 
-<a href="filtroSobel.html">
+<a href="filtroSobel.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary  btn-lg">
 		<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 		Sobel
 	</button>
 </a>
 
-<a href="filtroNegativo.html">
+<a href="filtroNegativo.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary btn-lg">
 		<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 		Negativo
 	</button>
 </a>
 
-<a href="favoritar.html">
+<a href="favoritar.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary btn-lg">
 		<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 		Favoritar

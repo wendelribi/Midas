@@ -89,19 +89,18 @@
 			</a></li>
 		</ul>
 	</div>
-	<!-- c:forEach items="${listMammogram}" var="lista"-->
-
-		<img src="${pageContext.request.contextPath}/imagens?id=15"
-			class="img-thumbnail" alt="${pageContext.request.contextPath}/images?id=${id}"
+	<c:forEach items="${mammogramId}" var="mammogramId">
+		
+		<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
+			class="img-thumbnail" alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
 			width="304" height="236">
-			<li><a href="imagem.html">
+			<li><a href="imagem.html?mammogramId=${mammogramId}">
 					<button type="button" class="btn btn-primary btn-lg"
 						aria-label="Left Align">
 						<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
 					</button>
 			</a></li>
-	<!-- /c:forEach-->
-
+	</c:forEach>
 </div>
 
 
