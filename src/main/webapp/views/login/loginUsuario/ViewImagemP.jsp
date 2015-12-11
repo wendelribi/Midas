@@ -36,8 +36,8 @@
 
 
 <button type="button" class="btn btn-primary btn-lg">
-	<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-	Favoritar
+	<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+	Salvar
 </button>
 <a href="javascript:history.go(-1)">
 		<button type="button" class="btn btn-primary btn-lg">

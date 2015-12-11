@@ -80,7 +80,7 @@
     -->
     	<img src="/Midas/src/main/resources/imagens/Exemplo.jpg" class="img-thumbnail" alt="${pageContext.request.contextPath}" width="304" height="236">
     		<li><a href="imagem.html" >
- 	   			<button type="button" class="btn btn-default" aria-label="Left Align">
+ 	   			<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align">
   					<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Expandir
 				</button>
     		</a></li>

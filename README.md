@@ -18,7 +18,7 @@ Email funcional do programa:
 	email: grupomidas2015@gmail.com
 	senha: grupomidas12
 	Este email tem a funcionalidade de enviar email para usuarios ao se cadastrarem e ao serem aprovados pelo administrador.E tambem com a função de receber as mensagens vinda de suporte do programa.
-
+	Obs: Como o programa utiliza um sistema de confirmação via email, é necessário que o computador esteja conectado a uma rede de internet que não bloqueie o envio de emails (UnB wirelles bloqueia, logo não a use),pois caso o programa seja impedido de enviar o email o programa apresentara um erro,ou seja rode o programa com um computador não conectado a internet(o programa não apresenta erro, mas tambem não envia email) ou conectado a uma rede que não bloqueie o envio .
 
 Fonte : MIDAS - Mammographic Image Database for Automated Analysis. Disponível em http://www.intechopen.com/books/mammography-recent-advances/midas-mammographic-image-database-for-automated-analysis. 
 Acessado no dia 20/09/2015
