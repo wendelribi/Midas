@@ -9,27 +9,29 @@ import midas.util.JPAUtil;
 
 public class HistoricoDAO extends GenericDAO<Historico, Date> {
 	@Override
-	public Historico recuperar(Date data){
+	public Historico recuperar(Date data) {
 		try {
 			return JPAUtil.em.find(Historico.class, data);
-		} catch(IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public List<Historico> recuperarTodos() {
 		return JPAUtil.em.createQuery("select u from Historico u").getResultList();
 	}
-	
-	public List<Historico> recuperaPorUsuario(){
-	try{
-		JPAUtil.comecarOperacoes();
-		List<Historico> historico = JPAUtil.em.createQuery("select u from Historico u where u.usuario = tituloParam").setParameter("tituloParam", LoginController.usuario.getId()).getResultList();
-		JPAUtil.finalizarOperacoes();
-		return historico;
-	}catch (Exception e) {
-		return null;
-	}
+
+	public List<Historico> recuperaPorUsuario() {
+		try {
+			JPAUtil.comecarOperacoes();
+			List<Historico> historico = JPAUtil.em
+					.createQuery("select u from Historico u where u.usuario =:tituloParam")
+					.setParameter("tituloParam", LoginController.usuario).getResultList();
+			JPAUtil.finalizarOperacoes();
+			return historico;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

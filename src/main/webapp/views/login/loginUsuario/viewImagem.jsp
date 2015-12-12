@@ -7,11 +7,12 @@
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 </h:head>
-
-<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
-	class="img-thumbnail"
-	alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
-	width="1000" height="600">
+<div class="container-fluid">
+	<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
+		class="img-thumbnail"
+		alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
+		width="1000" height="600">
+</div>
 
 <a href="filtroBordas.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary btn-lg" name="botao1"
@@ -50,12 +51,22 @@
 	</button>
 </a>
 
-<a href="favoritar.html?mammogramId=${mammogramId}">
-	<button type="button" class="btn btn-primary btn-lg">
-		<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-		Favoritar
-	</button>
-</a>
+	<%if(request.getAttribute("processar") != null){
+			if( request.getAttribute("processar").equals("false")){ %>
+	<a href="favoritar.html?mammogramId=${mammogramId}">
+		<button type="button" class="btn btn-primary btn-lg">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			Favoritar
+		</button>
+	</a>
+	<%}else{ %>
+	<a href="salvar.html?mammogramId=${mammogramId}">
+		<button type="button" class="btn btn-primary btn-lg">
+			<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+			Salvar
+		</button>
+	</a>	
+	<%}}%>
 
 <a href="inicio.html">
 	<button type="button" class="btn btn-primary btn-lg">

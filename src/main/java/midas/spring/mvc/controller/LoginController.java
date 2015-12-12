@@ -34,7 +34,8 @@ public class LoginController {
 	public List<Mammogram> listMammogram = new ArrayList<Mammogram>();
 	public List<Favorito> listFavorito = new ArrayList<Favorito>();
 	public List<Historico> listHistorico = new ArrayList<Historico>();
-	public ArrayList<Long> mammogramId = new ArrayList<>();
+	public List<Favorito> listProcessadas = new ArrayList<Favorito>();
+	public ArrayList<Long> mammogramId;
 	public Mammogram mammogram;
 	public static Usuario usuario;
 	public MammogramDAO mammogramDAO = new MammogramDAO();
@@ -74,13 +75,11 @@ public class LoginController {
 			
 			System.out.println("Login realizado!\n Tipo de conta: Usuario");
 			
-			int i=0;
 			listMammogram = mammogramDAO.recuperaTudo();
 			ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
-			
+			mammogramId = new ArrayList<>();
 			for(Mammogram arrayList:listMammogram){
-				mammogramId.add(i, arrayList.getMammogramId());
-				i++;
+				mammogramId.add(arrayList.getMammogramId());
 			}
 			model.addObject("usuario", usuario);
 			model.addObject("mammogramId", mammogramId);
@@ -109,6 +108,10 @@ public class LoginController {
 
 	@RequestMapping("/inicio")
 	public ModelAndView inicio() {
+		mammogramId = new ArrayList<>();
+		for(Mammogram arrayList:listMammogram){
+			mammogramId.add(arrayList.getMammogramId());
+		}
 		ModelAndView model = new ModelAndView("/login/loginUsuario/UserHub");
 		model.addObject("mammogramId", mammogramId);
 		model.addObject("usuario", usuario);
@@ -117,33 +120,49 @@ public class LoginController {
 
 	@RequestMapping("/favoritos")
 	public ModelAndView favoritos() {
+		mammogramId = new ArrayList<>();
 		listFavorito = favoritoDAO.recuperaPorUsuario();
+		for(Favorito arrayList:listFavorito)
+			mammogramId.add(arrayList.getMammogram().getMammogramId());
+			
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewFavoritos");
-		model.addObject("favorito",listFavorito);
+		model.addObject("mammogramId", mammogramId);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 
 	@RequestMapping("/historico")
 	public ModelAndView historico() {
+		mammogramId = new ArrayList<>();
 		listHistorico = historicoDAO.recuperaPorUsuario();
+		for(Historico arrayList:listHistorico)
+			mammogramId.add(arrayList.getMammogram().getMammogramId());
+		
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewHistorico");
-		model.addObject("historico",listHistorico);
+		model.addObject("mammogramId", mammogramId);
 		model.addObject("usuario", usuario);
 		return model;
 	}
 
 	@RequestMapping("/imagemProc")
 	public ModelAndView imagensProcessadas() {
-		listFavorito = favoritoDAO.recuperaFavoritosProcessados();
+		
+		mammogramId = new ArrayList<>();
+		listProcessadas = favoritoDAO.recuperaFavoritosProcessados();
+		for(Favorito arrayList:listProcessadas)
+			mammogramId.add(arrayList.getMammogram().getMammogramId());
+		
+		
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImgProc");
 		model.addObject("usuario", usuario);
-		model.addObject("favorito",listFavorito);
+		model.addObject("mammogramId", mammogramId);
 		return model;
 	}
+	
 	@RequestMapping(value = "/imagem", method = RequestMethod.GET)
-	public ModelAndView getImagemId(@RequestParam("mammogramId") Long id) {	
+	public ModelAndView getImagem(@RequestParam("mammogramId") Long id,HttpServletRequest request) {	
 		
+		request.setAttribute("processar","false");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
@@ -151,7 +170,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/filtroBordas",  method = RequestMethod.GET)
-	public ModelAndView filtroBordas(@RequestParam("mammogramId") Long id){
+	public ModelAndView filtroBordas(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
@@ -159,7 +179,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/filtroPrewitt", method = RequestMethod.GET)
-	public ModelAndView filtroPrewitt(@RequestParam("mammogramId") Long id){
+	public ModelAndView filtroPrewitt(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
@@ -167,7 +188,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/filtroRoberts", method = RequestMethod.GET)
-	public ModelAndView filtroRoberts(@RequestParam("mammogramId") Long id){
+	public ModelAndView filtroRoberts(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
@@ -175,7 +197,8 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/filtroSobel", method = RequestMethod.GET)
-	public ModelAndView filtroSobel(@RequestParam("mammogramId") Long id){
+	public ModelAndView filtroSobel(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
@@ -183,7 +206,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/filtroNegativo", method = RequestMethod.GET)
-	public ModelAndView filtroNegativo(@RequestParam("mammogramId") Long id){
+	public ModelAndView filtroNegativo(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
@@ -191,8 +215,19 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/favoritar",method = RequestMethod.GET)
-	public ModelAndView favoritar(@RequestParam("mammogramId") Long id){
-		
+	public ModelAndView favoritar(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+		request.setAttribute("processar","false");
+		System.out.println("Favoritando...");
+		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
+		model.addObject("mammogramId",id);
+		model.addObject("usuario", usuario);
+		return model;
+	}
+	
+	@RequestMapping(value = "/salvar",method = RequestMethod.GET)
+	public ModelAndView salvar(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+		request.setAttribute("processar","true");
+		System.out.println("Salvando...");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
 		model.addObject("usuario", usuario);
