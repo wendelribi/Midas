@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<title>Imagens Processadas</title>
-	<link rel="stylesheet"
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+<head>
+<title>Imagens Processadas</title>
+<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<script
 			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -14,7 +14,7 @@
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script
 			src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-</h:head>
+</head>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -74,6 +74,12 @@
   				<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout
 			</button><span class="sr-only">(current)</span></a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+    <c:forEach items="${mammogramId}" var="mammogramId">
+		
+		<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
+			class="img-thumbnail" alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
+			width="304" height="236">
+	</c:forEach>
+  </div>
 </nav>
