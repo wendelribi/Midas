@@ -115,7 +115,10 @@
 
 		</c:forEach>
 	</div>
-
-
-	</button>
 </nav>
+
+<%if(request.getAttribute("mammogramVazio")!= null && request.getAttribute("mammogramVazio").equals("true")){ %>
+    	<div class="alert alert-info" role="alert">
+  			Sem mamogramas para mostrar
+		</div>
+<%} %>

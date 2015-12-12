@@ -53,9 +53,7 @@ public class MammogramDAO {
 		try {
 			JPAUtil.comecarOperacoes();
 			Mammogram mamo = JPAUtil.em.find(Mammogram.class, mamoId);
-			JPAUtil.em.find(Mammogram.class, mamoId);
-			new HistoricoController(mamo);
-			return JPAUtil.em.find(Mammogram.class, mamoId);
+			return mamo;
 		} catch(IllegalArgumentException e) {
 			return null;
 		}

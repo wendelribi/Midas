@@ -83,3 +83,9 @@
 	</c:forEach>
   </div>
 </nav>
+
+<%if(request.getAttribute("mammogramVazio")!= null && request.getAttribute("mammogramVazio").equals("true")){ %>
+    	<div class="alert alert-info" role="alert">
+  			Sem mamogramas favoritos para mostrar
+		</div>
+<%} %>
