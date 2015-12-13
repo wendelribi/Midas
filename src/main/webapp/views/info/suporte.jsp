@@ -41,7 +41,7 @@
 					</div>
 
 					<% if (request.getAttribute("emailInvalido") != null && request.getAttribute("emailInvalido").equals(false)) { %>
-						alert("aasdfasdfMEOUT)")
+					
 						<% if (request.getAttribute("emailEnviado") != null && request.getAttribute("emailEnviado").equals(false)) { %>
 							<script language="JavaScript" type="text/javascript">
 								alert("Erro ao enviar o e-mail (TIMEOUT)")
@@ -50,15 +50,16 @@
 					<% } else { %>
 						<% if (request.getAttribute("emailInvalido") != null && request.getAttribute("emailInvalido").equals(true)) { %>
 							<script language="JavaScript" type="text/javascript">
-								alert("E-mail inv·lido")
+								alert("E-mail invalido")
 							</script>
 						<% } %>
 					<% } %>
 
 
 
-					<button type="submit" class="btn btn-primary">Enviar
-						mensagem</button>
+					<button type="submit" class="btn btn-primary">
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					Enviar mensagem</button>
 				</form>
 				</p>
 			</center>

@@ -61,10 +61,10 @@
 			<form action="submit.html" method="post"
 				class="navbar-form navbar-left">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search"
+					<input type="text" class="form-control" placeholder="Procurar"
 						name="search">
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Pesquisar</button>
 			</form>
 
 			<ul class="nav navbar-nav navbar-right">
@@ -84,7 +84,7 @@
 						<button type="button" class="btn btn-primary"
 							aria-label="Left Align">
 							<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-							Logout
+							Sair da Conta
 						</button> <span class="sr-only">(current)</span>
 				</a></li>
 			</ul>
