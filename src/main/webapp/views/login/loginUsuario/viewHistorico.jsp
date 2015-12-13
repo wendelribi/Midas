@@ -81,6 +81,7 @@
 		<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
 			class="img-thumbnail" alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
 			width="304" height="236">
+			<h3>Mamograma Visitado: ${mammogramId} </h3>
 	</c:forEach>
   </div>
 </nav>

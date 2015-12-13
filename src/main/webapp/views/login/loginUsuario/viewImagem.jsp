@@ -7,12 +7,7 @@
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 </h:head>
-<div class="container-fluid">
-	<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
-		class="img-thumbnail"
-		alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
-		width="1000" height="600">
-</div>
+
 
 <a href="filtroBordas.html?mammogramId=${mammogramId}">
 	<button type="button" class="btn btn-primary btn-lg" name="botao1"
@@ -73,4 +68,14 @@
 		<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
 		Voltar
 	</button>
+	
+	
+	
+	
+	<div class="container-fluid">
+	<img src="${pageContext.request.contextPath}/imagens?id=${mammogramId}"
+		class="img-thumbnail"
+		alt="${pageContext.request.contextPath}/images?id=${mammogramId}"
+		width="1000" height="600">
+</div>
 </a>

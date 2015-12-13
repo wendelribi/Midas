@@ -29,26 +29,26 @@
 			</br>
 
 			<p>Projeto da disciplina Programação Orientada ao Objeto
-			<p>Desenvolvedores :</br> 
-						- Iure Brandão     </br>
-						- Gabriel Pereira  </br>
-						- Gustavo Henrique </br>
-						- Ismael Medeiros  </br>
-						- Fábio Trevizolo  </br>
-						- Victor Araujo    </br>
-						- Victor Dantas    </br>
-						- Bruno Reis       </br>
-						- Lucas Rezende    </br>
-						- Álvaro Vieira    </br>
-			
+			<p>
+				Desenvolvedores :</br> - Iure Brandão </br> - Gabriel Pereira </br> - Gustavo
+				Henrique </br> - Ismael Medeiros </br> - Fábio Trevizolo </br> - Victor Araujo </br> -
+				Victor Dantas </br> - Bruno Reis </br> - Lucas Rezende </br> - Álvaro Vieira </br>
+
 			</p>
 			<p>Professor Responsável : Rodrigo Bonifácio</p>
 			<br>
 			<center>
 				<p>Duvidas ou reclamações ?</p>
-				
+
 				<p>
-				<a class="btn btn-primary" href="../info/controle.html"" role="button">Fale conosco</a>
+
+					<a href="../info/controle.html">
+						<button type="button" class="btn btn-primary btn-lg">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+							Fale Conosco
+						</button>
+					</a>
+
 				</p>
 			</center>
 		</div>
