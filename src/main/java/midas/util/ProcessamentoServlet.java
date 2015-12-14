@@ -16,9 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import midas.dao.ImagemProcessadaDAO;
 import midas.entidades.ImagemProcessada;
 
-/**
- * Servlet implementation class ProcessamentoServlet
- */
 @WebServlet("/imagensProcessadas/*")
 public class ProcessamentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

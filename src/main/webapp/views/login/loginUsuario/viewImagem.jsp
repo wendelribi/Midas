@@ -82,7 +82,7 @@
 	<%} else { %>
 	<div class="container-fluid">
 		<img
-			src="${pageContext.request.contextPath}/processamento?id=${imageId}"
+			src="${pageContext.request.contextPath}/imagensProcessadas?id=${imageId}"
 			class="img-thumbnail"
 			alt="${pageContext.request.contextPath}/processamento?id=${imageId}"
 			width="1000" height="600">
