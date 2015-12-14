@@ -26,24 +26,20 @@ public class MammogramDAO {
 	private BufferedImage image;
 	public boolean inserir() {
 		try{
-			try{
-				JPAUtil.comecarOperacoes();
-				JPAUtil.em.getTransaction().begin();
-				Mammogram mamo = new Mammogram();
-				image = ImageIO.read(new File("/Users/victordantas/Dropbox/MIDAS/Exemplo.jpg"));
-				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				ImageIO.write(image, "jpg", baos);
-				baos.flush();
-				mamo.setImagem(baos.toByteArray());
-				baos.close();
-				JPAUtil.em.persist(mamo);
-				JPAUtil.em.getTransaction().commit();
-				JPAUtil.finalizarOperacoes();
-				return true;
-			} catch(IOException ex) {
-				return false;
-			}
-		} catch(EntityExistsException e) {
+			JPAUtil.comecarOperacoes();
+			JPAUtil.em.getTransaction().begin();
+			Mammogram mamo = new Mammogram();
+			image = ImageIO.read(new File("/Users/victordantas/Dropbox/MIDAS/Exemplo.jpg"));
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(image, "jpg", baos);
+			baos.flush();
+			mamo.setImagem(baos.toByteArray());
+			baos.close();
+			JPAUtil.em.persist(mamo);
+			JPAUtil.em.getTransaction().commit();
+			JPAUtil.finalizarOperacoes();
+			return true;
+		} catch(IOException | EntityExistsException ex) {
 			return false;
 		}
 	}
