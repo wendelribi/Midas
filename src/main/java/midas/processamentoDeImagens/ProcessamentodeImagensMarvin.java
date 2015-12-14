@@ -50,7 +50,7 @@ public class ProcessamentodeImagensMarvin implements ProcessamentoDeImagens{
 
 		}
 		
-        MarvinImageIO.saveImage(imgOut, "src/main/resources/images/imagem_out.jpg" );
+
         return imgOut.getBufferedImage();
 	}
 

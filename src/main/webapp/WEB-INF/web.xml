@@ -24,4 +24,12 @@
 		<servlet-name>ImageServlet</servlet-name>
 		<url-pattern>/image</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>ProcessamentoServlet</servlet-name>
+		<servlet-class>midas.util.ProcessamentoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProcessamentoServlet</servlet-name>
+		<url-pattern>/processamento</url-pattern>
+	</servlet-mapping>
 </web-app>

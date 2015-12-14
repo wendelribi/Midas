@@ -17,6 +17,7 @@ import midas.entidades.Mammogram;
 @WebServlet("/imagens/*")
 public class ImageServlet extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
 	private MammogramDAO mammogramDAO;
 	
 	public void init() throws ServletException {
