@@ -20,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import Controle.*;
 import midas.dao.FavoritoDAO;
 import midas.dao.HistoricoDAO;
+import midas.dao.ImagemProcessadaDAO;
 import midas.dao.MammogramDAO;
 import midas.dao.UsuarioDAO;
 import midas.entidades.*;
@@ -42,6 +43,7 @@ public class LoginController {
 	public MammogramDAO mammogramDAO = new MammogramDAO();
 	public HistoricoDAO historicoDAO = new HistoricoDAO();
 	public FavoritoDAO favoritoDAO = new FavoritoDAO();
+	public ImagemProcessadaDAO imagemProcessadaDAO = new ImagemProcessadaDAO();
 	ArrayList<Usuario> arrayUsuario;
 	UsuarioDAO bancoDeDadosUsuario = new UsuarioDAO();
 	LoginUsuario login = new LoginUsuario();
@@ -199,10 +201,13 @@ public class LoginController {
 	
 	@RequestMapping(value = "/filtroBordas",  method = RequestMethod.GET)
 	public ModelAndView filtroBordas(@RequestParam("mammogramId") Long id,HttpServletRequest request){
+
+		List<ImagemProcessada> imagens = imagemProcessadaDAO.recuperarIdOriginal(id);
 		
 		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
+		model.addObject("imageId",imagens.get(0).getId());
 		model.addObject("usuario", usuario);
 		return model;
 	}
