@@ -202,7 +202,8 @@ public class LoginController {
 	@RequestMapping(value = "/filtroBordas",  method = RequestMethod.GET)
 	public ModelAndView filtroBordas(@RequestParam("mammogramId") Long id,HttpServletRequest request){
 
-		List<ImagemProcessada> imagens = imagemProcessadaDAO.recuperarIdOriginal(id);
+		List<ImagemProcessada> imagens = new ArrayList<>();
+		imagens = imagemProcessadaDAO.recuperarIdOriginal(id);
 		
 		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
