@@ -39,46 +39,6 @@ public class TestePopulador {
 			imagem = new ImagemProcessada();
 			imagem.setMammogram(mammogram);
 			bin = ImageUtil.converte(mammogram);
-			bout = processador.processa(bin, Processamento.BORDASCOMUM);
-			try {
-				ImageIO.write(bout, "jpg", baos);
-				baos.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			imagem.setImagemProcessada(baos.toByteArray());
-			imagem.setProcessamento(Processamento.BORDASCOMUM);
-			JPAUtil.comecarOperacoes();
-			imagemProcessadaDAO.inserir(imagem);
-
-			bin = ImageUtil.converte(mammogram);
-			bout = processador.processa(bin, Processamento.ROBERTS);
-			try {
-				ImageIO.write(bout, "jpg", baos);
-				baos.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			imagem.setImagemProcessada(baos.toByteArray());
-			imagem.setProcessamento(Processamento.ROBERTS);
-			imagemProcessadaDAO.inserir(imagem);
-			
-			bin = ImageUtil.converte(mammogram);
-			bout = processador.processa(bin, Processamento.SOBEL);
-			try {
-				ImageIO.write(bout, "jpg", baos);
-				baos.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			imagem.setImagemProcessada(baos.toByteArray());
-			imagem.setProcessamento(Processamento.SOBEL);
-			imagemProcessadaDAO.inserir(imagem);
-			
-			bin = ImageUtil.converte(mammogram);
 			bout = processador.processa(bin, Processamento.NEGATIVO);
 			try {
 				ImageIO.write(bout, "jpg", baos);
@@ -89,20 +49,14 @@ public class TestePopulador {
 			}
 			imagem.setImagemProcessada(baos.toByteArray());
 			imagem.setProcessamento(Processamento.NEGATIVO);
-			imagemProcessadaDAO.inserir(imagem);
-			
-			bin = ImageUtil.converte(mammogram);
-			bout = processador.processa(bin, Processamento.PREWITT);
-			try {
-				ImageIO.write(bout, "jpg", baos);
-				baos.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			imagem.setImagemProcessada(baos.toByteArray());
-			imagem.setProcessamento(Processamento.PREWITT);
-			imagemProcessadaDAO.inserir(imagem);
+			imagens.add(imagem);
+
+		}
+		
+		int i;
+		for(i = 0 ; i < imagens.size() ; i++) {
+			JPAUtil.comecarOperacoes();
+			imagemProcessadaDAO.inserir(imagens.get(i));
 			JPAUtil.finalizarOperacoes();
 		}
 	}
