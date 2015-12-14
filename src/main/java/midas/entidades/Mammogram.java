@@ -21,6 +21,8 @@ public class Mammogram {
 	private Study study;
 	@OneToMany(mappedBy = "mammogram")
 	private List<Historico> historicos;
+	@OneToMany(mappedBy = "mammogram")
+	private List<ImagemProcessada> imagensProc;
 	
 	public Mammogram() {
 		
@@ -52,6 +54,15 @@ public class Mammogram {
 	}
 	public void setHistoricos(List<Historico> historicos) {
 		this.historicos = historicos;
+	}
+	public void adicionaImagemProc(ImagemProcessada imagemProc) {
+		imagensProc.add(imagemProc);
+	}
+	public List<ImagemProcessada> getImagensProc() {
+		return imagensProc;
+	}
+	public void setImagensProc(List<ImagemProcessada> imagensProc) {
+		this.imagensProc = imagensProc;
 	}
 	
 }
