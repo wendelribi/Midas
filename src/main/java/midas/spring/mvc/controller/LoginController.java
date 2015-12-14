@@ -24,6 +24,7 @@ import midas.dao.ImagemProcessadaDAO;
 import midas.dao.MammogramDAO;
 import midas.dao.UsuarioDAO;
 import midas.entidades.*;
+import midas.processamentoDeImagens.Processamento;
 import midas.processamentoDeImagens.ProcessamentodeImagensMarvin;
 import midas.util.JPAUtil;
 
@@ -204,11 +205,17 @@ public class LoginController {
 
 		List<ImagemProcessada> imagens = new ArrayList<>();
 		imagens = imagemProcessadaDAO.recuperarIdOriginal(id);
+		ImagemProcessada imagem = null;
+		for (ImagemProcessada im : imagens){
+			if ((im.getProcessamento().equals(Processamento.BORDASCOMUM))){
+				imagem = im;
+			}
+		}
 		
 		request.setAttribute("processar","true");
 		ModelAndView model = new ModelAndView("/login/loginUsuario/viewImagem");
 		model.addObject("mammogramId",id);
-		model.addObject("imageId",imagens.get(0).getId());
+		model.addObject("imageId",imagem.getId());
 		model.addObject("usuario", usuario);
 		return model;
 	}
