@@ -21,7 +21,7 @@ public class ProcessamentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ImagemProcessadaDAO imagemProcessadaDAO;
     
-    public ProcessamentoServlet() {
+    public void init() throws ServletException {
     	imagemProcessadaDAO = new ImagemProcessadaDAO();
     }
 
